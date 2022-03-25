@@ -57,8 +57,13 @@ class User extends Authenticatable
         return $newSlug;
     }
 
-    public function dish()
+    public function dishes()
     {
         return $this->hasMany('App\Dish');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
     }
 }

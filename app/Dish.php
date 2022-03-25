@@ -30,7 +30,7 @@ class Dish extends Model
         return $newSlug;
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo('App\User');
     }
