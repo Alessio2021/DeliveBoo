@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 class Dish extends Model
 {
     protected $fillable = [
-        'restaurant_id',
         'name',
         'image',
         'description',
@@ -33,5 +32,10 @@ class Dish extends Model
     public function users()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

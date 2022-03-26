@@ -44,11 +44,10 @@ class DishesSeeder extends Seeder
                 }
 
                 if (empty(Dish::where('name', $dish['nome'])->where('user_id', $rand + 1)->first())) {
-
+                $newDish->description = $dish['descrizione'];
                 $newDish->user_id = $rand + 1;
                 $newDish->name = $dish['nome'];
     
-                $newDish->image = 'jahdadhddaaaaaaaha';
     
                 $newDish->price = $dish['prezzo'];
                 if (rand(0, 9) == 0) {
@@ -57,7 +56,7 @@ class DishesSeeder extends Seeder
                         $newDish->visibility = true;
                     }
                     $newDish->slug = Dish::slugGenerator($newDish->name, $newDish->user_id);
-
+                    $newDish->image = $newDish->slug;
                     $newDish->save();
                 }
             }

@@ -306,10 +306,10 @@ return [
     ],
     [
         'nome' => 'Insalata di kamut con pomodorini confit',
-        'descrizone' => "Ricca insalta light di kamut e pomodorini confit",
+        'descrizione' => "Ricca insalta light di kamut e pomodorini confit",
         'prezzo' => 10,
         'tag' => ['cereali', 'ortaggi', 'insalata', 'piatto unico'],
-            'categoria' => [
+        'categoria' => [
             'vegetariano',
             'vegano',
             'greco',
@@ -317,7 +317,7 @@ return [
     ],
     [
         'nome' => 'Antipasto di pesce',
-        'descrizone' => "Bruschetta mozzarella, salmone affumicato e germogli di porro",
+        'descrizione' => "Bruschetta mozzarella, salmone affumicato e germogli di porro",
         'prezzo' => 6,
         'tag' => ['antipasto', 'pesce', 'formaggi'],
         'categoria' => [
@@ -330,7 +330,7 @@ return [
     ],
     [
         'nome' => 'Frittata di rane',
-        'descrizone' => "ricetta tipica veronese composta da frittata con rane in umido.",
+        'descrizione' => "ricetta tipica veronese composta da frittata con rane in umido.",
         'prezzo' => 10,
         'tag' => ['uova', 'carne', 'secondo piatto'],
         'categoria' => [
@@ -339,7 +339,7 @@ return [
     ],
     [
         'nome' => 'Frittelle',
-        'descrizone' => "Gustosimme fritelle come quelle del luna park",
+        'descrizione' => "Gustosimme fritelle come quelle del luna park",
         'prezzo' => 4,
         'tag' => ['frittura', 'uova', 'dolci'],
         'categoria' => [
@@ -359,7 +359,7 @@ return [
     ],
     [
         'nome' => 'Frittura di pesce mista',
-        'descrizone' => "La frittura di pesce mista, o semplicemente fritto misto, è un piacere da condividere in un pranzo o una cena con gli amici o la famiglia. Una ricetta, diventata un grande classico, con gamberi, calamari, triglie, sarde e ciuffi di moscardino ma vanno bene anche altre varietà di pesce fresco come le alici.",
+        'descrizione' => "La frittura di pesce mista, o semplicemente fritto misto, è un piacere da condividere in un pranzo o una cena con gli amici o la famiglia. Una ricetta, diventata un grande classico, con gamberi, calamari, triglie, sarde e ciuffi di moscardino ma vanno bene anche altre varietà di pesce fresco come le alici.",
         'prezzo' => 12,
         'tag' => ['frittura', 'pesce', 'antipasto', 'secondo piatto'],
         'categoria' => [
@@ -373,7 +373,7 @@ return [
     ],
     [
         'nome' => 'Mix antipasti',
-        'descrizone' => "Mix antipasti contenete: Papad, pakora e samosa sabzi ka",
+        'descrizione' => "Mix antipasti contenente: Papad, pakora e samosa sabzi ka",
         'prezzo' => 4.50,
         'tag' => ['antipasto', 'cereali', 'frittura', 'ortaggi'],
         'categoria' => [
@@ -385,7 +385,7 @@ return [
     ],
     [
         'nome' => 'Pane integrale ai 5 cereali',
-        'descrizone' => "PANE INTEGRALE AI 5 CEREALI a lenta lievitazione. un pane rustico saporito con una lievitazione lenta con solo 2 grammi di lievito.",
+        'descrizione' => "PANE INTEGRALE AI 5 CEREALI a lenta lievitazione. un pane rustico saporito con una lievitazione lenta con solo 2 grammi di lievito.",
         'prezzo' => 3,         
         'tag' => ['cereali'],
         'categoria' => [
@@ -397,7 +397,7 @@ return [
     ],
     [
         'nome' => 'Pizza fritta',
-        'descrizone' => "La Pizza fritta è un lievitato golosissimo tipico della cucina napoletana; che si differisce dalla Pizzetta fritta montanara per la sua dimensione più grande, simile ad un Calzone! Si realizza con il classico impasto di farina, acqua, poco lievito di birra, che una volta cresciuto, viene diviso in panetti da cui si ricavano dei dischi;  che prima vengono farciti con ricotta, salame e mozzarella;",
+        'descrizione' => "La Pizza fritta è un lievitato golosissimo tipico della cucina napoletana; che si differisce dalla Pizzetta fritta montanara per la sua dimensione più grande, simile ad un Calzone! Si realizza con il classico impasto di farina, acqua, poco lievito di birra, che una volta cresciuto, viene diviso in panetti da cui si ricavano dei dischi;  che prima vengono farciti con ricotta, salame e mozzarella;",
         'prezzo' => 5,
         'tag' => ['cereali', 'primo piatto', 'pizza', 'frittura', 'formaggi'],
         'categoria' => [
@@ -409,7 +409,7 @@ return [
     ],
     [
         'nome' => 'Polpette di ceci light',
-        'descrizone' => "Le polpette di ceci light sono delle piccole delizie preparate con ceci, uova e Certosa Light, morbide, molto saporite e dal gusto leggero. ideale per chi ama la buona cucina ma desidera stare attento a ciò che mangia e mantenersi sempre in forma.",
+        'descrizione' => "Le polpette di ceci light sono delle piccole delizie preparate con ceci, uova e Certosa Light, morbide, molto saporite e dal gusto leggero. ideale per chi ama la buona cucina ma desidera stare attento a ciò che mangia e mantenersi sempre in forma.",
         'prezzo' => 8,
         'tag' => ['antipasto', 'legumi', 'uova', 'formaggi'],
         'categoria' => [
@@ -424,7 +424,7 @@ return [
     ],
     [
         'nome' => 'Tonkatsu',
-        'descrizone' => "Tonkatsu! Non è una parolaccia ma una gustosissima cotoletta di maiale impanata e fritta",
+        'descrizione' => "Tonkatsu! Non è una parolaccia ma una gustosissima cotoletta di maiale impanata e fritta",
         'prezzo' => 10,
         'tag' => ['frittura', 'carne', 'secondo piatto'],
         'categoria' => [
@@ -437,7 +437,7 @@ return [
     ],
     [
         'nome' => 'Uova alla piemontese ',
-        'descrizone' => "Uova alla piemontese con salsa di peperoni, pomodoro e pancetta",
+        'descrizione' => "Uova alla piemontese con salsa di peperoni, pomodoro e pancetta",
         'prezzo' => 8,
         'tag' => ['uova', 'ortaggi'],
         'categoria' => [
@@ -448,7 +448,7 @@ return [
     ],
     [
         'nome' => 'Uova alla benedict',
-        'descrizone' => "Le uova alla Benedict sono un piatto solo apparentemente semplice da preparare e che solitamente si mangia la mattina per una colazione abbondante. Un tipico brunch newyorkese, un piatto da provare assolutamente se si visita la Grande Mela.
+        'descrizione' => "Le uova alla Benedict sono un piatto solo apparentemente semplice da preparare e che solitamente si mangia la mattina per una colazione abbondante. Un tipico brunch newyorkese, un piatto da provare assolutamente se si visita la Grande Mela.
         Si tratta di un muffin diviso a metà e tostato con una fetta di prosciutto o bacon arrostito e un uovo in camicia, il tutto insaporito da una squisita salsa olandese.",
         'prezzo' => 8,
         'tag' => ['uova', 'antipasto'],

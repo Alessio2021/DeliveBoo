@@ -23,7 +23,7 @@ class CreateDishesTable extends Migration
                 ->onDelete('cascade');
                 
             $table->string('name', 240);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->decimal('price', 5, 2);
             $table->boolean('visibility');
