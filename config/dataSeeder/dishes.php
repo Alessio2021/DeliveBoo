@@ -12,7 +12,8 @@ return [
             'giapponese',
             'messicano',
             'indiano',
-        ]
+        ],
+        'img' => ['pollo-con-gamberi-e-carne-1.jpg', 'pollo-con-gamberi-e-carne-2.jpg']
     ],
     [
         'nome' => 'Grigliata di carne',
