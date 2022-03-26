@@ -25,7 +25,8 @@ return [
             'internazionale',
             'messicano',
             'americano',
-        ]
+        ],
+        'img' => ['grigliata-di-carne-1.jpg', 'grigliata-di-carne-2.jpg', 'grigliata-di-carne-3.jpg']
 
     ],
     [
@@ -35,7 +36,8 @@ return [
         'tag' => ['carne', 'secondo piatto'],
         'categoria' => [
             'italiano',
-        ]
+        ],
+        'img' => ['costolette-di-agnello-all-aglio-1.webp', 'costolette-di-agnello-all-aglio-2.webp']
 
     ],
     [
@@ -49,7 +51,8 @@ return [
             'cinese',
             'giapponese',
             'americano',
-        ]
+        ],
+        'img' => ['salmone-alla-griglia-1.jpg', 'salmone-alla-griglia-2.jpg', 'salmone-alla-griglia-3.jpg']
 
     ],
     [
@@ -59,7 +62,9 @@ return [
         'tag' => ['pesce', 'secondo piatto'],
         'categoria' => [
             'italiano',
-        ]
+        ],
+        'img' => ['involitini-di-pesce-spada-1.jpg']
+
 
     ],
     [
@@ -70,7 +75,9 @@ return [
         'categoria' => [
             'cinese',
             'giapponese',
-        ]
+        ],
+        'img' => ['sushi-misto-1.jpg', 'sushi-misto-2.jpg']
+
 
     ],
     [
@@ -83,7 +90,9 @@ return [
             'vegetariano',
             'vegano',
             'fast food',
-        ]
+        ],
+        'img' => ['insalata-brasiliana-1.jpg']
+
 
     ],
     [
@@ -97,7 +106,9 @@ return [
             'vegano',
             'fast food',
             'greco',
-        ]
+        ],
+        'img' => ['insalata-greca-1.webp']
+        
 
     ],
     [
@@ -109,7 +120,9 @@ return [
             'italiano',
             'internazionale',
             'vegetariano',
-        ]
+        ],
+        'img' => ['pizza-margherita-1.jpg' , 'pizza-margherita-2.jpg']
+
 
     ],
     [
@@ -120,7 +133,9 @@ return [
         'categoria' => [
             'italiano',
             'internazionale',
-        ]
+        ],
+        'img' => ['capricciosa-1.jpg' , 'capricciosa-2.jpg' , 'capricciosa-3.jpg']
+
 
     ],
     [
@@ -132,7 +147,9 @@ return [
             'indiano',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['pizza-kebab-1.jpeg']
+
 
     ],
     [
@@ -146,7 +163,9 @@ return [
             'vegetariano',
             'vegano',
             'fast food',
-        ]
+        ],
+        'img' => ['pizza-vegana-1.webp']
+
 
     ],
     [
@@ -160,7 +179,9 @@ return [
             'internazionale',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['big-mac-1.jpg', 'big-mac-2.jpg']
+
 
     ],
     [
@@ -172,7 +193,9 @@ return [
             'internazionale',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['double-krunch-1.png']
+
 
     ],
     [
@@ -184,7 +207,9 @@ return [
             'internazionale',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['toro-seduto-double-1.jpg', 'toro-seduto-double-2.jpg']
+
 
     ],
     [
@@ -196,7 +221,9 @@ return [
             'internazionale',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['filet-o-fish-1.webp']  ////////////////////////////////
+
 
     ],
     [
@@ -206,7 +233,9 @@ return [
         'tag' => ['primo piatto'],
         'categoria' => [
             'italiano',
-        ]
+        ],
+        'img' => ['tonnarelli-di-sua-maesta-1.jpg', 'tonnarelli-di-sua-maesta-2.jpg'] 
+
 
     ],
     [
@@ -216,7 +245,9 @@ return [
         'tag' => ['primo piatto', 'carne'],
         'categoria' => [
             'italiano',
-        ]
+        ],
+        'img' => ['tagliatelle-alla-boscaiola-1.jpg'] 
+
 
     ],
     [
@@ -227,7 +258,9 @@ return [
         'categoria' => [
             'italiano',
             'americano',
-        ]
+        ],
+        'img' => ['filetto-con-funghi-porcini-e-tartufo-1.jpeg'] 
+
 
     ],
     [
@@ -239,7 +272,9 @@ return [
             'internazionale',
             'cinese',
             'giapponese',
-        ]
+        ],
+        'img' => ['barca-vassoio-sumo-1.jpg', 'barca-vassoio-sumo-2.png'] 
+
     ],
     [
         'nome' => 'Spiedini di Calamari',
@@ -252,7 +287,9 @@ return [
             'cinese',
             'giapponese',
             'americano',
-        ]
+        ],
+        'img' => ['spiedini-di-calamari-1.jpg'] 
+
 
     ],
     [
@@ -264,7 +301,9 @@ return [
             'internazionale',
             'messicano',
             'americano',
-        ]
+        ],
+        'img' => ['salsiccia-e-fagioli-alla-messicana-1.jpg'] 
+
 
     ],
     [
@@ -278,7 +317,9 @@ return [
             'cinese',
             'giapponese',
             'americano',
-        ]
+        ],
+        'img' => ['orata-al-forno-1.jpg'] 
+
 
     ],
     [
@@ -291,7 +332,9 @@ return [
             'giapponese',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['tartar-salmone-1.jpg', 'tartar-salmone-2.jpg'] 
+
     ],
     [
         'nome' => 'Melanzane alla Parmigiana',
@@ -302,7 +345,9 @@ return [
             'italiano',
             'internazionale',
             'vegetariano',
-        ]
+        ],
+        'img' => ['melanzane alla parmigiana-1.jpg', 'melanzane alla parmigiana-2.jpg'] 
+
 
     ],
     [
@@ -314,7 +359,9 @@ return [
             'vegetariano',
             'vegano',
             'greco',
-        ]
+        ],
+        'img' => ['insalata-di-kamut-con-pomodorini-confit-1.jpg'] 
+
     ],
     [
         'nome' => 'Antipasto di pesce',
@@ -327,7 +374,9 @@ return [
             'cinese',
             'giapponese',
             'americano',
-        ]
+        ],
+        'img' => ['antipasto-di-pesce-1.jpg'] 
+
     ],
     [
         'nome' => 'Frittata di rane',
@@ -336,7 +385,9 @@ return [
         'tag' => ['uova', 'carne', 'secondo piatto'],
         'categoria' => [
             'italiano',
-        ]
+        ],
+        'img' => ['frittata-di-rane-1.jpg'] 
+
     ],
     [
         'nome' => 'Frittelle',
@@ -355,7 +406,9 @@ return [
             'americano',
             'colazione',
             'greco',
-        ]
+        ],
+        'img' => ['frittelle-1.jpg'] 
+
 
     ],
     [
@@ -370,7 +423,9 @@ return [
             'giapponese',
             'fast food',
             'americano'
-        ]
+        ],
+        'img' => ['frittura-di-pesce-mista-1.jpg', 'frittura-di-pesce-mista-2.jpg'] 
+
     ],
     [
         'nome' => 'Mix antipasti',
@@ -382,7 +437,9 @@ return [
             'indiano',
             'vegetariano',
             'fast food',
-        ]   
+        ],
+        'img' => ['mix-antipasti-1.jpg', 'mix-antipasti-2.jpg'] 
+
     ],
     [
         'nome' => 'Pane integrale ai 5 cereali',
@@ -394,7 +451,9 @@ return [
             'internazionale',
             'vegetariano',
             'vegano',
-        ]
+        ],
+        'img' => ['pane-integrale-ai-5-cereali-1.jpg', 'pane-integrale-ai-5-cereali-2.jpg'] 
+
     ],
     [
         'nome' => 'Pizza fritta',
@@ -406,7 +465,9 @@ return [
             'internazionale',
             'vegetariano',
             'fast food',
-        ]
+        ],
+        'img' => ['pizza-fritta-1.jpg', 'pizza-fritta-2.jpg'] 
+
     ],
     [
         'nome' => 'Polpette di ceci light',
@@ -421,7 +482,9 @@ return [
             'vegetariano',
             'americano',
             'greco',
-        ]
+        ],
+        'img' => ['polpette-di-ceci-light-1.jpg'] 
+
     ],
     [
         'nome' => 'Tonkatsu',
@@ -433,7 +496,9 @@ return [
             'cinese',
             'giapponese',
             'fast food',
-        ]
+        ],
+        'img' => ['tonkatsu-1.jpg', 'tonkatsu-2.jpg'] 
+
 
     ],
     [
@@ -445,7 +510,9 @@ return [
             'italiano',
             'vegetariano',
             'colazione',
-        ]
+        ],
+        'img' => ['uova-alla-piemontese-1.jpg', 'uova-alla-piemontese-2.jpg'] 
+
     ],
     [
         'nome' => 'Uova alla benedict',
@@ -459,7 +526,9 @@ return [
             'fast food',
             'americano',
             'colazione',
-        ]
+        ],
+        'img' => ['uova-alla-piemontese-1.jpg', 'uova-alla-piemontese-2.jpg'] 
+
     ],
     [
         'nome' => 'Zuppa Rustica',
