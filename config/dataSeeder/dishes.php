@@ -527,7 +527,7 @@ return [
             'americano',
             'colazione',
         ],
-        'img' => ['uova-alla-piemontese-1.jpg', 'uova-alla-piemontese-2.jpg'] 
+        'img' => ['uova-benedict-1.jpg', 'uova-benedict-2.jpg', 'uova-benedict-3.jpg'] 
 
     ],
     [
@@ -546,7 +546,9 @@ return [
             'vegano',
             'americano',
             'greco',
-        ]
+        ],
+        'img' => ['zuppa-rustica-1.jpg'] 
+
 
     ],
     [
@@ -562,7 +564,9 @@ return [
             'vegetariano',
             'vegano',
             'greco',
-        ]
+        ],
+        'img' => ['minestra-legumi-curcuma.webp'] 
+
 
     ],
     [
@@ -580,7 +584,9 @@ return [
             'vegano',
             'americano',
             'greco',
-        ]
+        ],
+        'img' => ['minestrone-di-verdure-1.jpg', 'minestrone-di-verdure-2.jpg'] 
+
 
     ],
     [
@@ -594,7 +600,9 @@ return [
             'messicano',
             'vegetariano',
             'americano',
-        ]
+        ],
+        'img' => ['frittata-di-patate-e-carciofi-1.jpg', 'frittata-di-patate-e-carciofi-2.jpg'] 
+
 
     ],
     [
@@ -605,7 +613,9 @@ return [
         'categoria' => [
             'italiano',
             'internazionale',
-        ]
+        ],
+        'img' => ['pasta-al-pesto-di-broccoli-1.jpg', 'pasta-al-pesto-di-broccoli-2.jpg'] 
+
 
     ],
     [
@@ -617,7 +627,9 @@ return [
             'italiano',
             'internazionale',
             'colazione',
-        ]
+        ],
+        'img' => ['tiramisù-1.webp', 'tiramisù-2.jpg', 'tiramisù-3.jpg'] 
+
 
     ],
     [
@@ -633,7 +645,9 @@ return [
             'fast food',
             'americano',
             'colazione',
-        ]
+        ],
+        'img' => ['torta-di-mele-1.jpg', 'torta-di-mele-2.jpg'] 
+
 
     ],
     [
@@ -653,7 +667,9 @@ return [
             'americano',
             'colazione',
             'greco',
-        ]
+        ],
+        'img' => ['gelato-alla-fragola-1.jpg', 'gelato-alla-fragola-2.jpg'] 
+
 
     ],
     [
@@ -669,7 +685,9 @@ return [
             'vegetariano',
             'fast food',
             'americano',
-        ]
+        ],
+        'img' => ['gelato-fritto-1.jpg', 'gelato-fritto-1.jpg'] 
+
     ],
     [
         'nome' => 'Torta di crepe dolci',
@@ -684,7 +702,9 @@ return [
             'americano',
             'colazione',
             'greco',
-        ]
+        ],
+        'img' => ['torta-di-crepe-dolci-1.jpg', 'torta-di-crepe-dolci-2.jpg'] 
+
     ],
     [
         'nome' => 'Gelato al cioccolato',
@@ -703,7 +723,9 @@ return [
             'americano',
             'colazione',
             'greco',
-        ]
+        ],
+        'img' => ['gelato-al-cioccolato-1.jpg', 'gelato-al-cioccolato-2.jpg'] 
+
     ],
     [
         'nome' => 'Polpette di lenticchie',
@@ -721,7 +743,9 @@ return [
             'fast food',
             'americano',
             'greco',
-        ]
+        ],
+        'img' => ['polpette-di-lenticchie-1.jpg', 'polpette-di-lenticchie-2.jpg'] 
+
     ],
     [
         'nome' => 'Hamburger di ceci',
@@ -739,7 +763,9 @@ return [
             'fast food',
             'americano',
             'greco',
-        ]
+        ],
+        'img' => ['hamburger-di-ceci-1.jpg', 'hamburger-di-ceci-2.jpg'] 
+
     ],
     [
         'nome' => 'Spaghetti alla Carbonara',
@@ -749,7 +775,9 @@ return [
         'categoria' => [
             'italiano',
             'internazionale',
-        ]
+        ],
+        'img' => ['spaghetti-alla-carbonara-1.jpg', 'spaghetti-alla-carbonara-2.jpg'] 
+
     ],
     [
         'nome' => 'Bucatini alla Amatriciana',
@@ -759,7 +787,9 @@ return [
         'categoria' => [
             'italiano',
             'internazionale',
-        ]
+        ],
+        'img' => ['bucatini-alla-amatriciana-1.jpg', 'bucatini-alla-amatriciana-2.jpg'] 
+
     ],
     [
         'nome' => 'Rigatoni cacio e pepe',
@@ -769,7 +799,9 @@ return [
         'categoria' => [
             'italiano',
             'internazionale',
-        ]
+        ],
+        'img' => ['rigatoni-cacio-e-pepe-1.jpg', 'rigatoni-cacio-e-pepe-2.jpg'] 
+
     ],
     [
         'nome' => 'Paradiso',
@@ -780,7 +812,9 @@ return [
             'italiano',
             'internazionale',
             'fast food',
-        ]
+        ],
+        'img' => ['paradiso-1.jpg'] 
+
     ],
     [
         'nome' => "L'Inferno",
@@ -791,7 +825,9 @@ return [
             'italiano',
             'internazionale',
             'fast food',
-        ]
+        ],
+        'img' => ['l-inferno-1.jpg'] 
+
 
     ],
     [
@@ -803,7 +839,9 @@ return [
             'italiano',
             'internazionale',
             'fast food',
-        ]
+        ],
+        'img' => ['purgatorio-1.jpg'] 
+
     ],
     [
         'nome' => 'Tagliere di formaggi',
@@ -814,7 +852,9 @@ return [
             'italiano',
             'internazionale',
             'fast food',
-        ]
+        ],
+        'img' => ['tagliere-di-formaggi-1.jpg', 'tagliere-di-formaggi-2.jpg'] 
+
     ],
     [
         'nome' => 'Tagliere Iberico',
@@ -826,7 +866,9 @@ return [
             'internazionale',
             'vegetariano',
             'fast food',
-        ]
+        ],
+        'img' => ['tagliere-iberico-1.jpg'] 
+
 
     ],
     [
@@ -841,6 +883,8 @@ return [
             'fast food',
             'americano',
             'greco',
-        ]
+        ],
+        'img' => ['mozzarella-stick-1.jpg', 'mozzarella-stick-2.jpg', 'mozzarella-stick-3.jpg'] 
+
     ],
 ];
