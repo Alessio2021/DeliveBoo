@@ -52,7 +52,7 @@ return [
             'giapponese',
             'americano',
         ],
-        'img' => ['salmone-alla-griglia-1.jpg', 'salmone-alla-griglia-2.jpg', 'salmone-alla-griglia-3.jpg']
+        'img' => ['salmone-alla-griglia-1.jpg', 'salmone-alla-griglia-2.jpg', 'salmone-alla-griglia-3.webp']
 
     ],
     [
@@ -208,7 +208,7 @@ return [
             'fast food',
             'americano',
         ],
-        'img' => ['toro-seduto-double-1.jpg', 'toro-seduto-double-2.jpg']
+        'img' => ['toro-seduto-double-1.jpg', 'toro-seduto-double-2.jpeg']
 
 
     ],
