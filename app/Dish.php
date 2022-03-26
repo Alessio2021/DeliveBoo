@@ -34,8 +34,14 @@ class Dish extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function dishImages()
+    {
+        return $this->hasMany('App\DishImage');
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
     }
+    
 }

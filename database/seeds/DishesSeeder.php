@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Dish;
 use App\User;
+use App\DishImage;
 
 
 
@@ -48,16 +49,29 @@ class DishesSeeder extends Seeder
                 $newDish->user_id = $rand + 1;
                 $newDish->name = $dish['nome'];
     
-    
+
                 $newDish->price = $dish['prezzo'];
                 if (rand(0, 9) == 0) {
-                        $newDish->visibility = false;
-                    } else {
-                        $newDish->visibility = true;
-                    }
+                    $newDish->visibility = false;
+                } else {
+                    $newDish->visibility = true;
+                }
                     $newDish->slug = Dish::slugGenerator($newDish->name, $newDish->user_id);
                     $newDish->image = $newDish->slug;
                     $newDish->save();
+
+                    // carico piu img per piatto, se disponibili
+                    if (!empty($dish['img'])) {
+                        foreach ($dish['img'] as $image) {
+                            $newDishImage = new DishImage();
+    
+                            // slug della foto = nome cartella / nome dell'image
+                            $newDishImage->img_path = Dish::slugGenerator($newDish->name, $newDish->user_id) . "/" . $image;
+                            $newDishImage->dish_id = $newDish->id;
+                            $newDishImage->save();
+                        }
+                    }
+
                 }
             }
         }
