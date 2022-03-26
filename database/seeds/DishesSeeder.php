@@ -45,17 +45,17 @@ class DishesSeeder extends Seeder
                 }
 
                 if (empty(Dish::where('name', $dish['nome'])->where('user_id', $rand + 1)->first())) {
-                $newDish->description = $dish['descrizione'];
-                $newDish->user_id = $rand + 1;
-                $newDish->name = $dish['nome'];
-    
+                    $newDish->description = $dish['descrizione'];
+                    $newDish->user_id = $rand + 1;
+                    $newDish->name = $dish['nome'];
+        
 
-                $newDish->price = $dish['prezzo'];
-                if (rand(0, 9) == 0) {
-                    $newDish->visibility = false;
-                } else {
-                    $newDish->visibility = true;
-                }
+                    $newDish->price = $dish['prezzo'];
+                    if (rand(0, 9) == 0) {
+                        $newDish->visibility = false;
+                    } else {
+                        $newDish->visibility = true;
+                    }
                     $newDish->slug = Dish::slugGenerator($newDish->name, $newDish->user_id);
                     $newDish->image = $newDish->slug;
                     $newDish->save();
@@ -64,7 +64,7 @@ class DishesSeeder extends Seeder
                     if (!empty($dish['img'])) {
                         foreach ($dish['img'] as $image) {
                             $newDishImage = new DishImage();
-    
+
                             // slug della foto = nome cartella / nome dell'image
                             $newDishImage->img_path = Dish::slugGenerator($newDish->name, $newDish->user_id) . "/" . $image;
                             $newDishImage->dish_id = $newDish->id;
