@@ -5,7 +5,10 @@
     <div class="mt-5 container ">
         <div class="row">
             <div class="col">
-                <img class="w-25 img-thumbnail" src="{{asset('storage/Dishes/' . $dish->image . '/' . $dish->image . '-1.jpg')}}" alt="{{$dish->name}}">
+                {{-- <img class="w-25 img-thumbnail" src="{{asset('storage/Dishes/' . $dish->image . '/' . $dish->image . '-1.jpg')}}" alt="{{$dish->name}}"> --}}
+                @foreach (App\DishImage::where('dish_id', $dish->id)->get() as $image)
+                    <img class="w-25 img-thumbnail" src="{{asset('storage/Dishes/' . $image->img_path)}}" alt="">
+                @endforeach
                 <h2>Nome: {{ $dish->name }}</h2>
                 <p>Descrizione: {{ $dish->description }}</p>
                 <h4>Prezzo: {{ $dish->price }} Euro</h4>

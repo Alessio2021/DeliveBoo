@@ -619,7 +619,7 @@ return [
 
     ],
     [
-        'nome' => 'Tiramisù',
+        'nome' => 'Tiramis&uacute;',
         'descrizione' => "Crema di tuorli e mascarpone, strato di savoiardi inzuppati nel caffè, cacao amaro a spolvero.",
         'prezzo' => 8.00,
         'tag' => ['dolci', 'uova'],
