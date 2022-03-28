@@ -10,7 +10,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-    
+                    <img src="{{asset('storage/' . App\User::where('id', Auth::id())->first()->image)}}" alt="">
                 <table class="table table-striped">
                 <thead>
                     <tr>
@@ -37,11 +37,32 @@
                             <td><a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish) }}">View</a></td>
                             <td><a class="btn btn-info" href="{{ route('admin.dishes.edit', $dish) }}">Edit</a></td>
                             <td>
-                                <form action="{{ route('admin.dishes.destroy', $dish)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input class="btn btn-danger" type="submit" value="Delete">
-                                </form>
+
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#{{$dish->slug}}">
+                                Cancella
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="{{$dish->slug}}" tabindex="-1" aria-labelledby="{{$dish->slug}}Label" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="{{$dish->slug}}Label">Eliminazione</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                        <div class="modal-body">
+                                            Sei sicuro di voler eliminare {{$dish->name}} ?
+                                        </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <form action="{{ route('admin.dishes.destroy', $dish)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input class="btn btn-danger" type="submit" value="Cancella">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

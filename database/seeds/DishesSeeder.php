@@ -49,7 +49,7 @@ class DishesSeeder extends Seeder
                         }
                     }
                 }
-                // se il piatto no e' inserito nel ristorante, lo creo e lo inserisco
+                // se il piatto non e' inserito nel ristorante, lo creo e lo inserisco
                 if (empty(Dish::where('name', $dish['nome'])->where('user_id', $rand + 1)->first())) {
                     $newDish->description = $dish['descrizione'];
                     $newDish->user_id = $rand + 1;
@@ -73,7 +73,7 @@ class DishesSeeder extends Seeder
                             $newDishImage = new DishImage();
 
                             // nome cartella dove si trova l img / immagine.formato
-                            $newDishImage->img_path = strtolower(str_replace("'", "", str_replace(' ', '-', $dish['nome']))) . "/" . $image;
+                            $newDishImage->img_path = 'Our_faker_img/Dishes/' . strtolower(str_replace("'", "", str_replace(' ', '-', $dish['nome']))) . "/" . $image;
                             $newDishImage->dish_id = $newDish->id;
                             $newDishImage->save();
                         }

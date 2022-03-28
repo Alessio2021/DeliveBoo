@@ -17,6 +17,7 @@ class DishController extends Controller
      */
     public function index()
     {
+        // dd(Dish::where('user_id', 1)->get());
         $dishes = Dish::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(7);
         return view('admin.dishes.index', ['dishes' => $dishes]);
     }
@@ -50,7 +51,7 @@ class DishController extends Controller
             [
                 'name' => 'required|max:240',
                 'description' => 'required',
-                'price' => 'required',
+                'price' => 'required|numeric|between:0.01,999.99', 
                 'image' => 'nullable|image',
                 'visibility' => 'required'
             ]
@@ -113,7 +114,7 @@ class DishController extends Controller
             [
                 'name' => 'required|max:240',
                 'description' => 'required',
-                'price' => 'required',
+                'price' => 'required|min:0.01|max:999.99',
                 'image' => 'nullable|image',
                 'visibility' => 'required'
             ]
@@ -138,7 +139,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        $dish->delete();
-        return redirect()->route('admin.dishes.index')->with('status', "Il piatto $dish->name è stato cancellato");
+        $restaurantsDish = Dish::where('slug', $dish->slug)->where('user_id', Auth::id())->first();
+        $restaurantsDish->delete();
+        return redirect()->route('admin.dishes.index')->with('status', "Il piatto $restaurantsDish->name è stato cancellato");
     }
 }

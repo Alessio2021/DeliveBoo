@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'PIVA' => ['required', 'string', 'max:11'],
             'address' => ['required', 'string', 'max:255'],
             'image' => ['nullable','string', 'max:255'],
+            'categories.*' => ['nullable', 'exists:App\Category,id'],
         ]);
     }
 
@@ -67,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -76,5 +77,11 @@ class RegisterController extends Controller
             'image' => $data['image'],
             'slug' => User::slugGenerator($data['name']),
         ]);
+
+        if (!empty($data['categories'])) {
+            $newUser->categories()->attach($data['categories']);
+        }
+        
+        return $newUser;
     }
 }

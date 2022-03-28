@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         foreach ($restaurants as $restaurant) {
             $newUser = new User();
             $newUser->name = $restaurant['nome'];
-            $newUser->image = $restaurant['img'];
+            $newUser->image = "Our_faker_img/Restaurants/" . $restaurant['img'];
             $newUser->email = strtolower(str_replace([" ", "'" ], "", $restaurant['nome']))."@gmail.com";
             $newUser->password = Hash::make('12345678');
             $newUser->PIVA = str_replace("IT","", $faker->vat());

@@ -11,7 +11,7 @@
             {{-- inserimento nome piatto --}}
             <div class="mb-3">
                 <label for="nomePiatto" class="form-label">Nome piatto</label>
-                <input type="text" class="form-control" id="nomePiatto" name="name">
+                <input type="text" class="form-control" id="nomePiatto" name="name" value="{{old('name', '')}}">
                 {{-- errore --}}
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -21,7 +21,7 @@
             {{-- descrizione --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea type="text" class="form-control" id="description" name="description"></textarea>
+                <textarea type="text" class="form-control" id="description" name="description">{{old('description', '')}}</textarea>
                 {{-- errore --}}
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
             {{-- prezzo --}}
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" id="price" name="price">
+                <input type="number" class="form-control" id="price" name="price" value="{{old('price', '')}}">
                 {{-- errore --}}
                 @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -48,9 +48,12 @@
                 @enderror
             </div>
 
-            {{-- nintendo switch visibilità --}}
+            {{-- nintendo switch visibilità --}} 
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked name='visibility' value='true'>
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" 
+                {{-- se almeno 1 dei campi e' compilato e c'e' la disponibilita DEselezionata allora metti false ALTRIMENTI checked --}}
+                {{ ((old('name')|| old('description') || old('price')) && !old('visibility')) ? "" : 'checked' }}
+                name='visibility' value='true'>
                 <label class="form-check-label" for="flexSwitchCheckChecked">Disponibilità</label>
             </div>
 

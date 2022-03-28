@@ -25,6 +25,22 @@
                             </div>
                         </div>
 
+                        <legend>Categoria:</legend>
+                        <fieldset class="row ms-5 mb-4">
+                            @foreach ($categories as $category)
+                                <div class="form-check col-4 mb-2">
+                                    {{-- scrivo nel name tags[] perché passo piu elementi alla store che cosi me li raggruppa  --}}
+                                    <input class="form-check-input" type="checkbox" value="{{ $category->id }}" name="categories[]"
+                                    {{-- ternario per lasciare la checkbox ceccata durante l'errore --}}
+                                    {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
+                                    >
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ $category->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </fieldset>
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
