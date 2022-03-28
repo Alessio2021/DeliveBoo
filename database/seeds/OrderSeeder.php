@@ -25,6 +25,8 @@ class OrderSeeder extends Seeder
             $newOrder->guest_address = $faker->address();
             $newOrder->payment_method = $faker->creditCardType();
             $newOrder->total_amount = 0;
+            $fakeDate = $faker->dateTimeBetween('-1 year');
+            $newOrder->created_at = $fakeDate;
             $newOrder->save();
             
             $totalPrice = 0;
@@ -38,7 +40,7 @@ class OrderSeeder extends Seeder
                     
                 }
             }
-            if ($totalPrice === 0) { /* se un rist ha 0 ordini.. forzo l ordine per almeno 1 piatto */
+            if ($totalPrice === 0 && count($randRestaurantDishes) > 1) { /* se un rist ha 0 ordini.. forzo l ordine per almeno 1 piatto */
                 $rand = rand(1, 5);
                 /* indice di un piatto random */
                 $randDishIndex = rand(0, count($randRestaurantDishes) - 1);
@@ -47,8 +49,13 @@ class OrderSeeder extends Seeder
                 $totalPrice += $rand * $randRestaurantDishes[$randDishIndex]->price; /* 
                 moltiplico il prezzo per le quantita' */
             }
-            $newOrder->total_amount = $totalPrice;
-            $newOrder->update();
+            if ($totalPrice > 0) {
+                $newOrder->total_amount = $totalPrice;
+                $newOrder->updated_at = $fakeDate;
+                $newOrder->update();
+            }else{
+                $newOrder->delete();
+            }
         }
     }
 }

@@ -11,7 +11,7 @@
             {{-- inserimento nome piatto --}}
             <div class="mb-3">
                 <label for="nomePiatto" class="form-label">Nome piatto</label>
-                <input type="text" class="form-control" id="nomePiatto" value="{{ old('name') ? old('name') : $dish->name }}" name="name">
+                <input type="text" class="form-control" id="nomePiatto" value="{{ old('name') ? old('name') : $dish->name }}" name="name" required>
                 {{-- errore --}}
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -21,7 +21,7 @@
             {{-- descrizione --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea type="text" class="form-control" id="description"  name="description">{{$dish->description}}'</textarea>
+                <textarea type="text" class="form-control" id="description"  name="description" required>{{$dish->description}}'</textarea>
                 {{-- errore --}}
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
             {{-- prezzo --}}
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" id="price" value="{{ $dish->price }}" name="price">
+                <input type="number" step="0.01" class="form-control" id="price" value="{{ $dish->price }}" name="price" required>
                 {{-- errore --}}
                 @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -56,8 +56,8 @@
 
             {{-- actions --}}
             <div class="mb-3">
-                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1">Back</a>
-                <input class="text-light fw-bold btn btn-primary" type="submit" value="Send">
+                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1">Torna Indietro</a>
+                <input class="text-light fw-bold btn btn-primary" type="submit" value="Salva Modifiche">
             </div>
         </form>
     </div>

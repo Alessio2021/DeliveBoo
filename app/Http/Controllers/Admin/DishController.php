@@ -114,7 +114,7 @@ class DishController extends Controller
             [
                 'name' => 'required|max:240',
                 'description' => 'required',
-                'price' => 'required|min:0.01|max:999.99',
+                'price' => 'required|numeric|between:0.01,999.99',
                 'image' => 'nullable|image',
                 'visibility' => 'required'
             ]

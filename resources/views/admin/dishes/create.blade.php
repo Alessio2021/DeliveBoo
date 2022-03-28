@@ -11,7 +11,7 @@
             {{-- inserimento nome piatto --}}
             <div class="mb-3">
                 <label for="nomePiatto" class="form-label">Nome piatto</label>
-                <input type="text" class="form-control" id="nomePiatto" name="name" value="{{old('name', '')}}">
+                <input type="text" class="form-control" id="nomePiatto" name="name" value="{{old('name', '')}}" required>
                 {{-- errore --}}
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -21,7 +21,7 @@
             {{-- descrizione --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea type="text" class="form-control" id="description" name="description">{{old('description', '')}}</textarea>
+                <textarea type="text" class="form-control" id="description" name="description" required>{{old('description', '')}}</textarea>
                 {{-- errore --}}
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -30,7 +30,7 @@
 
             {{-- prezzo --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo</label>
+                <label for="price" class="form-label" required >Prezzo</label>
                 <input type="number" class="form-control" id="price" name="price" value="{{old('price', '')}}">
                 {{-- errore --}}
                 @error('price')
@@ -59,8 +59,8 @@
 
             {{-- actions --}}
             <div class="mb-3">
-                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1">Back</a>
-                <input class="text-light fw-bold btn btn-primary" type="submit" value="Send">
+                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1">Torna Indietro</a>
+                <input class="text-light fw-bold btn btn-primary" type="submit" value="Aggiungi Piatto">
             </div>
         </form>
     </div>
