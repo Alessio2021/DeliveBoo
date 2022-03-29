@@ -19,7 +19,7 @@
         </a>
         </li>
         <li>
-        <a href="{{route('admin.orders.index')}}" class="nav-link {{Route::currentRouteName() == 'admin.orders.index' ? 'active' : 'link-dark'}}">
+        <a href="{{route('admin.orders.index')}}" class="nav-link {{(Route::currentRouteName() == 'admin.orders.index' || Route::currentRouteName() == 'admin.orders.show') ? 'active' : 'link-dark'}}">
             <i class="fas fa-list-ul"></i>
             <span class=" d-none d-md-inline-block ms-3">Ordini</span>
         </a>
