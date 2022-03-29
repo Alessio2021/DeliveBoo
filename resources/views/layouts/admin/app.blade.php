@@ -81,7 +81,9 @@
         <main class="container-fluid">
             <div class="row">
                 <div class="col-2 p-0">
-                    @include('layouts.admin.partials.sidebar')
+                    @auth
+                        @include('layouts.admin.partials.sidebar')
+                    @endauth
                 </div>
                 <div class="col-10 p-0">
                     <header class="admin-header d-flex align-items-center ps-5">
