@@ -85,9 +85,9 @@
                 </div>
                 <div class="col-10 p-0">
                     <header class="admin-header d-flex align-items-center ps-5">
-                        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                        <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100">
                             <div class="container">
-                                <a class="navbar-brand d-block" href="{{ url('/') }}">
+                                <a class="navbar-brand d-block w-25" href="{{ url('/') }}">
                                     <img class="h-50" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
                                 </a>
                             </div>
