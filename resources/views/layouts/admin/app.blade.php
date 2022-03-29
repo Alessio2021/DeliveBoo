@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -75,10 +75,28 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> --}}
+
     <div id="app">
-        <main class="py-4">
-            @yield('content')
+        <main class="container-fluid">
+            <div class="row">
+                <div class="col-2 p-0">
+                    @include('layouts.admin.partials.sidebar')
+                </div>
+                <div class="col-10 p-0">
+                    <header class="admin-header d-flex align-items-center ps-5">
+                        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                            <div class="container">
+                                <a class="navbar-brand d-block" href="{{ url('/') }}">
+                                    <img class="h-50" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
+                                </a>
+                            </div>
+                        </nav>
+                        
+                    </header>
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 </body>

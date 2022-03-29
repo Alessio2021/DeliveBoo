@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container mt-5">
@@ -59,7 +59,7 @@
 
             {{-- actions --}}
             <div class="mb-3">
-                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1">Torna Indietro</a>
+                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1">Torna alla Homepage</a>
                 <input class="text-light fw-bold btn btn-primary" type="submit" value="Aggiungi Piatto">
             </div>
         </form>

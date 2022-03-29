@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -55,7 +56,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'PIVA' => ['required', 'string', 'max:11'],
             'address' => ['required', 'string', 'max:255'],
-            'image' => ['nullable','string', 'max:255'],
+            'image' => ['nullable', 'image'],
             'categories.*' => ['nullable', 'exists:App\Category,id'],
         ]);
     }
@@ -68,20 +69,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!empty($data['image'])) {
+            $img_path = Storage::put('uploads', $data['image']);
+            
+        } else {
+            $img_path = null;
+        }
+
         $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'PIVA' => $data['PIVA'],
             'address' => $data['address'],
-            'image' => $data['image'],
+            'image' => $img_path,
             'slug' => User::slugGenerator($data['name']),
         ]);
 
         if (!empty($data['categories'])) {
             $newUser->categories()->attach($data['categories']);
         }
-        
+
         return $newUser;
     }
+
+
 }

@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
     <div class="mt-5 container ">
@@ -15,7 +15,8 @@
                 {{-- <h4>ID: {{ $dish->id }}</h4> --}}
                 <h6>Creato il: {{ $dish->created_at }}</h6>
                 <h6>Aggiornato il: {{ $dish->updated_at }}</h6>
-                <a href="{{ route('admin.dishes.index') }}" class="text-white fw-bold btn btn-primary mt-2">Torna alla Home</a>
+                <a href="{{ route('admin.dishes.index') }}" class="text-white fw-bold btn btn-primary mt-2"><i class="bi bi-arrow-left"></i> Torna alla Home</a>
+                <a class="btn btn-info mt-2" href="{{ route('admin.dishes.edit', $dish) }}">Modifica</a>
             </div>
         </div>
     </div>
