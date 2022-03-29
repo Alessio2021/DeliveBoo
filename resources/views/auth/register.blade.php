@@ -1,5 +1,7 @@
 @extends('layouts.admin.app')
 
+
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -26,6 +28,8 @@
                         </div>
 
                         {{-- CHECKBOX --}}
+                        
+
                         <legend>Categoria:</legend>
                         <fieldset class="row ms-5 mb-4">
                             @foreach (App\Category::all() as $category)
