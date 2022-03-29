@@ -7,31 +7,31 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-        <a href="{{ route('admin.dishes.index') }}" class="nav-link active" aria-current="page">
+        <a href="{{ route('admin.home') }}" class="nav-link {{Route::currentRouteName() == 'admin.home' ? 'active' : 'link-dark'}}" aria-current="page">
             <i class="bi bi-house-door-fill"></i>
             <span class=" d-none d-md-inline-block ms-3">Home</span>
         </a>
         </li>
         <li>
-        <a href="{{ route('admin.dishes.index') }}" class="nav-link link-dark">
+        <a href="{{ route('admin.dishes.index') }}" class="nav-link {{Route::currentRouteName() == 'admin.dishes.index' ? 'active' : 'link-dark'}}">
             <i class="fas fa-utensils"></i>
             <span class=" d-none d-md-inline-block ms-3">Lista Piatti</span>
         </a>
         </li>
         <li>
-        <a href="#" class="nav-link link-dark">
+        <a href="{{route('admin.orders.index')}}" class="nav-link {{Route::currentRouteName() == 'admin.orders.index' ? 'active' : 'link-dark'}}">
             <i class="fas fa-list-ul"></i>
             <span class=" d-none d-md-inline-block ms-3">Ordini</span>
         </a>
         </li>
         <li>
-        <a href="{{ route('admin.dishes.create') }}" class="nav-link link-dark">
+        <a href="{{ route('admin.dishes.create') }}" class="nav-link {{Route::currentRouteName() == 'admin.dishes.create' ? 'active' : 'link-dark'}}">
             <i class="fas fa-plus"></i>
             <span class=" d-none d-md-inline-block ms-3">Aggiungi Piatto</span>
         </a>
         </li>
         <li>
-        <a href="#" class="nav-link link-dark">
+        <a href="#" class="nav-link">
             <i class="fas fa-chart-bar"></i>
             <span class=" d-none d-md-inline-block ms-3">Statistiche</span>
         </a>

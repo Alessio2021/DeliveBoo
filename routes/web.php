@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,11 +23,14 @@ Route::middleware('auth')
     ->namespace('Admin')
     ->name('admin.')
     ->prefix('admin')
-    ->group(function () {
-        Route::get('/', 'HomeController@index')->name('home');
-        Route::resource('dishes', 'DishController');
-    }
-);
+    ->group(
+        function () {
+            Route::get('/', 'HomeController@index')->name('home');
+            Route::resource('dishes', 'DishController');
+            Route::get('orders', 'OrderController@index')->name('orders.index');
+            Route::get('orders/{id}', 'OrderController@show')->name('orders.show');
+        }
+    );
 
 Route::get('{any?}', function ($name = null) {
     return view('guest.welcome');

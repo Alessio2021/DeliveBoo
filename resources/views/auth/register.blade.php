@@ -28,7 +28,7 @@
                         {{-- CHECKBOX --}}
                         <legend>Categoria:</legend>
                         <fieldset class="row ms-5 mb-4">
-                            @foreach ($categories as $category)
+                            @foreach (App\Category::all() as $category)
                                 <div class="form-check col-4 mb-2">
                                     {{-- scrivo nel name tags[] perché passo piu elementi alla store che cosi me li raggruppa  --}}
                                     <input class="form-check-input" type="checkbox" value="{{ $category->id }}" name="categories[]"
