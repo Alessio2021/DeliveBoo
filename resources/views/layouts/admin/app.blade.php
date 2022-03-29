@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -75,17 +75,17 @@
                 </ul>
             </div>
         </div>
-    </nav> --}}
+    </nav>
 
     <div id="app">
         <main class="container-fluid">
             <div class="row">
+                @auth
                 <div class="col-2 p-0">
-                    @auth
                         @include('layouts.admin.partials.sidebar')
-                    @endauth
-                </div>
-                <div class="col-10 p-0">
+                    </div>
+                @endauth
+                <div class="{{Auth::id()? 'col-10' : 'col-12'}} p-0">
                     <header class="admin-header d-flex align-items-center ps-5">
                         <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100">
                             <div class="container">
