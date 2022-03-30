@@ -1,5 +1,5 @@
 <div class="d-flex flex-column align-items-center p-3 vh-100 bg-success bg-opacity-75">
-    <div class="w-100 border border-danger overflow-hidden">
+    <div class="min-try w-100 border border-danger overflow-hidden">
         <img class="w-100" src="{{asset('storage/' . App\User::where('id', Auth::id())->first()->image)}}" alt="">
     </div>
     <div>
@@ -9,7 +9,7 @@
         </a>
     </div>
     <hr>
-    <ul class=" nav nav-pills flex-column mb-auto">
+    <ul class=" nav nav-pills flex-column mb-auto font10">
         <li class="nav-item">
         <a href="{{ route('admin.home') }}" class="nav-link {{Route::currentRouteName() == 'admin.home' ? 'active' : 'link-dark'}}" aria-current="page">
             <i class="bi bi-house-door-fill"></i>
@@ -29,7 +29,7 @@
         </a>
         </li>
         <li>
-        <a href="{{ route('admin.dishes.create') }}" class="nav-link  {{Route::currentRouteName() == 'admin.dishes.create' ? 'active' : 'link-dark'}}">
+        <a href="{{ route('admin.dishes.create') }}" class="nav-link d-flex align-items-center {{Route::currentRouteName() == 'admin.dishes.create' ? 'active' : 'link-dark'}}">
             <i class="fas fa-plus"></i>
             <span class="d-none d-lg-inline-block ms-3" >Aggiungi Piatto</span>
         </a>

@@ -4,6 +4,8 @@
 // Variables
 @import 'variables';
 
+@import 'myclass';
+  
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons.scss';
@@ -28,16 +30,37 @@
 }
 
 .font10 {
-    @include font-size(10px);
-  }
+    font-size: 10px !important;
+}
   
-//   .title {
-//     font-size: calc(1.525rem + 3.3vw);
-//   }
+ 
   
-//   @media (min-width: 1200px) {
-//     .font10 {
-//       font-size: 4rem;
-//     }
-//   }
+@media (min-width: 800px) {
+    .font10 {
+    font-size: 13px;
+}
+}
   
+@media (min-width: 1180px) { 
+    .font10 {
+        font-size: 13px;
+    }
+ }
+
+.my-position {
+    position: absolute !important;
+    left: -30px !important;
+    top: 35px !important;
+}
+
+@media (max-width: 767px) {
+    .my-position {
+        position: absolute !important;
+        left: -48px !important;
+        top: 35px !important;
+    }
+}
+
+.min-try {
+    min-width: 40px;
+}

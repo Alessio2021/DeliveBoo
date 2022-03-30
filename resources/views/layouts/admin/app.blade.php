@@ -87,20 +87,19 @@
                 @endauth
                 <div class="{{Auth::id()? 'col-11 col-lg-10' : 'col-12'}} p-0">
                     <nav class="navbar navbar-expand-md navbar-light bg-danger">
-                        <div class="container mx-0">
+                        <div class="container-fluid">
                                 <a class="navbar-brand d-block w-25  " href="{{ url('/') }}">
                                     <img class="h-50" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
                                 </a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                 <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button> --}}
                 
-                            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                            <div class=" justify-content-end" id="navbarSupportedContent">
                                 <!-- Left Side Of Navbar -->
                                 <ul class="navbar-nav mr-auto">
-                
+                                    
                                 </ul>
-                
                                 <!-- Right Side Of Navbar -->
                                 <ul class="navbar-nav ml-auto">
                                     <!-- Authentication Links -->
@@ -119,8 +118,8 @@
                                                 {{ Auth::user()->name }}
                                             </a>
                 
-                                            <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                            <div class="my-position dropdown-menu dropdown-menu-right bg-primary my-position" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item " href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
                                                     {{ __('Logout') }}
