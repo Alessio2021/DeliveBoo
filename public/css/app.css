@@ -26772,3 +26772,19 @@ fieldset:disabled .btn {
   min-width: 40px;
 }
 
+@media (max-width: 992px) {
+  .sidebar-width {
+    width: 60px;
+  }
+
+  .navbar-width {
+    width: calc(100% - 60px);
+  }
+}
+
+.logout:hover {
+  color: #064635 !important;
+  background-color: #CC561E;
+  text-decoration: underline !important;
+}
+

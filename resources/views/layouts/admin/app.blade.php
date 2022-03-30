@@ -81,11 +81,11 @@
         <main class="container-fluid">
             <div class="row">
                 @auth
-                <div class="col-1  col-lg-2  p-0 ">
+                <div class="sidebar-width  col-lg-2  p-0 ">
                         @include('layouts.admin.partials.sidebar')
                     </div>
                 @endauth
-                <div class="{{Auth::id()? 'col-11 col-lg-10' : 'col-12'}} p-0">
+                <div class="{{Auth::id()? 'navbar-width col-lg-10' : 'col-12'}} p-0">
                     <nav class="navbar navbar-expand-md navbar-light bg-danger">
                         <div class="container-fluid">
                                 <a class="navbar-brand d-block w-25  " href="{{ url('/') }}">
@@ -114,12 +114,12 @@
                                         @endif
                                     @else
                                         <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-success" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
                 
-                                            <div class="my-position dropdown-menu dropdown-menu-right bg-primary my-position" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item " href="{{ route('logout') }}"
+                                            <div class="my-position dropdown-menu dropdown-menu-right bg-secondary my-position" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item text-success logout" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
                                                     {{ __('Logout') }}
