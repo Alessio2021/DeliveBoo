@@ -86,18 +86,16 @@
                     </div>
                 @endauth
                 <div class="{{Auth::id()? 'col-10' : 'col-12'}} p-0">
-                    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                    <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
                         <div class="container">
-                            <div class="container">
                                 <a class="navbar-brand d-block w-25" href="{{ url('/') }}">
                                     <img class="h-50" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
                                 </a>
-                            </div>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                 
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                                 <!-- Left Side Of Navbar -->
                                 <ul class="navbar-nav mr-auto">
                 
@@ -116,7 +114,7 @@
                                             </li>
                                         @endif
                                     @else
-                                        <li class="nav-item dropdown">
+                                        <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
