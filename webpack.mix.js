@@ -18,4 +18,4 @@ mix.js('resources/js/admin.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .copyDirectory('resources/img', 'public/img')
     .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
-    .copyDirectory('resources/Our_faker_img', 'storage/Our_faker_img');
+    .copyDirectory('resources/Our_faker_img', 'storage/app/public/Our_faker_img');

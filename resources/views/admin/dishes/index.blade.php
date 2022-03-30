@@ -30,11 +30,11 @@
                         </div>
                     </a>
                     <div class="col-1 d-flex justify-content-center align-items-center">
-                        <button type="button" class="btn btn-trasparent shadow-none zoom" data-bs-toggle="modal" data-bs-target="#{{$dish->slug}}">
+                        <button type="button" class="btn btn-trasparent shadow-none zoom" data-bs-toggle="modal" data-bs-target="#delete-{{$dish->slug}}">
                         <i class="fs-4 bi text-danger bi-trash3-fill"></i>
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="{{$dish->slug}}" tabindex="-1" aria-labelledby="{{$dish->slug}}Label" aria-hidden="true">
+                        <div class="modal fade" id="delete-{{$dish->slug}}" tabindex="-1" aria-labelledby="{{$dish->slug}}Label" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

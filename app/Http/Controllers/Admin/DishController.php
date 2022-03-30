@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -42,38 +42,39 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         if (!empty($request['visibility'])) {
             $request['visibility'] = true;
-        }else {
+        } else {
             $request['visibility'] = false;
         }
-        // dd($request->all());
 
         $validated = $request->validate(
             [
                 'name' => 'required|max:240',
                 'description' => 'required',
-                'price' => 'required|numeric|between:0.01,999.99', 
+                'price' => 'required|numeric|between:0.01,999.99',
                 'image.*' => 'nullable|image',
-                'visibility' => 'required'
-                ]
-            );
-        // dd($validated['image']);
+                'visibility' => 'nullable'
+            ]
+        );
 
-            $validateImageNumber = false;
-            if (count($validated['image']) < 5) {
-            $validateImageNumber = true;
+        $imageNumberValidated = false;
+
+
+        if (empty($validated['image'])) {
+            $imageNumberValidated = true;
+        } else if (count($validated['image']) < 5) {
+            $imageNumberValidated = true;
         }
-        
-        
-        if ($validated && $validateImageNumber) {
-            $newDish = New Dish();
+
+        if ($validated && $imageNumberValidated) {
+            $newDish = new Dish();
             $newDish->fill($validated);
             $newDish->user_id = Auth::id();
             $newDish->slug = Dish::slugGenerator($validated['name'], Auth::id());
             $newDish->save();
-            // dd('ciao');
+
             if (!empty($validated['image'])) {
                 foreach ($validated['image'] as $image) {
                     $img_path = Storage::put('uploads', $image);
@@ -81,15 +82,12 @@ class DishController extends Controller
                     $newDishImage->dish_id = $newDish->id;
                     $newDishImage->img_path = $img_path;
                     $newDishImage->save();
-
                 }
-                
             }
         }
 
 
         return redirect()->route('admin.dishes.show', $newDish);
-
     }
 
     /**

@@ -47,11 +47,14 @@
 
             {{-- immagine DA SISTEMARE - DA SISTEMARE - DA SISTEMARE - DA SISTEMARE - DA SISTEMARE--}}
             <div class="form-group row">
-                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Seleziona Foto') }}</label>
+                <label for="image" class="col-12 col-form-label text-md-right">{{ __('Seleziona Foto') }}</label>
 
-                <div id="uploadBox" class="col-md-6">
-                    <input id="image" type="file" class="form-control" name="image[]" autocomplete="image">
-
+                <div id="uploadBox" class="col-12">
+                    <div class="row" id="show-images">
+                    </div>
+                    <div id="show-input-image-upload">
+                        <input id="-1" type="file" class="form-control" name="image[]" autocomplete="image">
+                    </div>
                     @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
