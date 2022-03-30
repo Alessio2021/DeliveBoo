@@ -26,3 +26,18 @@
     height: 80px;
     background-color: $danger;
 }
+
+.font10 {
+    @include font-size(10px);
+  }
+  
+//   .title {
+//     font-size: calc(1.525rem + 3.3vw);
+//   }
+  
+//   @media (min-width: 1200px) {
+//     .font10 {
+//       font-size: 4rem;
+//     }
+//   }
+  

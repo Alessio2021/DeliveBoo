@@ -81,14 +81,14 @@
         <main class="container-fluid">
             <div class="row">
                 @auth
-                <div class="col-2 p-0">
+                <div class="col-1  col-lg-2  p-0 ">
                         @include('layouts.admin.partials.sidebar')
                     </div>
                 @endauth
-                <div class="{{Auth::id()? 'col-10' : 'col-12'}} p-0">
-                    <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
-                        <div class="container">
-                                <a class="navbar-brand d-block w-25" href="{{ url('/') }}">
+                <div class="{{Auth::id()? 'col-11 col-lg-10' : 'col-12'}} p-0">
+                    <nav class="navbar navbar-expand-md navbar-light bg-danger">
+                        <div class="container mx-0">
+                                <a class="navbar-brand d-block w-25  " href="{{ url('/') }}">
                                     <img class="h-50" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
                                 </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -119,7 +119,7 @@
                                                 {{ Auth::user()->name }}
                                             </a>
                 
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
