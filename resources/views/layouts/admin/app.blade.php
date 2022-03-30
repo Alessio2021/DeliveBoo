@@ -87,9 +87,9 @@
                 @endauth
                 <div class="{{Auth::id()? 'col-11 col-lg-10' : 'col-12'}} p-0">
                     <nav class="navbar navbar-expand-md navbar-light bg-danger">
-                        <div class="container mx-0">
+                        <div class="container-fluid mx-0">
                                 <a class="navbar-brand d-block w-25  " href="{{ url('/') }}">
-                                    <img class="h-50" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
+                                    <img class="w-75" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
                                 </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                 <span class="navbar-toggler-icon"></span>
@@ -106,20 +106,20 @@
                                     <!-- Authentication Links -->
                                     @guest
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-link text-success" href="{{ route('login') }}">{{ __('Login') }}</a>
                                         </li>
                                         @if (Route::has('register'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="nav-link text-success" href="{{ route('register') }}">{{ __('Register') }}</a>
                                             </li>
                                         @endif
                                     @else
-                                        <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
+                                        <li class="nav-item dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
                 
-                                            <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="navbarDropdown">
+                                            <div class="dropdown-menu bg-primary" style="top: 60px; right: 5px;" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
