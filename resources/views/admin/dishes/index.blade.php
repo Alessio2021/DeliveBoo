@@ -14,11 +14,11 @@
                     </div>
                 @endif
 
-                <h1 class="mt-5 text-danger">Men&uacute;</h1>
+                <h1 class="mt-3 mb-2 text-danger">Men&ugrave;</h1>
                 @foreach ($dishes as $dish)
                 <div class="hover-list row py-3 border-bottom border-1 border-primary">
                     <a class="text-info d-block text-decoration-none col-11" href="{{ route('admin.dishes.show', $dish) }}">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-8">
                                     <h2 class="fs-3">{{$dish->name}}</h2>
                                     <h5 class="fs-6">{{$dish->created_at}}</h5>

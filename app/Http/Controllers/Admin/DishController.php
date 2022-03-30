@@ -18,7 +18,7 @@ class DishController extends Controller
     public function index()
     {
         // dd(Dish::where('user_id', 1)->get());
-        $dishes = Dish::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(7);
+        $dishes = Dish::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->paginate(7);
         return view('admin.dishes.index', ['dishes' => $dishes]);
     }
 
