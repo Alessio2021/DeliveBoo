@@ -1,5 +1,9 @@
 @extends('layouts.admin.app')
 
+@section('script')
+    <script src="{{asset('js/multiImageLoader.js')}}" defer></script>
+@endsection
+
 @section('content')
 <div class="container mt-2">
   <div class="row">
@@ -42,13 +46,18 @@
             </div>
 
             {{-- immagine DA SISTEMARE - DA SISTEMARE - DA SISTEMARE - DA SISTEMARE - DA SISTEMARE--}}
-            <div class="mb-3">
-                <label for="image" class="form-label">Seleziona File</label>
-                <input class="form-control" type="file" id="image" name="image">
-                {{-- errore --}}
-                @error('image')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <div class="form-group row">
+                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Seleziona Foto') }}</label>
+
+                <div id="uploadBox" class="col-md-6">
+                    <input id="image" type="file" class="form-control" name="image[]" autocomplete="image">
+
+                    @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
 
             {{-- nintendo switch visibilità --}} 

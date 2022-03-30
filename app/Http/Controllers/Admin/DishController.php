@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dish;
+use App\DishImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class DishController extends Controller
@@ -40,6 +42,7 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        
         if (!empty($request['visibility'])) {
             $request['visibility'] = true;
         }else {
@@ -52,17 +55,36 @@ class DishController extends Controller
                 'name' => 'required|max:240',
                 'description' => 'required',
                 'price' => 'required|numeric|between:0.01,999.99', 
-                'image' => 'nullable|image',
+                'image.*' => 'nullable|image',
                 'visibility' => 'required'
-            ]
-        );
+                ]
+            );
+        // dd($validated['image']);
 
-        if ($validated) {
+            $validateImageNumber = false;
+            if (count($validated['image']) < 5) {
+            $validateImageNumber = true;
+        }
+        
+        
+        if ($validated && $validateImageNumber) {
             $newDish = New Dish();
             $newDish->fill($validated);
             $newDish->user_id = Auth::id();
             $newDish->slug = Dish::slugGenerator($validated['name'], Auth::id());
             $newDish->save();
+            // dd('ciao');
+            if (!empty($validated['image'])) {
+                foreach ($validated['image'] as $image) {
+                    $img_path = Storage::put('uploads', $image);
+                    $newDishImage = new DishImage();
+                    $newDishImage->dish_id = $newDish->id;
+                    $newDishImage->img_path = $img_path;
+                    $newDishImage->save();
+
+                }
+                
+            }
         }
 
 
@@ -140,7 +162,16 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $restaurantsDish = Dish::where('slug', $dish->slug)->where('user_id', Auth::id())->first();
+
+        $dishImages = DishImage::where('dish_id', $restaurantsDish->id)->get();
+        if (!empty($dishImages)) {
+            foreach ($dishImages as $dishImage) {
+                Storage::delete($dishImage->img_path);
+                $dishImage->delete();
+            }
+        }
         $restaurantsDish->delete();
+
         return redirect()->route('admin.dishes.index')->with('status', "Il piatto $restaurantsDish->name è stato cancellato");
     }
 }
