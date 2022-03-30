@@ -1,9 +1,12 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row">
         <div class="col">
+            <div class="text-end">
+                <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1"><i class="bi bi-arrow-left"></i> Torna al Men&ugrave;</a>
+            </div>
             <form action="{{ route('admin.dishes.update', $dish) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -56,7 +59,6 @@
 
                 {{-- actions --}}
                 <div class="mb-3">
-                    <a href="{{ route('admin.dishes.index') }}" class="text-light fw-bold btn btn-primary m-1"><i class="bi bi-arrow-left"></i> Torna alla home</a>
                     <input class="text-light fw-bold btn btn-info" type="submit" value="Salva Modifiche">
                 </div>
             </form>
