@@ -21,8 +21,7 @@ class CreateDishesTable extends Migration
 
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('users');
 
             $table->string('name', 240);
             $table->string('image')->nullable();

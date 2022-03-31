@@ -48,7 +48,6 @@ function readURL() {
 function deleteImage() {
     document.getElementById(-1 * this.parentNode.id).remove();
     this.parentNode.remove();
-    console.log(uploadInputBox.querySelectorAll('input.d-none').length);
         if (uploadImageBox.childElementCount < 4 && uploadInputBox.querySelectorAll('input:not(.d-none)').length == 0) {           
         const input = document.createElement('input');
         input.id = -1 * index;
