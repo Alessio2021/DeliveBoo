@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'DeliveBoo') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/front.js') }}" defer></script>
+    <script src="{{asset('js/admin.js')}}" defer></script>
     @yield('script')
 
     <!-- Fonts -->
