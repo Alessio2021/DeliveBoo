@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,9 +80,7 @@
             @endif
 
             <div id="app" class="content">
-                <div class="title m-b-md">
-                    DeliveBoo
-                </div>
+                
             </div>
         </div>
     </body>
