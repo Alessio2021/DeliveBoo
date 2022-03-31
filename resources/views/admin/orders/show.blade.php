@@ -34,7 +34,13 @@
                                    <h3 class="fs-4 m-0">{{$dishOrder->amount}}</h3>
                               </div>
                               <div class="col-6 d-flex align-items-center">
-                                   <h3 class="fs-4 m-0">{{App\Dish::where('id', $dishOrder->dish_id)->first()->name}}</h3>
+                                   <h3 class="fs-4 m-0">
+                                        @if (!empty(App\Dish::where('id', $dishOrder->dish_id)->first()))
+                                             {{App\Dish::where('id', $dishOrder->dish_id)->first()->name}}
+                                        @else
+                                             <span class="text-secondary fst-italic">Piatto non presente</span>
+                                        @endif
+                                   </h3>
                               </div>
                               <div class="col-2 d-flex justify-content-center align-items-center">
                                    <h3 class="fs-4 m-0">{{str_replace(".", ",", $dishOrder->history_price)}} &euro;</h3>

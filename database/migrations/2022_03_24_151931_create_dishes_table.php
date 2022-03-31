@@ -17,11 +17,13 @@ class CreateDishesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
 
+            $table->softDeletes();
+
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-                
+
             $table->string('name', 240);
             $table->string('image')->nullable();
             $table->text('description')->nullable();
