@@ -32,6 +32,6 @@ Route::middleware('auth')
         }
     );
 
-Route::get('{any?}', function ($name = null) {
-    return view('guest.welcome');
-})->where('any', '.*');
+// Route::get('{any?}', function ($name = null) {
+//     return view('guest.welcome');
+// })->where('any', '.*');
