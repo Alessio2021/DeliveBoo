@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dish;
 use App\DishOrder;
+use App\User;
 
 class DishController extends Controller
 {
@@ -31,13 +32,32 @@ class DishController extends Controller
             
         }
         
-        $result = collect($dishPopularityArray)->sortByDesc('popularity');
+        $results = collect($dishPopularityArray)->sortByDesc('popularity');
          
         
         return response()->json(
             [
                 'response' => true,
-                'results' => $result->values()->take(4), 
+                'results' => $results->values()->take(4), 
             ]);
     }
+
+    public function last3Users() {
+        $users = User::orderBy('created_at', 'desc')->limit(3)->get();
+        $results= [];
+        foreach ($users as $user) {
+            $results[] = [
+                'name'=> $user->name,
+                'img'=> $user->image,
+                'slug'=>$user->slug
+            ];
+        }
+        return response()->json(
+            [
+                'response' => true,
+                'results' => $results, 
+            ]);
+    }
+
+    
 }
