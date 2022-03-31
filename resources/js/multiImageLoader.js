@@ -49,7 +49,7 @@ function deleteImage() {
     document.getElementById(-1 * this.parentNode.id).remove();
     this.parentNode.remove();
 
-    if (uploadImageBox.childElementCount == 0 && uploadInputBox.childElementCount == 0) {           
+    if (uploadImageBox.childElementCount < 4 && !uploadInputBox.querySelectorAll('input.d-none')) {           
     const input = document.createElement('input');
     input.id = -1 * index;
     input.type = "file";
