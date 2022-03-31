@@ -67,7 +67,7 @@ class DishController extends Controller
         foreach ($categories as $category) {
             $results[] = [
                 'name'=> $category->name,
-                // 'img'=> $category->image,
+                'img'=> $category->image,
             ];
         }
         return response()->json(
