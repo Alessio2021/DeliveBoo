@@ -48,18 +48,18 @@ function readURL() {
 function deleteImage() {
     document.getElementById(-1 * this.parentNode.id).remove();
     this.parentNode.remove();
-
-    if (uploadImageBox.childElementCount < 4 && !uploadInputBox.querySelectorAll('input.d-none')) {           
-    const input = document.createElement('input');
-    input.id = -1 * index;
-    input.type = "file";
-    input.value = "";
-    input.className = 'form-control mt-2';
-    input.name = "image[]";
-    input.autocomplete = "image";
-    input.addEventListener('change', readURL);
-    uploadInputBox.appendChild(input);    
-}
+    console.log(uploadInputBox.querySelectorAll('input.d-none').length);
+        if (uploadImageBox.childElementCount < 4 && uploadInputBox.querySelectorAll('input:not(.d-none)').length == 0) {           
+        const input = document.createElement('input');
+        input.id = -1 * index;
+        input.type = "file";
+        input.value = "";
+        input.className = 'form-control mt-2';
+        input.name = "image[]";
+        input.autocomplete = "image";
+        input.addEventListener('change', readURL);
+        uploadInputBox.appendChild(input);    
+    }
 }
 
 
