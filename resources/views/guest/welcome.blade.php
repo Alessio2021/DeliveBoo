@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        <script src="{{asset('js/front.js')}}" defer></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -79,7 +79,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div id="app" class="content">
                 <div class="title m-b-md">
                     DeliveBoo
                 </div>
