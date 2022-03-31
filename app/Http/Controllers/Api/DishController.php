@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Dish;
 use App\DishOrder;
 use App\User;
+use App\Category;
+
 
 class DishController extends Controller
 {
@@ -59,5 +61,19 @@ class DishController extends Controller
             ]);
     }
 
-    
+    public function categories() {
+        $categories = Category::all();
+        $results= [];
+        foreach ($categories as $category) {
+            $results[] = [
+                'name'=> $category->name,
+                // 'img'=> $category->image,
+            ];
+        }
+        return response()->json(
+            [
+                'response' => true,
+                'results' => $results, 
+            ]);
+    }
 }

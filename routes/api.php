@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/top', 'Api\DishController@top4Sales');
 
 Route::get('/user', 'Api\DishController@last3Users');
+
+Route::get('/categories', 'Api\DishController@categories');
