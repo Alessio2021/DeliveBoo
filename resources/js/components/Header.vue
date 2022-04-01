@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="container-fluid orange relative">
+        <div class="container-fluid orange relative pt-3">
             <div class="row ">
                 <nav class="navbar navbar-expand-lg navbar-light ">
                     <div class="container position-relative">

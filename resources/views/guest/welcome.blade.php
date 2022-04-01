@@ -76,7 +76,7 @@
         
     </head>
     <body>
-    <ul class="navbar-nav ml-auto auth-links gap-3">
+    <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
     @guest
         <li class="nav-item">
             <a class="nav-link text-yellow fs-6" href="{{ route('login') }}">{{ __('Login') }}</a>
