@@ -11,12 +11,15 @@
   </div>
   <div class="container">
     <div class="row">
+      <CategoryLinks />
+    </div>
+    <div class="row">
       <div v-for="(dish, index) in dishes" :key="index" class="col-6 col-lg-3">
           <div class="card">
             <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div v-for="(image, index) in dish.image_array" :key="'image-' + index" class="carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
-                    <div class="" style="max-height:150px; height:10vw; overflow:hidden;">
+                    <div class="higlights-image-container">
                     <img  :src="image" class="d-block w-100" :alt="dish.name">
                     </div>
                   </div>
@@ -46,9 +49,13 @@
 
 <script>
 import Axios from "axios";
+import CategoryLinks from "./CategoryLinks.vue";
 
 export default {
     name: "Main",
+    components: {
+      CategoryLinks,
+    },
     data() {
       return {
         cart: [],
@@ -62,14 +69,11 @@ export default {
     created() {
     Axios.get(localHost + '/api/top').then(
     (results) =>{
-        console.log(results);
         this.dishes = results.data.results;
     }),
-    console.log('prova',localHost);
-
+    
     this.try = localStorage.getItem('key');
     this.cart2 = JSON.parse(this.try)
-    console.log(this.cart2);
 
     if (this.cart2 == null) {
       this.cart2 = []
@@ -116,7 +120,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
+.higlights-image-container {
+  max-height:150px;
+   height:10vw; 
+   overflow:hidden;
+   position: relative;
+   & img{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+   }
+}
+
+
+@media screen and(max-width: 991px) {
+  .higlights-image-container {
+   height:20vw; 
+  
+}
 }
 </style>

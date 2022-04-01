@@ -15,7 +15,30 @@ mix.js('resources/js/admin.js', 'public/js')
     .js('resources/js/front.js', 'public/js')
     .js('resources/js/multiImageLoader.js', 'public/js')
     .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps()
+    .webpackConfig({
+        module: {
+            rules: [
+                {
+                    test: /\.jsx?$/,
+                    exclude: /node_modules(?!\/foundation-sites)|bower_components/,
+                    use: [
+                        {
+                            loader: 'babel-loader',
+                            options: Config.babel()
+                        }
+                    ]
+                }
+            ]
+        },
+        resolve: {
+           alias: {
+             '@': path.resolve('resources/assets/sass')
+           }
+         }
+    })
     .sass('resources/sass/app.scss', 'public/css')
     .copyDirectory('resources/img', 'public/img')
     .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
     .copyDirectory('resources/Our_faker_img', 'storage/app/public/Our_faker_img');
+
+
