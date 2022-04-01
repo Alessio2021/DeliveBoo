@@ -1,13 +1,13 @@
 <template>
     <footer>
         <div class="container-fluid orange-footer py-5">
-            <div class="row ">
-                <div class="col-5 ">
+            <div class="row justify-content-center mt-5 align-items-center">
+                <div class="col-4 text-center ">
                     <a class="navbar-brand" href="/">
                         <img class="logo w-75" :src="logo" alt="">
                     </a>
                 </div>
-                <div class="col-5">
+                <div class="col-4 text-center">
                     <ul class="navbar-nav">
                         <li v-for="(item) in menuFooter" :key="item.id">
                             <router-link class="nav-link text-yellow" :to="{ name: item.routeName }">{{ item.label }}</router-link>
