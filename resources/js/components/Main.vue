@@ -5,17 +5,19 @@
   <h4>Nel Carrello [{{cartCounter}}]</h4>
     
   <button @click="resetCart()">svuota carrello</button>
-<div v-for="(item, index) in cart2" :key="index" class="cart"> 
-  {{item.name}}
-</div>
+  <div v-for="(item, index) in cart2" :key="index" class="cart"> 
+    {{item.name}}
+  </div>
   </div>
   <div class="container">
+    <CategoryLinks />
+    
     <div class="row">
-      <CategoryLinks />
-    </div>
-    <div class="row">
-      <div v-for="(dish, index) in dishes" :key="index" class="col-6 col-lg-3">
-          <div class="card">
+      <div class="col-12 fw-bold">
+        <h3 class="mb-3">I pi&ugrave; venduti:</h3>
+      </div>
+      <div v-for="(dish, index) in topDishes" :key="index" class="col-6 col-lg-3 mb-3">
+          <div class="card h-100 border-primary rounded-0">
             <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div v-for="(image, index) in dish.image_array" :key="'image-' + index" class="carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
@@ -42,6 +44,22 @@
           </div>
       </div>
     </div>
+
+    <div class="row mt-5">
+      <div class="col-12 fw-bold">
+        <h3 class="mb-3">Si sono uniti a noi:</h3>
+      </div>
+      <div class="col-4 mb-3" v-for="(restaurant, index) in lastRestaurants" :key="'lastrestaurant-' + index">
+        <div class="card border-info h-100 rounded-0">
+          <div class="higlights-image-container-restaurant">
+            <img :src="restaurant.img" class="card-img-top" :alt="restaurant.name + 'logo'">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">{{restaurant.name}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -60,36 +78,42 @@ export default {
       return {
         cart: [],
         cartCounter: 0,
-        dishes: [],
+        topDishes: [],
+        lastRestaurants: [],
         storage: [],
         cart2: [],
         try: null
       }
     },
     created() {
-    Axios.get(localHost + '/api/top').then(
-    (results) =>{
-        this.dishes = results.data.results;
-    }),
+    Axios.get(localHost + '/api/top-sales')
+      .then((results) =>{
+        this.topDishes = results.data.results;
+      }).catch( (error) => {console.log(error)});
+    
+    Axios.get(localHost + '/api/last-users')
+      .then((results) =>{
+        this.lastRestaurants = results.data.results;
+      }).catch( (error) => {console.log(error)});
     
     this.try = localStorage.getItem('key');
     this.cart2 = JSON.parse(this.try)
 
     if (this.cart2 == null) {
       this.cart2 = []
-  }else {
-      this.try = localStorage.getItem('key');
-      this.cart2 = JSON.parse(this.try)
-      
-      // for (let index = 0; index < this.cart2.length; index++) {
-      //   const element = this.cart2[index];
-      //   console.log(element);
-      //   if (element === element) {
-      //     console.log('ciao');
-      //   }
+    }else {
+        this.try = localStorage.getItem('key');
+        this.cart2 = JSON.parse(this.try)
         
-      // }
-    }
+        // for (let index = 0; index < this.cart2.length; index++) {
+        //   const element = this.cart2[index];
+        //   console.log(element);
+        //   if (element === element) {
+        //     console.log('ciao');
+        //   }
+          
+        // }
+      }
     this.cartCounter = this.cart2.length;
 
     },
@@ -123,6 +147,19 @@ export default {
 .higlights-image-container {
   max-height:150px;
    height:10vw; 
+   overflow:hidden;
+   position: relative;
+   & img{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+   }
+}
+
+.higlights-image-container-restaurant {
+  max-height:200px;
+   height:22vw; 
    overflow:hidden;
    position: relative;
    & img{

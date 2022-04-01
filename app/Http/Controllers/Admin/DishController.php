@@ -99,7 +99,11 @@ class DishController extends Controller
     public function show(Dish $dish)
     {
         $restaurantsDish = Dish::where('slug', $dish->slug)->where('user_id', Auth::id())->first();
-        return view('admin.dishes.show', ['dish' => $restaurantsDish]);
+        if (!empty($restaurantsDish)) {
+            return view('admin.dishes.show', ['dish' => $restaurantsDish]);
+        } else {
+            return redirect()->route('admin.dishes.index');
+        }
     }
 
     /**

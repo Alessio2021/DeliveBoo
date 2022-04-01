@@ -1,8 +1,10 @@
 <template>
 <div class="container my-5">
-    <div class="row row-cols-5">
+    <div class="row">
         <h1 class=" col-12 text-center my-5 text-green text-uppercase">Il nostro team</h1>
-        <div class="col-md-4  col-12 col-lg p-3 mb-5 border-0 ">
+    </div>
+    <div class="row row-cols-xl-5">
+        <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center mb-3 p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
@@ -20,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4  col-12 col-lg p-3 mb-5 border-0 ">
+        <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center mb-3 p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
@@ -38,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4  col-12 col-lg p-3 mb-5 border-0 ">
+        <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center mb-3 p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
@@ -56,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4  col-12 col-lg p-3 mb-5 border-0 ">
+        <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center mb-3 p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
@@ -74,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4  col-12 col-lg p-3 mb-5 border-0 ">
+        <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center mb-3 p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 

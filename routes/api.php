@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/top', 'Api\DishController@top4Sales');
+Route::get('/top-sales', 'Api\DishController@top4Sales');
 
-Route::get('/user', 'Api\DishController@last3Users');
+Route::get('/last-users', 'Api\DishController@last3Users');
 
 Route::get('/categories', 'Api\DishController@categories');

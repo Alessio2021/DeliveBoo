@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer class="mt-5">
         <div class="container-fluid orange-footer py-5">
             <div class="row justify-content-center mt-5 align-items-center">
                 <div class="col-4 text-center ">

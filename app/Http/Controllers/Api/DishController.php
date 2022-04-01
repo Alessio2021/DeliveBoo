@@ -12,7 +12,8 @@ use App\DishImage;
 
 class DishController extends Controller
 {
-    public function top4Sales() {
+    public function top4Sales()
+    {
 
         $allDishOrder = DishOrder::all();
         $allDish = Dish::all();
@@ -23,69 +24,72 @@ class DishController extends Controller
             $dishOrders = DishOrder::where('dish_id', $dish->id)->get();
             $saledDish = 0;
             foreach ($dishOrders as $dishOrder) {
-                $saledDish += $dishOrder->amount; 
+                $saledDish += $dishOrder->amount;
             }
-            
+
             $imageArray = [];
             foreach (DishImage::where('dish_id', $dish->id)->get() as $dishimage) {
                 $imageArray[] = asset('storage/' . $dishimage->img_path);
             }
 
-            $restaurant = User::where('id', $dish->user_id )->first();
+            $restaurant = User::where('id', $dish->user_id)->first();
 
             $dishPopularityArray[] = [
-                'slug'=> $dish->slug,
-                'restaurant_slug'=> $restaurant->slug,
-                'restaurant_name'=> $restaurant->name,
-                'name'=> $dish->name,
+                'slug' => $dish->slug,
+                'restaurant_slug' => $restaurant->slug,
+                'restaurant_name' => $restaurant->name,
+                'name' => $dish->name,
                 'price' => $dish->price,
                 'image_array' => $imageArray,
-                'popularity'=> $saledDish,
+                'popularity' => $saledDish,
             ];
-            
-            
         }
-        
+
         $results = collect($dishPopularityArray)->sortByDesc('popularity');
-         
-        
+
+
         return response()->json(
             [
                 'response' => true,
-                'results' => $results->values()->take(4), 
-            ]);
+                'results' => $results->values()->take(4),
+            ]
+        );
     }
 
-    public function last3Users() {
+    public function last3Users()
+    {
         $users = User::orderBy('created_at', 'desc')->limit(3)->get();
-        $results= [];
+        $results = [];
         foreach ($users as $user) {
             $results[] = [
-                'name'=> $user->name,
-                'img'=> $user->image,
-                'slug'=>$user->slug
+                'name' => $user->name,
+                'img' => asset('storage/' . $user->image),
+                'slug' => $user->slug
             ];
         }
         return response()->json(
             [
                 'response' => true,
-                'results' => $results, 
-            ]);
+                'results' => $results,
+            ]
+        );
     }
 
-    public function categories() {
+    public function categories()
+    {
         $categories = Category::all();
-        $results= [];
+        $results = [];
         foreach ($categories as $category) {
             $results[] = [
-                'name'=> $category->name,
-                'img'=> asset('img/icone/' . $category->image),
+                'name' => $category->name,
+                'img' => asset('img/icone/' . $category->image),
             ];
         }
         return response()->json(
             [
                 'response' => true,
-                'results' => $results, 
-            ]);
+                'results' => $results,
+            ]
+        );
     }
 }

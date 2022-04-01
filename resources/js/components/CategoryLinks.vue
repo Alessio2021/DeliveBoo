@@ -1,8 +1,8 @@
 <template>
-  <div>
-      <button class="btn btn-primary" v-for="(category, index) in categories" :key="index">
-        {{category.name}}
-      </button>
+  <div class="row mb-3">
+    <div class="col-3 col-md-2 col-lg-1 mb-3"  v-for="(category, index) in categories" :key="index">
+      <img :src="category.img" :alt="category.name">
+      </div>
   </div>
 </template>
 
