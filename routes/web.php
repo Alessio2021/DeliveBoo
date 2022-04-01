@@ -33,5 +33,5 @@ Route::middleware('auth')
     );
 
 Route::get('{any?}', function ($name = null) {
-    return view('guest.welcome');
+    return view('guest.welcome', ['appUrl' => config('app.asset_url')]);
 })->where('any', '.*');
