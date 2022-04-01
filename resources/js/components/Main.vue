@@ -42,21 +42,20 @@ export default {
       }
     },
     created() {
-     Axios.get(localHost + '/api/top').then(
-     (results) =>{
-         console.log(results);
-         this.dishes = results.data.results;
-     }),
-     console.log('prova',localHost);
+    Axios.get(localHost + '/api/top').then(
+    (results) =>{
+        console.log(results);
+        this.dishes = results.data.results;
+    }),
+    console.log('prova',localHost);
 
-      this.try = localStorage.getItem('key');
-     this.cart2 = JSON.parse(this.try)
-     console.log(this.cart2);
-     
+    this.try = localStorage.getItem('key');
+    this.cart2 = JSON.parse(this.try)
+    console.log(this.cart2);
 
-     if (this.cart2 == null) {
-       this.cart2 = []
-     }else {
+    if (this.cart2 == null) {
+      this.cart2 = []
+  }else {
       this.try = localStorage.getItem('key');
       this.cart2 = JSON.parse(this.try)
       
@@ -68,9 +67,8 @@ export default {
       //   }
         
       // }
-     
-     }
-     this.cartCounter = this.cart2.length;
+    }
+    this.cartCounter = this.cart2.length;
 
     },
     methods: {

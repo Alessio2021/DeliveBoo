@@ -104,7 +104,11 @@ eval("var uploadInputFirst = document.getElementById('-1');\nvar uploadImageBox 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\boolean\DeliveBoo-1\resources\js\multiImageLoader.js */"./resources/js/multiImageLoader.js");
+=======
+module.exports = __webpack_require__(/*! C:\boolean\PROGETTO FINALE\DeliveBoo\resources\js\multiImageLoader.js */"./resources/js/multiImageLoader.js");
+>>>>>>> origin/Header
 
 
 /***/ })
