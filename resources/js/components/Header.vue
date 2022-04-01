@@ -13,7 +13,6 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <ul class="navbar-nav">
-                                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
                                     <li v-for="(item) in menuItems" :key="item.id">
                                         <router-link class="nav-link text-yellow" :to="{ name: item.routeName }">{{ item.label }}</router-link>
                                     </li>
@@ -56,10 +55,10 @@ export default {
 
 <style lang="scss">
 .orange{
-    background-color: #CC561E ;
-    height: 450px;
-    background-image: url('../../img/bg-bike.svg');
-    background-position: bottom;
+    // background-color: #CC561E ;
+    height: 400px;
+    background-image: url('../../img/bg-header.svg');
+    // background-position: bottom;
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -103,7 +102,7 @@ export default {
     }
     
 }
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 700px) {
     .orange{
         height: 200px;
     }

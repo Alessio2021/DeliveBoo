@@ -67,7 +67,7 @@
                 z-index: 1;
                 flex-direction: row !important;
                 top: 10px;
-                right: 20px;
+                right: 10%;
             }
             .text-yellow{
                 color: #FFF2BD !important;
