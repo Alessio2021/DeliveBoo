@@ -11,6 +11,8 @@ import App from './views/App';
 import Home from './pages/Home';
 import Restaurant from './pages/Restaurant';
 import About from './pages/About';
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 import VueRouter from 'vue-router';
 import Vue from 'vue';

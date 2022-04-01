@@ -13,7 +13,7 @@
     <div class="row">
       <div v-for="(dish, index) in dishes" :key="index" class="col-3">
           <div class="card">
-            <!-- <img :src="dish.image_array[0]" class="card-img-top w-100" alt=""> -->
+            <img :src="dish.image_array[0]" class="card-img-top w-100" alt="">
             <div class="card-body">
               <h5 class="card-title">{{dish.name}}</h5>
               <a href="#" class="btn btn-primary" @click="addCart(dish)" >aggiungi al carrello</a>
