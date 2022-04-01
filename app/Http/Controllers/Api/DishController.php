@@ -8,7 +8,7 @@ use App\Dish;
 use App\DishOrder;
 use App\User;
 use App\Category;
-
+use App\DishImage;
 
 class DishController extends Controller
 {
@@ -25,9 +25,17 @@ class DishController extends Controller
             foreach ($dishOrders as $dishOrder) {
                 $saledDish += $dishOrder->amount; 
             }
+            
+            $imageArray = [];
+            foreach (DishImage::where('dish_id', $dish->id)->get() as $dishimage) {
+                $imageArray[] = asset('storage/' . $dishimage->img_path);
+            }
+
             $dishPopularityArray[] = [
                 'id'=> $dish->id,
                 'name'=> $dish->name,
+                'price' => $dish->price,
+                'image_array' => $imageArray,
                 'popularity'=> $saledDish,
             ];
             
@@ -67,7 +75,7 @@ class DishController extends Controller
         foreach ($categories as $category) {
             $results[] = [
                 'name'=> $category->name,
-                'img'=> $category->image,
+                'img'=> asset('img/icone/' . $category->image),
             ];
         }
         return response()->json(
