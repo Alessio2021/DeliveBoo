@@ -1,13 +1,25 @@
 <template>
   <div class="container">
     <div class="row mt-5">
-      <ul class="list-unstyled d-flex justify-content-center">
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <h2>ciao</h2><h2>ciao</h2>
+      <!-- <ul class="list-unstyled d-flex justify-content-center">
         <li v-for="(icon) in icons" :key="icon.id">
           <a href="">
             <img class="w-50" :src="icon.icon" alt="">
           </a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
