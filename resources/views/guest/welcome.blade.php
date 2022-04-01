@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
         <script src="{{asset('js/front.js')}}" defer></script>
+        <script>let localHost ='{{$appUrl}}'</script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         

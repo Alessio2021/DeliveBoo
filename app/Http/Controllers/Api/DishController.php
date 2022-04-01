@@ -31,8 +31,12 @@ class DishController extends Controller
                 $imageArray[] = asset('storage/' . $dishimage->img_path);
             }
 
+            $restaurant = User::where('id', $dish->user_id )->first();
+
             $dishPopularityArray[] = [
-                'id'=> $dish->id,
+                'slug'=> $dish->slug,
+                'restaurant_slug'=> $restaurant->slug,
+                'restaurant_name'=> $restaurant->name,
                 'name'=> $dish->name,
                 'price' => $dish->price,
                 'image_array' => $imageArray,
