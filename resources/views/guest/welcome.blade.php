@@ -77,6 +77,7 @@
         
     </head>
     <body>
+    <script> let localHost = '{{$appUrl}}'; </script>
     <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
     @guest
         <li class="nav-item">
