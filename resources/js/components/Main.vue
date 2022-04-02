@@ -10,11 +10,13 @@
   </div>
   </div>
   <div class="container">
+    <h2 class="text-info fw-bold my-4">Cerchi qualcosa di preciso? </h2>
     <CategoryLinks />
-    
-    <div class="row">
+  </div>
+  <div class="container bg-main">
+    <div class="row mt-5 ">
       <div class="col-12 fw-bold">
-        <h3 class="mb-3">I pi&ugrave; venduti:</h3>
+        <h3 class="text-info fw-bold my-4">I pi&ugrave; venduti:</h3>
       </div>
       <div v-for="(dish, index) in topDishes" :key="index" class="col-6 col-lg-3 mb-3">
           <div class="card h-100 border-primary rounded-0">
@@ -44,10 +46,11 @@
           </div>
       </div>
     </div>
-
-    <div class="row mt-5">
+  </div>
+  <div class="container mt-5">
+    <div class="row ">
       <div class="col-12 fw-bold">
-        <h3 class="mb-3">Si sono uniti a noi:</h3>
+        <h3 class="text-info fw-bold my-4">Novità su DeliveBoo</h3>
       </div>
       <div class="col-4 mb-3" v-for="(restaurant, index) in lastRestaurants" :key="'lastrestaurant-' + index">
         <div class="card border-info h-100 rounded-0">
@@ -169,7 +172,11 @@ export default {
      transform: translate(-50%, -50%);
    }
 }
-
+.bg-main{
+  background-image: url('../../img/bg-main.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
 @media screen and(max-width: 991px) {
   .higlights-image-container {

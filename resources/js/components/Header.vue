@@ -5,17 +5,18 @@
                 <nav class="navbar navbar-expand-lg navbar-light ">
                     <div class="container position-relative">
                         <a class="navbar-brand" href="/">
-                            <img class="logo w-75" :src="logo" alt="">
+                            <img class="logo " :src="logo" alt="">
                         </a>
                         <div id="absolute-button">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
+                            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
                             <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <ul class="navbar-nav">
+                                <ul class="navbar-nav bg-red">
                                     <li v-for="(item) in menuItems" :key="item.id">
-                                        <router-link class="nav-link text-yellow" :to="{ name: item.routeName }">{{ item.label }}</router-link>
+                                        <router-link class="nav-link text-yellow fs-4" :to="{ name: item.routeName }">{{ item.label }}</router-link>
                                     </li>
+                                    <li><i class="pt-3 fs-4 fa-solid fa-cart-shopping text-yellow"></i></li>
                                 </ul>
                         </div>
                         </div>
@@ -81,19 +82,26 @@ export default {
 .text-yellow{
     color: #FFF2BD !important;
 }
+.logo{
+       width: 100%;
+    }
 #absolute-button{
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     position: absolute;
-    left: 50%;
+    left: 30%;
 }
-
+@media screen and (max-width: 1200px) {
+    #absolute-button{
+    left: 35%;
+}
+}
 @media screen and (max-width: 992px) {
     #absolute-button    {
         top: 60px;
-        transform: translateX(0);
-        left: 20px;
+        left: inherit;
+        right: 35px;
         & ul{
-            width: 80px;
+            background-color: #CC561E;
             font-size: 12px;
             & a{
                 padding: 5px 10px;
@@ -102,9 +110,20 @@ export default {
     }
     
 }
+
 @media screen and (max-width: 700px) {
     .orange{
         height: 200px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .logo{
+       width: 75%;
+    }
+}
+@media screen and (max-width: 450px) {
+    .logo{
+       width: 50%;
     }
 }
 </style>
