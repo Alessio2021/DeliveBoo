@@ -1,6 +1,6 @@
 <template>
   <div class="row mb-3">
-      <router-link class="col-3 col-md-2 col-lg-1 mb-3" :to="{name: 'category', params:{category: category.name} }" v-for="(category, index) in categories" :key="index">
+      <router-link class="col-3 col-md-2 col-lg-1 mb-3" :to="{name: 'category', params:{category: category.name}}" v-for="(category, index) in categories" :key="index">
         <img :src="category.img" :alt="category.name">
       </router-link>
   </div>

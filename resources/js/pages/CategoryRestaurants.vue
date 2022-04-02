@@ -10,7 +10,7 @@
       <div class="col-12 fw-bold">
         <h3 class="mb-3">Categoria: <span class="text-danger text-capitalize">{{$route.params.category}}</span></h3>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-3" v-for="(restaurant, index) in restaurants" :key="'lastrestaurant-' + index">
+      <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-12 col-md-4 col-lg-3 mb-3" v-for="(restaurant, index) in restaurants" :key="'restaurant-' + index">
         <div class="card border-info h-100 rounded-0">
           <div class="higlights-image-container-restaurant">
             <img :src="restaurant.image" class="card-img-top" :alt="restaurant.name + 'logo'">
@@ -20,7 +20,7 @@
             <h6 class="card-title text-center">{{restaurant.email}}</h6>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>

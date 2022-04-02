@@ -111,15 +111,6 @@ export default {
     }else {
         this.try = localStorage.getItem('key');
         this.cart2 = JSON.parse(this.try)
-        
-        // for (let index = 0; index < this.cart2.length; index++) {
-        //   const element = this.cart2[index];
-        //   console.log(element);
-        //   if (element === element) {
-        //     console.log('ciao');
-        //   }
-          
-        // }
       }
     this.cartCounter = this.cart2.length;
 

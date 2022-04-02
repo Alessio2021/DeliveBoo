@@ -102,10 +102,35 @@ class DishController extends Controller
         $slug = $_GET['restaurant'];
         $restaurant = User::where('slug', $slug)->first();
         $dishes = Dish::where('user_id', $restaurant->id)->get();
+
+        $results = [
+            'restaurant' => [
+                'name' => $restaurant->name,
+                'image' => asset('storage/' . $restaurant->image),
+                'address' => $restaurant->address,
+            ],
+            'dishes' => [],
+        ];
+
+        foreach ($dishes as $dish) {
+
+            $imageArray = [];
+            foreach (DishImage::where('dish_id', $dish->id)->get() as $dishimage) {
+                $imageArray[] = asset('storage/' . $dishimage->img_path);
+            }
+            $results['dishes'][] = [
+                'name' => $dish->name,
+                'slug' => $dish->slug, 
+                'description' => $dish->description,                
+                'image' => $imageArray,
+                'price' => $dish->price,
+            ];
+        }
+
         return response()->json(
             [
                 'response' => true,
-                'results' => $dishes,
+                'results' => $results,
             ]
         );
     }

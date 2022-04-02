@@ -11,11 +11,11 @@ import '../sass/app.scss';
 window.Vue = require('vue');
 import App from './views/App';
 import Home from './pages/Home';
-import Restaurant from './pages/Restaurant';
 import About from './pages/About';
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import CategoryRestaurants from './pages/CategoryRestaurants';
+import Menu from './pages/Menu';
 
 
 
@@ -35,11 +35,6 @@ const router = new VueRouter({
             component: Home
         },
         {
-            path: '/restaurant/:id',
-            name: 'restaurant',
-            component: Restaurant
-        },
-        {
             path: '/about',
             name: 'about',
             component: About
@@ -49,6 +44,12 @@ const router = new VueRouter({
             name: 'category',
             params: {category: ''} ,
             component: CategoryRestaurants
+        },
+        {
+            path: '/restaurant/:restaurant',
+            name: 'restaurant',
+            params: {restaurant: ''} ,
+            component: Menu
         },
     ]
 });

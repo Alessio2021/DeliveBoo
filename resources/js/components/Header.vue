@@ -43,10 +43,10 @@ export default {
                     label: 'Chi Siamo',
                     routeName: 'about',
                 },
-                {
-                    label: 'Ristoranti',
-                    routeName: 'restaurant',
-                },
+                // {
+                //     label: 'Ristoranti',
+                //     routeName: 'restaurant',
+                // },
             ],
             
         }
