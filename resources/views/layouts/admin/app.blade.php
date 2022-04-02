@@ -87,7 +87,7 @@
                     </div>
                 @endauth
                 <div class="{{Auth::id()? 'navbar-width col-lg-10' : 'col-12'}} p-0">
-                    <nav class="navbar navbar-expand-md navbar-light bg-danger">
+                    <nav class="navbar navbar-expand-md navbar-light admin-header">
                         <div class="container-fluid">
                                 <a class="navbar-brand d-block w-25  " href="{{ url('/') }}">
                                     <img class="w-75" src="{{asset('img/logo-deliveboo.svg')}}" alt="">

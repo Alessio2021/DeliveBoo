@@ -4,92 +4,92 @@
         <h1 class=" col-12 text-center my-5 text-green text-uppercase">Il nostro team</h1>
     </div>
     <div class="row row-cols-xl-5">
-        <div class="col-md-4  col-12 p-3 mb-5 border-0">
+        <div class="col-md-4 col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
-                <div class="d-flex justify-content-center mb-3 p-3">
+                <div class="d-flex justify-content-center p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
                 </div>
-                <div class="p-5 text-green">
-                    <h2 class="mb-2">Valerio Macciocchi</h2>
+                <div class="p-4 text-green">
+                    <h2 class="mb-4">Valerio Macciocchi</h2>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-github me-2 fs-3"></i>
-                        <h4 class="m-0">Linkedin</h4>
+                        <i class="fa-brands fa-github me-2 fs-4"></i>
+                        <a class="m-0 fs-6 text-green" href="https://github.com/Maccio92">Maccio92</a>
                     </div>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-linkedin me-2 fs-3"></i>
-                        <h4 class="m-0">Github</h4>
+                        <i class="fa-brands fa-linkedin me-2 fs-4"></i>
+                        <a class="m-0 fs-6 text-green" href="https://www.linkedin.com/in/valerio-macciocchi/">valerio-macciocchi</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
-                <div class="d-flex justify-content-center mb-3 p-3">
+                <div class="d-flex justify-content-center p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
                 </div>
-                <div class="p-5 text-green">
-                    <h2 class="mb-2">Filadelfio Granata</h2>
+                <div class="p-4 text-green">
+                    <h2 class="mb-4">Filadelfio Granata</h2>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-github me-2 fs-3"></i>
-                        <h4 class="m-0">Linkedin</h4>
+                        <i class="fa-brands fa-github me-2 fs-4"></i>
+                        <h4 class="m-0 fs-6">Github</h4>
                     </div>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-linkedin me-2 fs-3"></i>
-                        <h4 class="m-0">Github</h4>
+                        <i class="fa-brands fa-linkedin me-2 fs-4"></i>
+                        <h4 class="m-0 fs-6">Linkedin</h4>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
-                <div class="d-flex justify-content-center mb-3 p-3">
+                <div class="d-flex justify-content-center  p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
                 </div>
-                <div class="p-5 text-green">
-                    <h2 class="mb-2">Alessio Butera</h2>
+                <div class="p-4 text-green">
+                    <h2 class="mb-4">Alessio Butera</h2>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-github me-2 fs-3"></i>
-                        <h4 class="m-0">Linkedin</h4>
+                        <i class="fa-brands fa-github me-2 fs-4"></i>
+                        <a class="m-0 fs-6 text-green" href="https://github.com/Alessio2021">Alessio2021</a>
                     </div>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-linkedin me-2 fs-3"></i>
-                        <h4 class="m-0">Github</h4>
+                        <i class="fa-brands fa-linkedin me-2 fs-4"></i>
+                        <h4 class="m-0 fs-6">Linkedin</h4>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
-                <div class="d-flex justify-content-center mb-3 p-3">
+                <div class="d-flex justify-content-center  p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
                 </div>
-                <div class="p-5 text-green">
-                    <h2 class="mb-2">Angelo Amenta</h2>
+                <div class="p-4 text-green">
+                    <h2 class="mb-4">Angelo Amenta</h2>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-github me-2 fs-3"></i>
-                        <h4 class="m-0">Linkedin</h4>
+                        <i class="fa-brands fa-github me-2 fs-4"></i>
+                        <a class="m-0 fs-6 text-green" href="https://github.com/Angeloamenta">Angeloamenta</a>
                     </div>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-linkedin me-2 fs-3"></i>
-                        <h4 class="m-0">Github</h4>
+                        <i class="fa-brands fa-linkedin me-2 fs-4"></i>
+                        <h4 class="m-0 fs-6">Linkedin</h4>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
-                <div class="d-flex justify-content-center mb-3 p-3">
+                <div class="d-flex justify-content-center  p-3">
                     <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
                 </div>
-                <div class="p-5 text-green">
-                    <h2 class="mb-2">Lorenzo Savoia</h2>
+                <div class="p-4 text-green">
+                    <h2 class="mb-4">Lorenzo Savoia</h2>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-github me-2 fs-3"></i>
-                        <h4 class="m-0">Linkedin</h4>
+                        <i class="fa-brands fa-github me-2 fs-4"></i>
+                        <h4 class="m-0 fs-6">Github</h4>
                     </div>
                     <div class="d-flex align-items-center mb-2">
-                        <i class="fa-brands fa-linkedin me-2 fs-3"></i>
-                        <h4 class="m-0">Github</h4>
+                        <i class="fa-brands fa-linkedin me-2 fs-4"></i>
+                        <h4 class="m-0 fs-6">Linkedin</h4>
                     </div>
                 </div>
             </div>
