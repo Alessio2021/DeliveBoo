@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>DeliveBoo</title>
         <script>const localHost ='{{$appUrl}}';</script>
         <script src="{{asset('js/front.js')}}" defer></script>
         <!-- Fonts -->

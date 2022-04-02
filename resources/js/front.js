@@ -15,6 +15,12 @@ import Restaurant from './pages/Restaurant';
 import About from './pages/About';
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import CategoryRestaurants from './pages/CategoryRestaurants';
+
+
+
+
+
 
 import VueRouter from 'vue-router';
 import Vue from 'vue';
@@ -37,6 +43,12 @@ const router = new VueRouter({
             path: '/about',
             name: 'about',
             component: About
+        },
+        {
+            path: '/category',
+            name: 'category',
+            params: {category: ''} ,
+            component: CategoryRestaurants
         },
     ]
 });

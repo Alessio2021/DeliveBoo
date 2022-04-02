@@ -23,3 +23,6 @@ Route::get('/top-sales', 'Api\DishController@top4Sales');
 Route::get('/last-users', 'Api\DishController@last3Users');
 
 Route::get('/categories', 'Api\DishController@categories');
+
+Route::get('/category', 'Api\CategoriesController@getCategoryRestaurants');
+

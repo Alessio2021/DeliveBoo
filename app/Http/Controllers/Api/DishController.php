@@ -9,6 +9,10 @@ use App\DishOrder;
 use App\User;
 use App\Category;
 use App\DishImage;
+use Illuminate\Support\Facades\DB;
+
+
+
 
 class DishController extends Controller
 {
@@ -92,4 +96,17 @@ class DishController extends Controller
             ]
         );
     }
+
+    // public function italianRestaurant()
+    // {
+       
+    //  $prova = DB::table('users')
+    //             ->join('category_user', 'users.id', '=', 'category_user.user_id')
+    //             ->join('categories', 'categories.id', '=', 'category_user.category_id')
+    //             ->select('users.*')->where('categories.name', 'italiano')
+    //             ->get();
+                
+    //     dd($prova);
+
+    // }
 }
