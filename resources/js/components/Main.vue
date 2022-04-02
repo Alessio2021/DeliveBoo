@@ -13,37 +13,41 @@
     <h2 class="text-info fw-bold my-4">Cerchi qualcosa di preciso? </h2>
     <CategoryLinks />
   </div>
-  <div class="container bg-main">
-    <div class="row mt-5 ">
-      <div class="col-12 fw-bold">
-        <h3 class="text-info fw-bold my-4">I pi&ugrave; venduti:</h3>
-      </div>
-      <div v-for="(dish, index) in topDishes" :key="index" class="col-6 col-lg-3 mb-3">
-          <div class="card h-100 border-primary rounded-0">
-            <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div v-for="(image, index) in dish.image_array" :key="'image-' + index" class="carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
-                    <div class="higlights-image-container">
-                    <img  :src="image" class="d-block w-100" :alt="dish.name">
+  <div class="container-fluid bg-main">
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 fw-bold">
+            <h3 class="text-info fw-bold my-4">I pi&ugrave; venduti:</h3>
+          </div>
+          <div v-for="(dish, index) in topDishes" :key="index" class="col-6 col-lg-3 mb-3">
+              <div class="card h-100 border-primary rounded-0">
+                <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div v-for="(image, index) in dish.image_array" :key="'image-' + index" class="carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
+                        <div class="higlights-image-container">
+                        <img  :src="image" class="d-block w-100" :alt="dish.name">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev d-none d-none" type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next d-none " type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
                     </div>
                   </div>
-                  <button class="carousel-control-prev d-none d-none" type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next d-none " type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
+                <!-- <img :src="dish.image_array[0]" class="card-img-top w-100" alt=""> -->
+                <div class="card-body">
+                  <h5 class="card-title">{{dish.name}}</h5>
+                  <h6>{{dish.restaurant_name}}</h6>
+                  <a href="#" class="btn btn-primary" @click="addCart(dish)" >aggiungi al carrello</a>
                 </div>
               </div>
-            <!-- <img :src="dish.image_array[0]" class="card-img-top w-100" alt=""> -->
-            <div class="card-body">
-              <h5 class="card-title">{{dish.name}}</h5>
-              <h6>{{dish.restaurant_name}}</h6>
-              <a href="#" class="btn btn-primary" @click="addCart(dish)" >aggiungi al carrello</a>
-            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -147,6 +151,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import '~@sass/_variables.scss';
+
 .higlights-image-container {
   max-height:150px;
    height:10vw; 
@@ -173,9 +179,30 @@ export default {
    }
 }
 .bg-main{
-  background-image: url('../../img/bg-main.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
+  & div:first-child {
+    background-color: $success;
+  }
+  &::before {
+    content:'';
+    width: 100%;
+    height: 10vh;
+    background-image: url('../../img/bg-main.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0;
+  }
+  &::after {
+    content:'';
+    width: 100%;
+    height: 10vh;
+    background-image: url('../../img/bg-main.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    display: block;
+    margin: 0;
+  }
 }
 
 @media screen and(max-width: 991px) {

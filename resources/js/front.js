@@ -45,7 +45,7 @@ const router = new VueRouter({
             component: About
         },
         {
-            path: '/category',
+            path: '/category/:category',
             name: 'category',
             params: {category: ''} ,
             component: CategoryRestaurants

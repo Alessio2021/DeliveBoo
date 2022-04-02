@@ -26,3 +26,5 @@ Route::get('/categories', 'Api\DishController@categories');
 
 Route::get('/category', 'Api\CategoriesController@getCategoryRestaurants');
 
+Route::get('/menu', 'Api\DishController@restaurantMenu');
+

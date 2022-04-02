@@ -26722,8 +26722,10 @@ fieldset:disabled .btn {
 }
 
 .admin-header {
-  height: 80px;
-  background-color: #AA2B1D;
+  height: 120px;
+  background-image: url(/images/bg-header.svg?a57106645c0286c110d7e81526121334);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .font10 {

@@ -97,16 +97,16 @@ class DishController extends Controller
         );
     }
 
-    // public function italianRestaurant()
-    // {
-       
-    //  $prova = DB::table('users')
-    //             ->join('category_user', 'users.id', '=', 'category_user.user_id')
-    //             ->join('categories', 'categories.id', '=', 'category_user.category_id')
-    //             ->select('users.*')->where('categories.name', 'italiano')
-    //             ->get();
-                
-    //     dd($prova);
-
-    // }
+    public function restaurantMenu() 
+    {
+        $slug = $_GET['restaurant'];
+        $restaurant = User::where('slug', $slug)->first();
+        $dishes = Dish::where('user_id', $restaurant->id)->get();
+        return response()->json(
+            [
+                'response' => true,
+                'results' => $dishes,
+            ]
+        );
+    }
 }

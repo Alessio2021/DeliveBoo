@@ -99,6 +99,7 @@
         <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
             <a id="navbarDropdown" class="nav-link dropdown-toggle text-success " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}</a>
             <div class="my-position dropdown-menu dropdown-menu-right bg-secondary my-position" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-success logout fs-5" href="{{ route('admin.home') }}">{{ __('Area Personale') }}</a>
                 <a class="dropdown-item text-success logout fs-5" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
