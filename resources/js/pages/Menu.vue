@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+<!--     
      <div v-if="data.restaurant.slug">
   <h2>carrello</h2>
   <h4>Nel Carrello {{numberOfDishes()}}</h4>
@@ -10,7 +11,7 @@
     {{item.name}} {{item.price}} {{item.amount}}
   </div>
 
-  </div>
+  </div> -->
 
 
 
@@ -30,7 +31,7 @@
           </div>
       </div>
       <div class="row mt-5">
-        <div class="col-8">
+        <div class="col-7">
           <div v-for="(dish, index) in dishes" :key="'dish-' + index" class="row p-0 mb-4 bg-white shadow-sm">
             <div  class="col-6 mb-3">
                   <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
@@ -53,16 +54,42 @@
                   
   
             </div>
-                  <div class="col-6">
-                    <h5>{{dish.name}}</h5>
-                    <p class="fst-italic">"{{dish.description}}"</p>
-                    <a href="#" class="btn btn-primary text-success" @click="addCart(dish)" >Aggiungi al carrello</a>
+            <div class="col-6">
+              <h5>{{dish.name}}</h5>
+              <p class="fst-italic">"{{dish.description}}"</p>
+              <p class="text-danger">{{dish.price}} &euro;</p>
+            
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary text-success vertical-aling-middle" data-bs-toggle="modal" :data-bs-target="'#add-cart-' + index">
+                <b-icon icon="CartPlus"></b-icon> Aggiungi al carrello
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" :id="'add-cart-' + index" tabindex="-1" :aria-labelledby="'add-cart-' + index + 'Label'" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" :id="'add-cart-' + index + 'Label'">{{dish.name}}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h6>Seleziona la quantità</h6>
+                      <NumberIncrement @amount="setAmount" />
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Aggiungi</button>
+                    </div>
                   </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <div class="col-4">
-          <ShopCart />
+        <div class="col-5">
+          <ShopCart :choosenDish="choosenDish" />
         </div>
       </div>
   </div>
@@ -70,8 +97,12 @@
 
 <script>
 import Axios from "axios";
+
 import CategoryLinks from "../components/CategoryLinks.vue";
 import ShopCart from "../components/ShopCart.vue";
+import NumberIncrement from "../components/NumberIncrement.vue";
+
+import { BIcon, BIconCartPlus } from 'bootstrap-vue';
 
 export default {
   name:"Menu",
@@ -81,129 +112,75 @@ export default {
         slug: '',
       },
       dishes: [],
-      storage: [],
-      data: {
+      choosenDish: {
         restaurant: {
           slug: '',
+          name: '',
         },
-        dishes: [],
+        dish: {
+          name: '',
+        }
       },
+      amount: 1,
     }
   },
   components: {
     CategoryLinks,
     ShopCart,
+    NumberIncrement,
+    BIcon,
+    BIconCartPlus,
   },
   created() {
     let routeParam = "";
     if (this.$route.params.restaurant) {
       routeParam = this.$route.params.restaurant;
     }
+    
     Axios.get(localHost + '/api/menu?restaurant=' + routeParam)
       .then((results) =>{
         this.restaurant = results.data.results.restaurant;
         this.dishes = results.data.results.dishes;
       }).catch( (error) => {console.log(error)});
 
+    this.$watch(
+      () => this.$route.params.restaurant,
+      () => {
+        let routeParam = "";
+        if (this.$route.params.restaurant) {
+          routeParam = this.$route.params.restaurant;
+        }
 
-    // this.$watch(
-    //   () => this.$route.params.category,
-    //   () => {
-    //     let routeParam = "";
-    //     if (this.$route.params.category) {
-    //       routeParam = this.$route.params.category;
-    //     }
-
-    //     Axios.get(localHost + '/api/category?category=' + routeParam)
-    //       .then((results) =>{
-    //         console.log(results.data.results);
-    //         this.restaurants = results.data.results;
-    //       }).catch( (error) => {console.log(error)});
-
-    //       console.log(this.$route.params.category);
-    //   }
-    // )
-    const tryRead = localStorage.getItem('key');
-    console.log('lettura locale');
-    if ( tryRead ) {
-      this.data = JSON.parse(tryRead);
-      console.log('lettura effettuata');
-    } else {
-      localStorage.setItem('key', JSON.stringify(this.data));
-      console.log('settare il file in locale non letto');
-    }
+        Axios.get(localHost + '/api/menu?restaurant=' + routeParam)
+          .then((results) =>{
+            this.restaurant = results.data.results.restaurant;
+            this.dishes = results.data.results.dishes;
+          }).catch( (error) => {console.log(error)});
+      }
+    );
   },
   methods: {
-    addCart(dish) {
-      if ( this.restaurant.slug == this.data.restaurant.slug) {
-        this.setDishOnCart(dish);
-        this.data = JSON.parse(localStorage.getItem('key'));
-      }else {
-        this.data.restaurant.slug = this.restaurant.slug;
-        this.setDishOnCart(dish);
-      //     console.log('non arriverò');
-      //     console.log(dish);
-      //     this.data.dishes.push(dish);
-      //     localStorage.getItem(JSON.stringify(this.data))
-      //     localStorage.setItem('key', JSON.stringify(this.data));
-      this.data = JSON.parse(localStorage.getItem('key'));
-      // console.log(this.data);
-      // console.log(JSON.parse(this.data));
-      // this.data = JSON.parse(this.data)
-      }
-      
-
-
+    setAmount(value) {
+      this.amount = value.value;
     },
-
-    setDishOnCart(dish) {
-      console.log(this.numberOfDishes());
-      let amount = 1;
-      let canIPush = true;
-      this.data.dishes.forEach(cartDish => {
-        if (cartDish.slug == dish.slug) {
-          amount = cartDish.amount + amount;
-          cartDish.amount = amount;
-          canIPush = false;
+    setChoosenDish(dish) {
+      this.choosenDish = {
+        restaurant: {
+          slug: this.restaurant.slug,
+          name: this.restaurant.name,
+        },
+        dish: {
+          name: dish.name,
+          slug: dish.slug,
+          price: dish.price,
+          amount: this.amount,
         }
-      });
-
-      if (canIPush) {
-        this.data.dishes.push(
-              {
-                name: dish.name,
-                slug: dish.slug,
-                price: dish.price,
-                amount: amount,
-              });
       }
-      localStorage.setItem('key', JSON.stringify(this.data));
-      console.log(this.data); 
-
-      },
-
-      numberOfDishes() {
-        let numberOfDishes = 0;
-        this.data.dishes.forEach((dish) => {numberOfDishes += dish.amount});
-        return numberOfDishes;
-      },
-      totalOrder() {
-        let totalValue = 0;
-        this.data.dishes.forEach((dish) => {totalValue += dish.amount*dish.price});
-        return totalValue;
-      },
-
-    resetCart() {
-      localStorage.removeItem('key');
-      this.data = {
-        restaurant: {},
-        dishes: [],
-      };
     }
   }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  
 </style>

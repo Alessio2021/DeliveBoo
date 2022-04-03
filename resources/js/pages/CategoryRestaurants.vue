@@ -68,7 +68,7 @@ export default {
             this.restaurants = results.data.results;
           }).catch( (error) => {console.log(error)});
       }
-    )
+    );
   },
   
 }
