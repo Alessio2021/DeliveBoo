@@ -17,6 +17,7 @@ mix.js('resources/js/admin.js', 'public/js')
     .js('resources/js/multiImageLoader.js', 'public/js')
     .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps()
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/front.scss', 'public/css')
     .webpackConfig({
       resolve: {
           alias: {

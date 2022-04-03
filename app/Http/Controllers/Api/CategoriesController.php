@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Dish;
-use App\DishOrder;
 use App\User;
-use App\Category;
-use App\DishImage;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
@@ -25,24 +21,31 @@ class CategoriesController extends Controller
                 ->select('users.*')->where('categories.name', $categoryName)
                 ->get();
 
-            $results = [];
+            if (count($restaurants) != 0) {
+                $results = [];
 
-            foreach ($restaurants as $restaurant) {
-                $results[] = [
-                    'name' => $restaurant->name,
-                    'slug' => $restaurant->slug,
-                    'email' => $restaurant->email,
-                    'image' => asset('storage/' . $restaurant->image),
-                ];
+                foreach ($restaurants as $restaurant) {
+                    $results[] = [
+                        'name' => $restaurant->name,
+                        'slug' => $restaurant->slug,
+                        'email' => $restaurant->email,
+                        'image' => asset('storage/' . $restaurant->image),
+                    ];
+                }
+
+                return response()->json(
+                    [
+                        'response' => true,
+                        'results' => $results,
+                    ]
+                );
+            } else {
+                return response()->json(
+                    [
+                        'response' => false,
+                    ]
+                );
             }
-
-            return response()->json(
-                [
-                    'response' => true,
-                    'results' => $results,
-                ]
-            );        
-
         } else {
             $restaurants = User::inRandomOrder()->get();
 
@@ -60,9 +63,7 @@ class CategoriesController extends Controller
                     'response' => true,
                     'results' => $results,
                 ]
-            );        
+            );
         }
     }
-
-    
 }

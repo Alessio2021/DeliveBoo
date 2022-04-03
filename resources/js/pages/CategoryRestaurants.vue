@@ -6,21 +6,23 @@
         <CategoryLinks />
       </div>
     </div>
-    <div class="row mt-5">
+    <div v-if="searchResult == true" class="row mt-5">
       <div class="col-12 fw-bold">
         <h3 class="mb-3">Categoria: <span class="text-danger text-capitalize">{{$route.params.category}}</span></h3>
       </div>
-      <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-12 col-md-4 col-lg-3 mb-3" v-for="(restaurant, index) in restaurants" :key="'restaurant-' + index">
-        <div class="card border-info h-100 rounded-0">
-          <div class="higlights-image-container-restaurant">
+      <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-info text-decoration-none" v-for="(restaurant, index) in restaurants" :key="'restaurant-' + index">
+        <div class="card border-0 h-100 shadow">
+          <div class="higlights-image-container">
             <img :src="restaurant.image" class="card-img-top" :alt="restaurant.name + 'logo'">
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center">{{restaurant.name}}</h5>
-            <h6 class="card-title text-center">{{restaurant.email}}</h6>
+            <h5 class="card-title text-center text-info">{{restaurant.name}}</h5>
           </div>
         </div>
       </router-link>
+    </div>
+    <div v-else class="row mt-5">
+      <h4 class="font-italic">Categoria non trovata</h4>
     </div>
   </div>
 </template>
@@ -36,6 +38,7 @@ export default {
   },
   data() {
     return {
+      searchResult: false,
       restaurants: [],
     }
   },
@@ -46,8 +49,9 @@ export default {
     }
     Axios.get(localHost + '/api/category?category=' + routeParam)
       .then((results) =>{
-        console.log(results.data.results);
+        this.searchResult = results.data.response;
         this.restaurants = results.data.results;
+        console.log(results.data);
       }).catch( (error) => {console.log(error)});
 
       console.log(this.$route.params.category);
@@ -62,7 +66,8 @@ export default {
 
         Axios.get(localHost + '/api/category?category=' + routeParam)
           .then((results) =>{
-            console.log(results.data.results);
+            this.searchResult = results.data.response;
+            console.log(results.data.response);
             this.restaurants = results.data.results;
           }).catch( (error) => {console.log(error)});
 
@@ -74,6 +79,27 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '~@sass/_variables.scss';
 
+.higlights-image-container {
+  max-height:200px;
+   height:15vw; 
+   overflow:hidden;
+   position: relative;
+   & img{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+   }
+}
+
+
+@media screen and(max-width: 991px) {
+  .higlights-image-container {
+   height:20vw; 
+  
+  }
+}
 </style>

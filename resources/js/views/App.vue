@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body">
     <Header/>
     <router-view></router-view>
     <Footer/>
@@ -10,8 +10,6 @@
 import Header from '../components/Header.vue';
 import Main from '../components/Main.vue';
 import Footer from '../components/Footer.vue';
-
-
 
 export default {
     name: "App",
@@ -25,6 +23,10 @@ export default {
 </script>
 
 <style lang="scss">
-    @import '~@sass/_variables.scss';
-    @import '~bootstrap';
+@import '~@sass/_variables.scss';
+@import '~bootstrap';
+
+.body {
+  background-color: rgba($color: $success, $alpha: 0.4);
+}
 </style>

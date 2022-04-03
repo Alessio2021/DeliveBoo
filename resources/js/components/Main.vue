@@ -13,20 +13,21 @@
     <h2 class="text-info fw-bold my-4">Cerchi qualcosa di preciso? </h2>
     <CategoryLinks />
   </div>
-  <div class="container-fluid bg-main">
+  <div class="bg-main">
     <div>
       <div class="container">
         <div class="row">
           <div class="col-12 fw-bold">
             <h3 class="text-info fw-bold my-4">I pi&ugrave; venduti:</h3>
           </div>
+
           <div v-for="(dish, index) in topDishes" :key="index" class="col-6 col-lg-3 mb-3">
-              <div class="card h-100 border-primary rounded-0">
+              <div class="card h-100 border-0 rounded-0 shadow bg-white">
                 <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div v-for="(image, index) in dish.image_array" :key="'image-' + index" class="carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
                         <div class="higlights-image-container">
-                        <img  :src="image" class="d-block w-100" :alt="dish.name">
+                        <img  :src="image" class="d-block w-100" :alt="dish.name + ' photo'">
                         </div>
                       </div>
                       <button class="carousel-control-prev d-none d-none" type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="prev">
@@ -42,11 +43,12 @@
                 <!-- <img :src="dish.image_array[0]" class="card-img-top w-100" alt=""> -->
                 <div class="card-body">
                   <h5 class="card-title">{{dish.name}}</h5>
-                  <h6>{{dish.restaurant_name}}</h6>
+                  <router-link :to="{name: 'restaurant', params:{restaurant: dish.restaurant_slug}}">{{dish.restaurant_name}}</router-link>
                   <a href="#" class="btn btn-primary" @click="addCart(dish)" >aggiungi al carrello</a>
                 </div>
               </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -56,8 +58,8 @@
       <div class="col-12 fw-bold">
         <h3 class="text-info fw-bold my-4">Novità su DeliveBoo</h3>
       </div>
-      <div class="col-4 mb-3" v-for="(restaurant, index) in lastRestaurants" :key="'lastrestaurant-' + index">
-        <div class="card border-info h-100 rounded-0">
+      <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-4 mb-3" v-for="(restaurant, index) in lastRestaurants" :key="'lastrestaurant-' + index">
+        <div class="card border-0 h-100 shadow">
           <div class="higlights-image-container-restaurant">
             <img :src="restaurant.img" class="card-img-top" :alt="restaurant.name + 'logo'">
           </div>
@@ -65,7 +67,7 @@
             <h5 class="card-title text-center">{{restaurant.name}}</h5>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </div>
@@ -142,7 +144,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import '~@sass/_variables.scss';
+@import '~@sass/_variables.scss';
 
 .higlights-image-container {
   max-height:150px;
@@ -157,6 +159,14 @@ export default {
    }
 }
 
+
+@media screen and(max-width: 991px) {
+  .higlights-image-container {
+   height:20vw; 
+  
+  }
+}
+
 .higlights-image-container-restaurant {
   max-height:200px;
    height:22vw; 
@@ -169,6 +179,7 @@ export default {
      transform: translate(-50%, -50%);
    }
 }
+
 .bg-main{
   & div:first-child {
     background-color: $success;
@@ -194,12 +205,5 @@ export default {
     display: block;
     margin: 0;
   }
-}
-
-@media screen and(max-width: 991px) {
-  .higlights-image-container {
-   height:20vw; 
-  
-}
 }
 </style>
