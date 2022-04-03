@@ -53,6 +53,7 @@ class CategoriesController extends Controller
             foreach ($restaurants as $restaurant) {
                 $results[] = [
                     'name' => $restaurant->name,
+                    'slug' => $restaurant->slug,
                     'email' => $restaurant->email,
                     'image' => asset('storage/' . $restaurant->image),
                 ];

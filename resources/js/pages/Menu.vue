@@ -1,5 +1,20 @@
 <template>
   <div class="container">
+     <div v-if="data.restaurant.slug">
+  <h2>carrello</h2>
+  <h4>Nel Carrello {{numberOfDishes()}}</h4>
+  <h5>Totale: {{totalOrder()}}</h5>    
+  <button @click="resetCart()">svuota carrello</button>
+
+  <div v-for="(item, index) in data.dishes" :key="index" class="cart"> 
+    {{item.name}} {{item.price}} {{item.amount}}
+  </div>
+
+  </div>
+
+
+
+
       <div class="row">
         <div class="col-12">
           <CategoryLinks />
@@ -47,7 +62,7 @@
         </div>
 
         <div class="col-4">
-          CARRELLO
+          <ShopCart />
         </div>
       </div>
   </div>
@@ -56,19 +71,30 @@
 <script>
 import Axios from "axios";
 import CategoryLinks from "../components/CategoryLinks.vue";
+import ShopCart from "../components/ShopCart.vue";
 
 export default {
-name:"Menu",
-data() {
-  return {
-    restaurant: [],
-    dishes: [],
-  }
-},
-components: {
-  CategoryLinks,
-},
-created() {
+  name:"Menu",
+  data() {
+    return {
+      restaurant: {
+        slug: '',
+      },
+      dishes: [],
+      storage: [],
+      data: {
+        restaurant: {
+          slug: '',
+        },
+        dishes: [],
+      },
+    }
+  },
+  components: {
+    CategoryLinks,
+    ShopCart,
+  },
+  created() {
     let routeParam = "";
     if (this.$route.params.restaurant) {
       routeParam = this.$route.params.restaurant;
@@ -77,8 +103,6 @@ created() {
       .then((results) =>{
         this.restaurant = results.data.results.restaurant;
         this.dishes = results.data.results.dishes;
-        console.log(this.dishes);
-        // this.restaurants = results.data.results;
       }).catch( (error) => {console.log(error)});
 
 
@@ -99,7 +123,84 @@ created() {
     //       console.log(this.$route.params.category);
     //   }
     // )
+    const tryRead = localStorage.getItem('key');
+    console.log('lettura locale');
+    if ( tryRead ) {
+      this.data = JSON.parse(tryRead);
+      console.log('lettura effettuata');
+    } else {
+      localStorage.setItem('key', JSON.stringify(this.data));
+      console.log('settare il file in locale non letto');
+    }
   },
+  methods: {
+    addCart(dish) {
+      if ( this.restaurant.slug == this.data.restaurant.slug) {
+        this.setDishOnCart(dish);
+        this.data = JSON.parse(localStorage.getItem('key'));
+      }else {
+        this.data.restaurant.slug = this.restaurant.slug;
+        this.setDishOnCart(dish);
+      //     console.log('non arriverò');
+      //     console.log(dish);
+      //     this.data.dishes.push(dish);
+      //     localStorage.getItem(JSON.stringify(this.data))
+      //     localStorage.setItem('key', JSON.stringify(this.data));
+      this.data = JSON.parse(localStorage.getItem('key'));
+      // console.log(this.data);
+      // console.log(JSON.parse(this.data));
+      // this.data = JSON.parse(this.data)
+      }
+      
+
+
+    },
+
+    setDishOnCart(dish) {
+      console.log(this.numberOfDishes());
+      let amount = 1;
+      let canIPush = true;
+      this.data.dishes.forEach(cartDish => {
+        if (cartDish.slug == dish.slug) {
+          amount = cartDish.amount + amount;
+          cartDish.amount = amount;
+          canIPush = false;
+        }
+      });
+
+      if (canIPush) {
+        this.data.dishes.push(
+              {
+                name: dish.name,
+                slug: dish.slug,
+                price: dish.price,
+                amount: amount,
+              });
+      }
+      localStorage.setItem('key', JSON.stringify(this.data));
+      console.log(this.data); 
+
+      },
+
+      numberOfDishes() {
+        let numberOfDishes = 0;
+        this.data.dishes.forEach((dish) => {numberOfDishes += dish.amount});
+        return numberOfDishes;
+      },
+      totalOrder() {
+        let totalValue = 0;
+        this.data.dishes.forEach((dish) => {totalValue += dish.amount*dish.price});
+        return totalValue;
+      },
+
+    resetCart() {
+      localStorage.removeItem('key');
+      this.data = {
+        restaurant: {},
+        dishes: [],
+      };
+    }
+  }
 }
 </script>
 

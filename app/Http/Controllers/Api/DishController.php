@@ -97,7 +97,7 @@ class DishController extends Controller
         );
     }
 
-    public function restaurantMenu() 
+    public function restaurantMenu()
     {
         $slug = $_GET['restaurant'];
         $restaurant = User::where('slug', $slug)->first();
@@ -106,6 +106,7 @@ class DishController extends Controller
         $results = [
             'restaurant' => [
                 'name' => $restaurant->name,
+                'slug' => $restaurant->slug,
                 'image' => asset('storage/' . $restaurant->image),
                 'address' => $restaurant->address,
             ],
@@ -120,8 +121,8 @@ class DishController extends Controller
             }
             $results['dishes'][] = [
                 'name' => $dish->name,
-                'slug' => $dish->slug, 
-                'description' => $dish->description,                
+                'slug' => $dish->slug,
+                'description' => $dish->description,
                 'image' => $imageArray,
                 'price' => $dish->price,
             ];

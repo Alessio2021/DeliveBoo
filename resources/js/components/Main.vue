@@ -1,14 +1,5 @@
 <template>
 <div>
-  <div>
-  <h2>carrello</h2>
-  <h4>Nel Carrello [{{cartCounter}}]</h4>
-    
-  <button @click="resetCart()">svuota carrello</button>
-  <div v-for="(item, index) in cart2" :key="index" class="cart"> 
-    {{item.name}}
-  </div>
-  </div>
   <div class="container">
     <h2 class="text-info fw-bold my-4">Cerchi qualcosa di preciso? </h2>
     <CategoryLinks />
@@ -40,10 +31,15 @@
                       </button>
                     </div>
                   </div>
-                <!-- <img :src="dish.image_array[0]" class="card-img-top w-100" alt=""> -->
+                
                 <div class="card-body">
                   <h5 class="card-title">{{dish.name}}</h5>
                   <router-link :to="{name: 'restaurant', params:{restaurant: dish.restaurant_slug}}">{{dish.restaurant_name}}</router-link>
+                  
+                  
+                  
+                  
+                  
                   <a href="#" class="btn btn-primary" @click="addCart(dish)" >aggiungi al carrello</a>
                 </div>
               </div>
@@ -85,13 +81,8 @@ export default {
     },
     data() {
       return {
-        cart: [],
-        cartCounter: 0,
         topDishes: [],
         lastRestaurants: [],
-        storage: [],
-        cart2: [],
-        try: null
       }
     },
     created() {
@@ -104,42 +95,7 @@ export default {
       .then((results) =>{
         this.lastRestaurants = results.data.results;
       }).catch( (error) => {console.log(error)});
-    
-    this.try = localStorage.getItem('key');
-    this.cart2 = JSON.parse(this.try)
-
-    if (this.cart2 == null) {
-      this.cart2 = []
-    }else {
-        this.try = localStorage.getItem('key');
-        this.cart2 = JSON.parse(this.try)
-      }
-    this.cartCounter = this.cart2.length;
-
     },
-    methods: {
-      addCart(dish) {
-        console.log(dish);
-        this.cart2.push(dish);
-        this.cartCounter = this.cart2.length;
-        localStorage.getItem(JSON.stringify(this.cart2))
-
-        localStorage.setItem('key', JSON.stringify(this.cart2));
-
-        this.cart2 = localStorage.getItem('key');
-        console.log(this.cart2);
-        console.log(JSON.parse(this.cart2));
-        this.cart2 = JSON.parse(this.cart2)
-      },
-
-      resetCart() {
-        localStorage.removeItem('key');
-        this.cart2 = [];
-        this.cartCounter = 0;
-      }
-
-    }
-
 }
 </script>
 

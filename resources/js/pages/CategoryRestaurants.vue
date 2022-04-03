@@ -47,14 +47,12 @@ export default {
     if (this.$route.params.category) {
       routeParam = this.$route.params.category;
     }
+
     Axios.get(localHost + '/api/category?category=' + routeParam)
       .then((results) =>{
         this.searchResult = results.data.response;
         this.restaurants = results.data.results;
-        console.log(results.data);
       }).catch( (error) => {console.log(error)});
-
-      console.log(this.$route.params.category);
 
     this.$watch(
       () => this.$route.params.category,
@@ -67,11 +65,8 @@ export default {
         Axios.get(localHost + '/api/category?category=' + routeParam)
           .then((results) =>{
             this.searchResult = results.data.response;
-            console.log(results.data.response);
             this.restaurants = results.data.results;
           }).catch( (error) => {console.log(error)});
-
-          console.log(this.$route.params.category);
       }
     )
   },
