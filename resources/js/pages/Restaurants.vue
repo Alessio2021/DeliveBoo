@@ -44,34 +44,47 @@ export default {
     }
   },
   created() {
-    this.activeCategories = this.$route.params.categories;
-    console.log(this.activeCategories);
-    let routeParam = "";
-    if (this.$route.params.category) {
-      routeParam = this.$route.params.category;
+    if (this.$route.params.categories) {
+      this.activeCategories = this.$route.params.categories;
     }
-
-    Axios.get(localHost + '/api/category?category=' + routeParam)
+    let categoriesParam = '';
+    if (this.activeCategories.length !== 0) {
+      categoriesParam = this.activeCategories.toString();
+    }
+    Axios.get(localHost + '/api/category', {
+      params: {
+        categories: categoriesParam,
+      },
+      // paramsSerializer: params => {
+      //   return qs.stringify(params)
+      // }
+      })
       .then((results) =>{
         this.searchResult = results.data.response;
         this.restaurants = results.data.results;
+        console.log(results);
       }).catch( (error) => {console.log(error)});
-
-    this.$watch(
-      () => this.$route.params.category,
-      () => {
-        let routeParam = "";
-        if (this.$route.params.category) {
-          routeParam = this.$route.params.category;
-        }
-
-        Axios.get(localHost + '/api/category?category=' + routeParam)
-          .then((results) =>{
-            this.searchResult = results.data.response;
-            this.restaurants = results.data.results;
-          }).catch( (error) => {console.log(error)});
-      }
-    );
+  },
+  watch: {
+    activeCategories(){
+      let categoriesParam = '';
+    if (this.activeCategories.length !== 0) {
+      categoriesParam = this.activeCategories.toString();
+    }
+    Axios.get(localHost + '/api/category', {
+      params: {
+        categories: categoriesParam,
+      },
+      // paramsSerializer: params => {
+      //   return qs.stringify(params)
+      // }
+      })
+      .then((results) =>{
+        this.searchResult = results.data.response;
+        this.restaurants = results.data.results;
+        console.log(results);
+      }).catch( (error) => {console.log(error)});
+    }
   },
   methods: {
     setActiveCategories(value) {

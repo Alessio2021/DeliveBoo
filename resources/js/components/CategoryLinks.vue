@@ -27,6 +27,7 @@ props: {
 
 },
   created() {
+    
     Axios.get(localHost + '/api/categories').then(
     (results) =>{
         this.categories = results.data.results;

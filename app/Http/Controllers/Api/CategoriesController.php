@@ -12,18 +12,23 @@ class CategoriesController extends Controller
 {
     public function getCategoryRestaurants()
     {
-        if ($_GET['category'] != "") {
+        $requestArray= explode(',', $_GET['categories']);
+        
+        if (count($requestArray)) {
+            // $restaurants = DB::table('users')
+            //     ->join('category_user', 'users.id', '=', 'category_user.user_id')
+            //     ->join('categories', 'categories.id', '=', 'category_user.category_id')
+            //     ->select('users.*');
 
-            $categoryName = $_GET['category'];
-            $restaurants = DB::table('users')
-                ->join('category_user', 'users.id', '=', 'category_user.user_id')
-                ->join('categories', 'categories.id', '=', 'category_user.category_id')
-                ->select('users.*')->where('categories.name', $categoryName)
-                ->get();
+            $restaurants= User::all()->categories();
+            foreach ($requestArray as $requestCategory) {
+                $restaurants->where('categories.name', $requestCategory);
+            }
+
+            $restaurants = $restaurants->get();
 
             if (count($restaurants) != 0) {
                 $results = [];
-
                 foreach ($restaurants as $restaurant) {
                     $results[] = [
                         'name' => $restaurant->name,
@@ -32,7 +37,6 @@ class CategoriesController extends Controller
                         'image' => asset('storage/' . $restaurant->image),
                     ];
                 }
-
                 return response()->json(
                     [
                         'response' => true,
@@ -48,7 +52,6 @@ class CategoriesController extends Controller
             }
         } else {
             $restaurants = User::inRandomOrder()->get();
-
             $results = [];
             foreach ($restaurants as $restaurant) {
                 $results[] = [
@@ -58,13 +61,12 @@ class CategoriesController extends Controller
                     'image' => asset('storage/' . $restaurant->image),
                 ];
             }
-
             return response()->json(
                 [
                     'response' => true,
                     'results' => $results,
                 ]
             );
-        }
-    }
+        } 
+     }
 }
