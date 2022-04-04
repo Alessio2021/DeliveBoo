@@ -176,6 +176,7 @@ export default {
           amount: this.amount,
         }
       }
+      this.amount = 1;
     }
   }
 }
