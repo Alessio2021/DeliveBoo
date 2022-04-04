@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <h2 class="text-info fw-bold my-4">Categorie Disponibili</h2>
-        <CategoryLinks />
+        <CategoryLinks :setActiveCategories="activeCategories" @activeCategories="setActiveCategories" />
       </div>
     </div>
     <div v-if="searchResult == true" class="row mt-5">
@@ -32,17 +32,20 @@ import Axios from "axios";
 import CategoryLinks from "../components/CategoryLinks.vue";
 
 export default {
-  name:'CategoryRestaurants',
+  name:'Restaurants',
   components: {
     CategoryLinks,
   },
   data() {
     return {
+      activeCategories: [],
       searchResult: false,
       restaurants: [],
     }
   },
   created() {
+    this.activeCategories = this.$route.params.categories;
+    console.log(this.activeCategories);
     let routeParam = "";
     if (this.$route.params.category) {
       routeParam = this.$route.params.category;
@@ -70,6 +73,12 @@ export default {
       }
     );
   },
+  methods: {
+    setActiveCategories(value) {
+      this.activeCategories = value;
+      console.log(this.activeCategories);
+    }
+  }
   
 }
 </script>

@@ -18,7 +18,7 @@
 
       <div class="row">
         <div class="col-12">
-          <CategoryLinks />
+          <CategoryLinks/>
         </div>
       </div>
       <div class="row bg-white mb-5 shadow-sm">        

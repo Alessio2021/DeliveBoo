@@ -2,7 +2,7 @@
 <div>
   <div class="container">
     <h2 class="text-info fw-bold my-4">Cerchi qualcosa di preciso? </h2>
-    <CategoryLinks />
+    <CategoryLinks/>
   </div>
   <div class="bg-main">
     <div>
@@ -34,13 +34,12 @@
                 
                 <div class="card-body">
                   <h5 class="card-title">{{dish.name}}</h5>
-                  <router-link :to="{name: 'restaurant', params:{restaurant: dish.restaurant_slug}}">{{dish.restaurant_name}}</router-link>
+                  <router-link class="d-block text-end text-decoration-none text-info" :to="{name: 'restaurant', params:{restaurant: dish.restaurant_slug}}">{{dish.restaurant_name}}</router-link>
                   
                   
                   
                   
                   
-                  <a href="#" class="btn btn-primary" @click="addCart(dish)" >aggiungi al carrello</a>
                 </div>
               </div>
           </div>
@@ -103,10 +102,11 @@ export default {
 @import '~@sass/_variables.scss';
 
 .higlights-image-container {
-  max-height:150px;
+  max-height:180px;
    height:10vw; 
    overflow:hidden;
    position: relative;
+   background-color: black;
    & img{
      position: absolute;
      top: 50%;
@@ -137,7 +137,7 @@ export default {
 }
 
 .bg-main{
-  & div:first-child {
+  &>div:first-child {
     background-color: $success;
   }
   &::before {

@@ -14,7 +14,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
-import CategoryRestaurants from './pages/CategoryRestaurants';
+import Restaurants from './pages/Restaurants';
 import Menu from './pages/Menu';
 
 
@@ -42,10 +42,10 @@ const router = new VueRouter({
             component: About
         },
         {
-            path: '/category/:category',
-            name: 'category',
-            params: {category: ''} ,
-            component: CategoryRestaurants
+            path: '/restaurants',
+            name: 'restaurants',
+            params: {categories: [] },
+            component: Restaurants
         },
         {
             path: '/restaurant/:restaurant',
