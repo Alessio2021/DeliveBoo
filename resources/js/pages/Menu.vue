@@ -216,7 +216,7 @@ export default {
     .position-button{
     position: inherit;
     bottom: 0;
-    right: 0;
+    right: 0
   }
   .box{
     display: flex;
