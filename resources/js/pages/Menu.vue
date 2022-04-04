@@ -21,24 +21,24 @@
           <CategoryLinks/>
         </div>
       </div>
-      <div class="row bg-white mb-5 shadow-sm">        
-          <div class="col-3">
+      <div class="row my-5 shadow-sm gradient rounded">        
+          <div class="col-3 ">
               <img class="w-100" :src="restaurant.image" :alt="restaurant.name + ' logo'">
           </div>
-          <div class="col-9">
-            <h2>{{restaurant.name}}</h2>
-            <p>{{restaurant.address}}</p>
+          <div class="col-9 d-flex flex-column justify-content-center">
+            <h2 class="text-green"><b>{{restaurant.name}}</b></h2>
+            <p class="text-green">{{restaurant.address}}</p>
           </div>
       </div>
       <div class="row mt-5">
-        <div class="col-7">
-          <div v-for="(dish, index) in dishes" :key="'dish-' + index" class="row p-0 mb-4 bg-white shadow-sm">
-            <div  class="col-6 mb-3">
+        <div class="col-8">
+          <div v-for="(dish, index) in dishes" :key="'dish-' + index" class="row box mb-4 gradient rounded shadow-sm p-3">
+            <div  class="col-lg-6 ">
                   <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
-                      <div class="carousel-inner">
-                        <div v-for="(image, index) in dish.image" :key="'image-' + index" class="carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
+                      <div class="carousel-inner container-img ">
+                        <div v-for="(image, index) in dish.image" :key="'image-' + index" class="  carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
                           <div class="higlights-image-container">
-                          <img  :src="image" class="d-block w-100" :alt="dish.name + ' photo'">
+                          <img  :src="image" class="d-block w-100 obj-fit " :alt="dish.name + ' photo'">
                           </div>
                         </div>
                         <button class="carousel-control-prev d-none d-none" type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="prev">
@@ -54,13 +54,16 @@
                   
   
             </div>
-            <div class="col-6">
-              <h5>{{dish.name}}</h5>
-              <p class="fst-italic">"{{dish.description}}"</p>
-              <p class="text-danger">{{dish.price}} &euro;</p>
+            <div class="col-lg-6 position-relative d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="mb-2 text-green"><b>{{dish.name}}</b></h5>
+                <p class="fst-italic text-green">"{{dish.description}}"</p>
+
+              </div>
+              <p class=" text-green m-0">{{dish.price}} &euro;</p>
             
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary text-success vertical-aling-middle" data-bs-toggle="modal" :data-bs-target="'#add-cart-' + index">
+              <button type="button" class="btn btn-primary text-success vertical-aling-middle position-button" data-bs-toggle="modal" :data-bs-target="'#add-cart-' + index">
                 <b-icon icon="CartPlus"></b-icon> Aggiungi al carrello
               </button>
 
@@ -89,7 +92,7 @@
           </div>
         </div>
 
-        <div class="col-5">
+        <div class="col-4">
           <ShopCart :choosenDish="choosenDish" @restaurantOnCart="setRestaurantOnCart"/>
         </div>
       </div>
@@ -190,5 +193,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
+  .gradient{
+    background: linear-gradient(to right, rgba(#FFF2BD, 0.4),rgba(#EF8D32, 0.4));
+  }
+  .text-green{
+    color: #064635;
+  }
+  .position-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .obj-fit{
+    object-fit: contain;
+    height: 200px;
+    width: 100%;
+  }
+  .container-img{
+    height: 200px;
+  }
+  @media screen and (max-width: 992px) {
+    .position-button{
+    position: inherit;
+    bottom: 0;
+    right: 0;
+  }
+  .box{
+    display: flex;
+    flex-direction: column;
+  }
+  .container-img{
+    margin-bottom: 10px;
+  }
+}
 </style>
