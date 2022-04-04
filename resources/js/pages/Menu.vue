@@ -73,23 +73,24 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                      <h3 v-if="!(restaurant.slug == restaurantOnCart || restaurantOnCart == '')" class="text-danger">Svuotare il cestino e procedere con il nuovo ordine?</h3>
                       <h6>Seleziona la quantità</h6>
                       <NumberIncrement @amount="setAmount" />
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Aggiungi</button>
+                      <button v-if="restaurant.slug == restaurantOnCart || restaurantOnCart == ''" type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Aggiungi</button>
+                      <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Svuota e Aggiungi</button>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
 
         <div class="col-5">
-          <ShopCart :choosenDish="choosenDish" />
+          <ShopCart :choosenDish="choosenDish" @restaurantOnCart="setRestaurantOnCart"/>
         </div>
       </div>
   </div>
@@ -111,6 +112,7 @@ export default {
       restaurant: {
         slug: '',
       },
+      restaurantOnCart: '',
       dishes: [],
       choosenDish: {
         restaurant: {
@@ -177,6 +179,11 @@ export default {
         }
       }
       this.amount = 1;
+      console.log(this.choosenDish);
+    },
+    setRestaurantOnCart(value) {
+      this.restaurantOnCart = value;
+      console.log(this.restaurantOnCart);
     }
   }
 }

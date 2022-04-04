@@ -74,6 +74,8 @@ export default {
         } else {
             localStorage.setItem('key', JSON.stringify(this.data));
         }
+
+        this.$emit('restaurantOnCart', this.data.restaurant.slug);
     },
     methods: {
         addOnCart() {
@@ -82,7 +84,14 @@ export default {
                 this.data.restaurant.name = this.choosenDish.restaurant.name;
                 this.setDishOnCart(this.choosenDish.dish);
                 this.data = JSON.parse(localStorage.getItem('key'));
+                this.$emit('restaurantOnCart', this.data.restaurant.slug);
             } else {
+                this.resetCart();
+                this.data.restaurant.slug = this.choosenDish.restaurant.slug;
+                this.data.restaurant.name = this.choosenDish.restaurant.name;
+                this.setDishOnCart(this.choosenDish.dish);
+                this.data = JSON.parse(localStorage.getItem('key'));
+                this.$emit('restaurantOnCart', this.data.restaurant.slug);
             }
         },
 
