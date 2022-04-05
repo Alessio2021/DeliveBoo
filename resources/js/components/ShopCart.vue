@@ -1,35 +1,41 @@
 <template>
     <div>
-        <div v-if="data.restaurant.slug" class="container bg-white">
-            <h2 class="row">Carrello <span class="text-danger">({{numberOfDishes()}} elementi)</span></h2>
-            <h4>Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h4>
-            <h3 class="row">Totale: {{totalOrder()}}</h3>    
-            <button class="btn btn-danger row" @click="resetCart()">svuota carrello</button>
+        <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
+            <h4 class="text-green"><b>Carrello </b></h4><span class="text-danger">({{numberOfDishes()}} elementi)</span>
+            <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
+            
 
-            <div class="row bg-info text-light">
-                <div class="col-2">
-                    Quantit&agrave;
-                </div>
-                <div class="col-7">
+            <div class="bg-green text-light d-flex px-1">
+                <div class="col-6">
                     Piatto
                 </div>
-                <div class="col-3">
+                <div class="col-3 text-end ">
+                    Quantit&agrave;
+                </div>
+                <div class="col-3 text-end ">
                     Prezzo
                 </div>
             </div>
             
 
-            <div v-for="(item, index) in data.dishes" :key="index" class="row">
-                <div class="col-2">
-                    <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
-                </div>
-                <div class="col-7">
+            <div v-for="(item, index) in data.dishes" :key="index" class="row mb-3 px-1">
+                <div class="col-6 text-green">
                     {{item.name}}
                 </div>
-                <div class="col-3">
+                <div class="col-3 text-end text-green">
+                    <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
+                </div>
+                <div class="col-3 text-end text-green">
                     {{item.price}} &euro;
                 </div>       
             </div>
+            <div class="mb-4 text-end pe-1 pt-1 border-top">
+                <h5 class="text-green m-0 ">Totale: {{totalOrder()}} &euro;</h5>    
+            </div>
+            <div class="text-center">
+                <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
+            </div>
+            
         </div>
         <div v-else>
             Carrello vuoto
@@ -150,5 +156,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.text-green{
+    color: #064635;
+  }
+  .bg-green{
+      background-color: #064635;
+  }
 </style>
