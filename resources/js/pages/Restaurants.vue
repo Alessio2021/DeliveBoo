@@ -22,7 +22,7 @@
       </router-link>
     </div>
     <div v-else class="row mt-5">
-      <h4 class="font-italic">Categoria non trovata</h4>
+      <h4 class="font-italic">Nessun Ristorante Trovato</h4>
     </div>
   </div>
 </template>

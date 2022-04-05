@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Category;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
@@ -12,29 +13,66 @@ class CategoriesController extends Controller
 {
     public function getCategoryRestaurants()
     {
-        $requestArray= explode(',', $_GET['categories']);
-        
-        if (count($requestArray)) {
-            // $restaurants = DB::table('users')
-            //     ->join('category_user', 'users.id', '=', 'category_user.user_id')
-            //     ->join('categories', 'categories.id', '=', 'category_user.category_id')
-            //     ->select('users.*');
+        if (!empty($_GET['categories'])) {
+            $requestArray = explode(',', $_GET['categories']);
 
-            $restaurants= User::all()->categories();
-            foreach ($requestArray as $requestCategory) {
-                $restaurants->where('categories.name', $requestCategory);
+            $firstFilter = [];
+
+            foreach ($requestArray as $request) {
+                $filterdRestaurants = DB::table('users')
+                    ->join('category_user', 'users.id', '=', 'category_user.user_id')
+                    ->join('categories', 'categories.id', '=', 'category_user.category_id')
+                    ->select('users.*')->where('categories.name', $request)->get();
+                foreach ($filterdRestaurants as $restaurant) {
+                    if (count($firstFilter)) {
+                        $put = true;
+                        foreach ($firstFilter as &$value) {
+                            if ($value['slug'] == $restaurant->slug) {
+                                $value['filterIndex'] = $value['filterIndex'] + 1;
+                                $put = false;
+                            }
+                        }
+                        if ($put) {
+                            $firstFilter[] = [
+                                'name' => $restaurant->name,
+                                'slug' => $restaurant->slug,
+                                'email' => $restaurant->email,
+                                'image' => $restaurant->image,
+                                'filterIndex' => 1,
+                            ];
+                        }
+                    } else {
+                        $firstFilter[] = [
+                            'name' => $restaurant->name,
+                            'slug' => $restaurant->slug,
+                            'email' => $restaurant->email,
+                            'image' => $restaurant->image,
+                            'filterIndex' => 1,
+                        ];
+                    }
+                }
             }
 
-            $restaurants = $restaurants->get();
+            $restaurants = [];
+            foreach ($firstFilter as $allFilteredRestaurant) {
+                if ($allFilteredRestaurant['filterIndex'] == count($requestArray)) {
+                    $restaurants[] = [
+                        'name' => $allFilteredRestaurant['name'],
+                        'slug' => $allFilteredRestaurant['slug'],
+                        'email' => $allFilteredRestaurant['email'],
+                        'image' => asset('storage/' . $allFilteredRestaurant['image']),
+                    ];
+                }
+            }
 
             if (count($restaurants) != 0) {
                 $results = [];
                 foreach ($restaurants as $restaurant) {
                     $results[] = [
-                        'name' => $restaurant->name,
-                        'slug' => $restaurant->slug,
-                        'email' => $restaurant->email,
-                        'image' => asset('storage/' . $restaurant->image),
+                        'name' => $restaurant['name'],
+                        'slug' => $restaurant['slug'],
+                        'email' => $restaurant['email'],
+                        'image' => $restaurant['image'],
                     ];
                 }
                 return response()->json(
@@ -51,7 +89,7 @@ class CategoriesController extends Controller
                 );
             }
         } else {
-            $restaurants = User::inRandomOrder()->get();
+            $restaurants = User::orderBy('name')->get();
             $results = [];
             foreach ($restaurants as $restaurant) {
                 $results[] = [
@@ -67,6 +105,6 @@ class CategoriesController extends Controller
                     'results' => $results,
                 ]
             );
-        } 
-     }
+        }
+    }
 }
