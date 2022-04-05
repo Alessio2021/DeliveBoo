@@ -16,14 +16,14 @@
 
 
 
-      <div class="row">
+      <div class="row mt-5">
         <div class="col-12">
           <CategoryLinks/>
         </div>
       </div>
       <div class="row my-5 shadow-sm gradient rounded">        
-          <div class="col-3 ">
-              <img class="w-100" :src="restaurant.image" :alt="restaurant.name + ' logo'">
+          <div class="col-3 p-3">
+              <img class="w-75" :src="restaurant.image" :alt="restaurant.name + ' logo'">
           </div>
           <div class="col-9 d-flex flex-column justify-content-center">
             <h2 class="text-green"><b>{{restaurant.name}}</b></h2>
@@ -57,7 +57,7 @@
             <div class="col-lg-6 position-relative d-flex flex-column justify-content-between">
               <div>
                 <h5 class="mb-2 text-green"><b>{{dish.name}}</b></h5>
-                <p class="fst-italic text-green">"{{dish.description}}"</p>
+                <p class="fst-italic text-green fs-7">"{{dish.description}}"</p>
 
               </div>
               <p class=" text-green m-0">{{dish.price}} &euro;</p>
@@ -198,6 +198,9 @@ export default {
   }
   .text-green{
     color: #064635;
+  }
+  .fs-7{
+    font-size: 12px;
   }
   .position-button{
     position: absolute;
