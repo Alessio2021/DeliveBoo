@@ -25,7 +25,37 @@ class OrdersPayCOntroller extends Controller
 
     public function makePayment(Request $request, Gateway $gateway)
     {
+        $result = $gateway->transaction()->sale([
+            'amount' => '5.00',
+            'paymentMethodNonce' => $request->token,
+            'option' => [
+                'submitForSettlment' => true
+            ]
+        ]);
 
-        return 'makePayment';
+        if ($result->success) {
+
+            $data = [
+                'message' => 'ok'
+            ];
+            return response()->json(
+                [
+                    'response' => true,
+                    'results' => $data,
+                ]
+            );
+        }else{
+
+            $data = [
+                'message' => 'ko'
+            ];
+            return response()->json(
+                [
+                    'response' => true,
+                    'results' => $data,
+                ]
+            );
+        }
+        
     }
 }
