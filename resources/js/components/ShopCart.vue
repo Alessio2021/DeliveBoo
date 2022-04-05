@@ -5,7 +5,7 @@
             <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
             
 
-            <div class="bg-green text-light d-flex px-1">
+            <div class="bg-green text-light d-flex px-1 mb-3">
                 <div class="col-6">
                     Piatto
                 </div>
@@ -18,7 +18,7 @@
             </div>
             
 
-            <div v-for="(item, index) in data.dishes" :key="index" class="row mb-3 px-1">
+            <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
                 <div class="col-6 text-green">
                     {{item.name}}
                 </div>
