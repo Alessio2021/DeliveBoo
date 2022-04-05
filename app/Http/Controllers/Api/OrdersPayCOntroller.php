@@ -10,9 +10,17 @@ class OrdersPayCOntroller extends Controller
 {
     public function generate(Request $request, Gateway $gateway)
     {
-        $gateway->clientToken()->generate();
-        dd($gateway->clientToken()->generate());
-        return 'generate';
+        $token = $gateway->clientToken()->generate();
+        $data = [
+            'token' => $token
+        ];
+            
+        return response()->json(
+            [
+                'response' => true,
+                'results' => $data,
+            ]
+        );
     }
 
     public function makePayment(Request $request, Gateway $gateway)
