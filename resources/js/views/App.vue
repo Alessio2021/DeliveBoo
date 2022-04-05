@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import Axios from "axios";
+
 import Header from '../components/Header.vue';
 import Main from '../components/Main.vue';
 import Footer from '../components/Footer.vue';
@@ -18,7 +20,13 @@ export default {
         Main,
         Footer,
         
-    }
+    },
+created() {
+    Axios.get(localHost + '/api/orders/generate')
+        .then((results) =>{
+            console.log(results)
+        }).catch( (error) => {console.log(error)});
+}
 }
 </script>
 
