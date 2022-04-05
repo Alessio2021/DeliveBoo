@@ -30,6 +30,7 @@
                     {{item.price}} &euro;
                 </div>       
             </div>
+            <button @click="ciao()">Paga</button>
         </div>
         <div v-else>
             Carrello vuoto
@@ -75,9 +76,16 @@ export default {
             localStorage.setItem('key', JSON.stringify(this.data));
         }
 
+        // JSON ALL'INIZIO
+
+        document.getElementById('JSONOrder').value = JSON.stringify(this.data);
+
         this.$emit('restaurantOnCart', this.data.restaurant.slug);
     },
     methods: {
+        ciao() {
+            document.getElementById('payNow').click();
+        },
         addOnCart() {
             if ( this.choosenDish.restaurant.slug == this.data.restaurant.slug || this.data.restaurant.slug == '') {
                 this.data.restaurant.slug = this.choosenDish.restaurant.slug;

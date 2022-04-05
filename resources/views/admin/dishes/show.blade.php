@@ -4,6 +4,11 @@
 @section('content')
     <div class="mt-3 container ">
         <div class="row">
+            @if (session('status'))
+                    <div class="mt-3 alert alert-info">
+                        {{ session('status') }}
+                    </div>
+                @endif
             <div class="col">
                 <div class="d-flex justify-content-between">
                     <h1>{{ $dish->name }}</h1>

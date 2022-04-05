@@ -32,6 +32,49 @@ Route::middleware('auth')
         }
     );
 
+Route::post('checkout', function () {
+    $data = json_decode($_POST["data"], true);
+    $nonceFromTheClient = $_POST["payment_method_nonce"];
+
+    $amount = 0;
+    foreach ($data['dishes'] as $dish) {
+        $amount += $dish['price'] * $dish['amount'];
+    }
+
+
+    $gateway = new Braintree\Gateway([
+        'environment' => 'sandbox',
+        'merchantId' => '6kkmvpfqh8n88bbj',
+        'publicKey' => 'bnct3wd7sk8scnsv',
+        'privateKey' => '35c10fb92992c1374aa6e6aa95e86c7f'
+    ]);
+
+    $result = $gateway->transaction()->sale([
+        'amount' => $amount,
+        'paymentMethodNonce' => $nonceFromTheClient,
+        // 'deviceData' => $deviceDataFromTheClient,
+        'options' => [
+            'submitForSettlement' => True
+        ]
+    ]);
+
+    if ($result->success) {
+        // creare ordine
+        // creare dishOrdine
+        // mandare email al ristorante e al cliente
+
+        // $order = new Order();
+        // $order->user_id = User::where('slug', $data['restaurant']['slug'])->get()->id;
+        return redirect()->route('guests')->with('status', "Pagamento Effettuato");
+    } else {
+        return redirect()->route('guests')->with('status', "Problemi con il Pagamento");
+    }
+})->name('payment');
+
+Route::get('/pagamiento', function ($ciro) {
+    return view('guest.pagamiento', ['ciro' => $ciro]);
+})->name('pagamiento');
+
 Route::get('{any?}', function ($name = null) {
     return view('guest.welcome', ['appUrl' => config('app.asset_url')]);
-})->where('any', '.*');
+})->where('any', '.*')->name('guests');
