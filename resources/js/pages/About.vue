@@ -7,7 +7,7 @@
         <div class="col-md-4 col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center p-3">
-                    <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
+                    <img class ="w-100" src="../../img/valerio-macciocchi.jpg" alt=""> 
                 </div>
                 <div class="p-4 text-green">
                     <h2 class="mb-4">Valerio Macciocchi</h2>
@@ -25,17 +25,17 @@
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center p-3">
-                    <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
+                    <img class ="w-100" src="../../img/valerio-macciocchi.jpg" alt=""> 
                 </div>
                 <div class="p-4 text-green">
                     <h2 class="mb-4">Filadelfio Granata</h2>
                     <div class="d-flex align-items-center mb-2">
                         <i class="fa-brands fa-github me-2 fs-4"></i>
-                        <h4 class="m-0 fs-6">Github</h4>
+                        <a class="m-0 fs-6 text-green" href="https://github.com/Valkyrux">Valkyrux</a>
                     </div>
                     <div class="d-flex align-items-center mb-2">
                         <i class="fa-brands fa-linkedin me-2 fs-4"></i>
-                        <h4 class="m-0 fs-6">Linkedin</h4>
+                        <a class="m-0 fs-6 text-green" href="https://www.linkedin.com/in/filadelfio-granata-915ba5235/">filadeflio-granata</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center  p-3">
-                    <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
+                    <img class ="w-100" src="../../img/alessio-butera.jpg" alt=""> 
                 </div>
                 <div class="p-4 text-green">
                     <h2 class="mb-4">Alessio Butera</h2>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="d-flex align-items-center mb-2">
                         <i class="fa-brands fa-linkedin me-2 fs-4"></i>
-                        <h4 class="m-0 fs-6">Linkedin</h4>
+                        <a class="m-0 fs-6 text-green" href="https://www.linkedin.com/in/alessio-butera/">alessio-butera</a>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center  p-3">
-                    <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
+                    <img class ="w-100" src="../../img/angelo-amenta.jpg" alt=""> 
                 </div>
                 <div class="p-4 text-green">
                     <h2 class="mb-4">Angelo Amenta</h2>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="d-flex align-items-center mb-2">
                         <i class="fa-brands fa-linkedin me-2 fs-4"></i>
-                        <h4 class="m-0 fs-6">Linkedin</h4>
+                        <a class="m-0 fs-6 text-green" href="https://www.linkedin.com/in/angelo-amenta-91014514b/">angelo-amenta</a>
                     </div>
                 </div>
             </div>
@@ -79,17 +79,17 @@
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card bg-yellow shadow">
                 <div class="d-flex justify-content-center  p-3">
-                    <img class ="w-100" src="../../img/img-profilo.jpg" alt=""> 
+                    <img class ="w-100" src="../../img/lorenzo-savoia.jpg" alt=""> 
                 </div>
                 <div class="p-4 text-green">
                     <h2 class="mb-4">Lorenzo Savoia</h2>
                     <div class="d-flex align-items-center mb-2">
                         <i class="fa-brands fa-github me-2 fs-4"></i>
-                        <h4 class="m-0 fs-6">Github</h4>
+                        <a class="m-0 fs-6 text-green" href="https://github.com/lorenzosavoia">lorenzosavoia</a>
                     </div>
                     <div class="d-flex align-items-center mb-2">
                         <i class="fa-brands fa-linkedin me-2 fs-4"></i>
-                        <h4 class="m-0 fs-6">Linkedin</h4>
+                        <a class="m-0 fs-6 text-green" href="https://www.linkedin.com/in/lorenzo-savoia-a5343a229/">lorenzo-savoia</a>
                     </div>
                 </div>
             </div>
