@@ -23,7 +23,8 @@
       </div>
       <div class="row my-5 shadow-sm gradient rounded">        
           <div class="col-3 p-3">
-              <img class="w-75" :src="restaurant.image" :alt="restaurant.name + ' logo'">
+              <img v-if="restaurant.image" class="w-75" :src="restaurant.image" :alt="restaurant.name + ' logo'">
+              <img v-else :src="uri + '/img/placeholder/restaurant-placeholder.svg'" class="card-img-top" :alt="restaurant.name + 'logo'">
           </div>
           <div class="col-9 d-flex flex-column justify-content-center">
             <h2 class="text-green"><b>{{restaurant.name}}</b></h2>
@@ -115,6 +116,7 @@ export default {
   name:"Menu",
   data() {
     return {
+      uri: '',
       restaurant: {
         slug: '',
       },
@@ -140,6 +142,7 @@ export default {
     BIconCartPlus,
   },
   created() {
+    this.uri = localHost;
     let routeParam = "";
     if (this.$route.params.restaurant) {
       routeParam = this.$route.params.restaurant;

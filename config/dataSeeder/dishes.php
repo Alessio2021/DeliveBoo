@@ -502,7 +502,7 @@ return [
 
     ],
     [
-        'nome' => 'Uova alla piemontese ',
+        'nome' => 'Uova alla piemontese',
         'descrizione' => "Uova alla piemontese con salsa di peperoni, pomodoro e pancetta",
         'prezzo' => 8,
         'tag' => ['uova', 'ortaggi'],
@@ -619,7 +619,7 @@ return [
 
     ],
     [
-        'nome' => 'Tiramis&uacute;',
+        'nome' => "Tiramisu'",
         'descrizione' => "Crema di tuorli e mascarpone, strato di savoiardi inzuppati nel caffè, cacao amaro a spolvero.",
         'prezzo' => 8.00,
         'tag' => ['dolci', 'uova'],

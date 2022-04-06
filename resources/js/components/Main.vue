@@ -56,7 +56,8 @@
       <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-4 mb-3" v-for="(restaurant, index) in lastRestaurants" :key="'lastrestaurant-' + index">
         <div class="card border-0 h-100 shadow">
           <div class="higlights-image-container-restaurant">
-            <img :src="restaurant.img" class="card-img-top" :alt="restaurant.name + 'logo'">
+            <img v-if="restaurant.img" :src="restaurant.img" class="card-img-top" :alt="restaurant.name + 'logo'">
+            <img v-else :src="uri + '/img/placeholder/restaurant-placeholder.svg'" class="card-img-top" :alt="restaurant.name + 'logo'">
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">{{restaurant.name}}</h5>
@@ -80,11 +81,13 @@ export default {
     },
     data() {
       return {
+        uri: '',
         topDishes: [],
         lastRestaurants: [],
       }
     },
     created() {
+      this.uri = localHost;
     Axios.get(localHost + '/api/top-sales')
       .then((results) =>{
         this.topDishes = results.data.results;

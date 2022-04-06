@@ -13,7 +13,8 @@
       <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-info text-decoration-none" v-for="(restaurant, index) in restaurants" :key="'restaurant-' + index">
         <div class="card border-0 h-100 shadow">
           <div class="higlights-image-container">
-            <img :src="restaurant.image" class="card-img-top" :alt="restaurant.name + 'logo'">
+            <img v-if="restaurant.image" :src="restaurant.image" class="card-img-top" :alt="restaurant.name + 'logo'">
+            <img v-else :src="uri + '/img/placeholder/restaurant-placeholder.svg'" class="card-img-top" :alt="restaurant.name + 'logo'">
           </div>
           <div class="card-body">
             <h5 class="card-title text-center text-info">{{restaurant.name}}</h5>
@@ -41,9 +42,11 @@ export default {
       activeCategories: [],
       searchResult: false,
       restaurants: [],
+      uri: '',
     }
   },
   created() {
+    this.uri = localHost;
     if (this.$route.params.categories) {
       this.activeCategories = this.$route.params.categories;
     }

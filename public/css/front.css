@@ -53,8 +53,8 @@ body {
   position: absolute;
   z-index: 1;
   flex-direction: row !important;
-  top: 20px;
-  right: 10%;
+  top: 1.8%;
+  right: 12%;
 }
 
 .text-yellow {
@@ -65,6 +65,26 @@ body {
 @media screen and (max-width: 560px) {
   .text-yellow {
     font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .auth-links {
+    right: 15%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .auth-links {
+    top: 2%;
+    right: 17%;
+  }
+}
+
+@media screen and (max-width: 392px) {
+  .auth-links {
+    top: 2%;
+    right: 5%;
   }
 }
 
