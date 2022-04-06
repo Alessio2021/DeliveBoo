@@ -17,11 +17,11 @@
     <body class="bg-white">
     <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
     @guest
-        <li class="nav-item bg-primary rounded-pill px-3 shadow">
+        <li class="nav-item bg-info rounded-pill px-sm-3 px-2 shadow">
             <a class="nav-link text-yellow " href="{{ route('login') }}">{{ __('Login') }}</a>
         </li>
         @if (Route::has('register'))
-        <li class="nav-item bg-primary rounded-pill px-3 shadow">
+        <li class="nav-item bg-info rounded-pill px-sm-2 px-1 shadow">
             <a class="nav-link text-yellow" href="{{ route('register') }}">{{ __('Register') }}</a>
         </li>
         @endif
