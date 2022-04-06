@@ -29,6 +29,7 @@ Route::middleware('auth')
             Route::resource('dishes', 'DishController');
             Route::get('orders', 'OrderController@index')->name('orders.index');
             Route::get('orders/{id}', 'OrderController@show')->name('orders.show');
+            Route::get('stats', 'StatController@index')->name('stats');
         }
     );
 

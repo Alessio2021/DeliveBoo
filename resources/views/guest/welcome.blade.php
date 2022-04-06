@@ -10,6 +10,8 @@
         <script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/client.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/data-collector.min.js"></script>
+
+          
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
