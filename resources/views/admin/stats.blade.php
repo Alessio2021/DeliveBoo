@@ -21,21 +21,23 @@
 
 
 <script>
+// <?php echo json_encode($myOrder); ?>; 
+ var myOrders = <?php echo json_encode($myOrder); ?>;
+ console.log(myOrders);
 
- var pippo = <?php echo json_encode($myOrder); ?>;
-  console.log(pippo);
-
-  pippo.forEach(element => {
-           console.log(element.total_amount);
+  let arrayPrice = [];
+  myOrders.forEach(element => {
+        arrayPrice.push(element.total_amount);
     });
-    const labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-    ];
+  
+  
+  let arrayDate = [];
+  myOrders.forEach(element => {
+        arrayDate.push(element.created_at.split('T')[0]);
+    });
+    console.log(arrayPrice);
+    console.log(arrayDate);
+    const labels = arrayDate
   
     const data = {
       labels: labels,
@@ -43,7 +45,7 @@
         label: 'My First dataset',
         backgroundColor: '#cc561e',
         borderColor: '#cc561e',
-        data: [0, 10, 5, 2, 20, 30, 45],
+        data: arrayPrice,
       }]
     };
   
