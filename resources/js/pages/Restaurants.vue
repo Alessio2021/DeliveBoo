@@ -54,15 +54,10 @@ export default {
     Axios.get(localHost + '/api/category', {
       params: {
         categories: categoriesParam,
-      },
-      // paramsSerializer: params => {
-      //   return qs.stringify(params)
-      // }
-      })
+      }})
       .then((results) =>{
         this.searchResult = results.data.response;
         this.restaurants = results.data.results;
-        console.log(results);
       }).catch( (error) => {console.log(error)});
   },
   watch: {

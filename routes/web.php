@@ -29,9 +29,12 @@ Route::middleware('auth')
             Route::resource('dishes', 'DishController');
             Route::get('orders', 'OrderController@index')->name('orders.index');
             Route::get('orders/{id}', 'OrderController@show')->name('orders.show');
+            Route::get('stats', 'StatController@index')->name('stats');
         }
     );
 
+Route::post('checkout', 'Checkout\PaymentController@paymentFunction')->name('payment');
+
 Route::get('{any?}', function ($name = null) {
     return view('guest.welcome', ['appUrl' => config('app.asset_url')]);
-})->where('any', '.*');
+})->where('any', '.*')->name('guests');

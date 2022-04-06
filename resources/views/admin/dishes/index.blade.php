@@ -9,7 +9,7 @@
             <div class="col">
                 {{-- alert status piatto --}}
                 @if (session('status'))
-                    <div class="alert alert-danger">
+                    <div class="mt-3 alert alert-danger">
                         {{ session('status') }}
                     </div>
                 @endif

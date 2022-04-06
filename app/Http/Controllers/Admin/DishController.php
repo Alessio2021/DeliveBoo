@@ -152,7 +152,7 @@ class DishController extends Controller
         }
 
 
-        return redirect()->route('admin.dishes.show', $updatedDish);
+        return redirect()->route('admin.dishes.show', $updatedDish)->with('status', "Il piatto $updatedDish->name è stato aggiornato");
     }
 
     /**

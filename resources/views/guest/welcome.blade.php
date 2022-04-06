@@ -5,8 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{config('app.name')}}</title>
-        <script>const localHost ='{{$appUrl}}';</script>
+        <script>const localHost ='{{$appUrl}}'; </script>
         <script src="{{asset('js/front.js')}}" defer></script>
+        <script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
+        <script src="https://js.braintreegateway.com/web/3.85.2/js/client.min.js"></script>
+        <script src="https://js.braintreegateway.com/web/3.85.2/js/data-collector.min.js"></script>
+
+          
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
@@ -15,6 +20,21 @@
         <link rel="stylesheet" href="{{ asset('css/front.css') }}"> 
     </head>
     <body class="bg-white">
+        <form class="" id="payment-form" action="{{route('payment')}}" method="post">
+            @csrf
+            @method('POST')
+            <div id="dropin-container"></div>
+            <input type="hidden" id="JSONOrder" name="data" value="">
+            <input type="submit" id="payNow" value="Paga"/>
+            <input type="hidden" id="nonce" name="payment_method_nonce"/>
+        </form>
+
+          {{-- <div id="dropin-wrapper">
+            <div id="checkout-message"></div>
+            <div id="dropin-container"></div>
+            <button id="submit-button">Submit payment</button>
+          </div> --}}
+        
     <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
     @guest
         <li class="nav-item bg-info rounded-pill px-sm-3 px-2 shadow">
@@ -38,6 +58,12 @@
         </li>
         @endguest
     </ul>
+
+    @if (session('status'))
+        <div class="alert m-0 {{(session('status') == 'Pagamento Effettuato') ? 'alert-info' : 'alert-danger'}}">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <div id="app" class="content">
                 

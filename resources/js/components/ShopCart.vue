@@ -81,6 +81,7 @@
                 <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
             </div>
             
+            <button @click="ciao()">Paga</button>
         </div>
         <div v-else>
             Carrello vuoto
@@ -118,6 +119,7 @@ export default {
     watch: {
         choosenDish() {
             this.addOnCart();
+            this.synchCartOnRequest();
         },
     },
     created() {
@@ -129,9 +131,17 @@ export default {
             localStorage.setItem('key', JSON.stringify(this.data));
         }
 
+        this.synchCartOnRequest();
+
         this.$emit('restaurantOnCart', this.data.restaurant.slug);
     },
     methods: {
+        ciao() {
+            document.getElementById('payNow').click();
+        },
+        synchCartOnRequest() {
+            document.getElementById('JSONOrder').value = JSON.stringify(this.data);
+        },
         addOnCart() {
             if ( this.choosenDish.restaurant.slug == this.data.restaurant.slug || this.data.restaurant.slug == '') {
                 this.data.restaurant.slug = this.choosenDish.restaurant.slug;
@@ -197,7 +207,7 @@ export default {
             const dish = this.data.dishes.filter(dish => dish.slug == emitted.dishSlug);
             dish[0].amount = emitted.value;
             localStorage.setItem('key', JSON.stringify(this.data));
-            console.log(dish);
+            this.synchCartOnRequest();
         }
     }
 }

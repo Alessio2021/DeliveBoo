@@ -6,7 +6,7 @@ use Braintree\Gateway;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OrdersPayCOntroller extends Controller
+class OrdersPayController extends Controller
 {
     public function generate(Request $request, Gateway $gateway)
     {
@@ -14,7 +14,7 @@ class OrdersPayCOntroller extends Controller
         $data = [
             'token' => $token
         ];
-            
+
         return response()->json(
             [
                 'response' => true,
@@ -44,7 +44,7 @@ class OrdersPayCOntroller extends Controller
                     'results' => $data,
                 ]
             );
-        }else{
+        } else {
 
             $data = [
                 'message' => 'ko'
@@ -56,6 +56,5 @@ class OrdersPayCOntroller extends Controller
                 ]
             );
         }
-        
     }
 }
