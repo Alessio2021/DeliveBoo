@@ -21,7 +21,13 @@
 
 
 <script>
-    
+
+ var pippo = <?php echo json_encode($myOrder); ?>;
+  console.log(pippo);
+
+  pippo.forEach(element => {
+           console.log(element.total_amount);
+    });
     const labels = [
       'January',
       'February',
