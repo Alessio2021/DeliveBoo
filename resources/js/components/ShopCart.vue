@@ -42,18 +42,14 @@
             Carrello vuoto
         </div>
     </div>
-<div class="d-lg-none d-block">
-          
-  <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-     ({{numberOfDishes()}} elementi ) Visualizza Carrello &euro; {{totalOrder()}}
-  </button>
-
+<div class="d-lg-none d-block">     
+    <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+         Visualizza Carrello &euro; {{totalOrder()}} ({{numberOfDishes()}} elementi )
+    </button>
 <div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
+    <div class="card card-body">
+        <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
             <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
-            
-
             <div class="bg-green text-light d-flex px-1 mb-3">
                 <div class="col-6">
                     Piatto
