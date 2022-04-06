@@ -71,19 +71,22 @@
               <div class="modal fade" :id="'add-cart-' + index" tabindex="-1" :aria-labelledby="'add-cart-' + index + 'Label'" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" :id="'add-cart-' + index + 'Label'">{{dish.name}}</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header bg-primary">
+                      <h5 class="modal-title text-info" :id="'add-cart-' + index + 'Label'"><b> {{dish.name}} </b></h5>
+                      <button type="button" class="btn-close text-info" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <h3 v-if="!(restaurant.slug == restaurantOnCart || restaurantOnCart == '')" class="text-danger">Svuotare il cestino e procedere con il nuovo ordine?</h3>
-                      <h6>Seleziona la quantità</h6>
+                      <h5 v-if="!(restaurant.slug == restaurantOnCart || restaurantOnCart == '')" class="text-secondary mb-3">Svuotare il cestino e procedere con il nuovo ordine?</h5>
+                      <h5 class="text-info">Seleziona la quantità</h5>
+                      <div class="text-green fs-4">
                       <NumberIncrement @amount="setAmount" />
+
+                      </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                      <button v-if="restaurant.slug == restaurantOnCart || restaurantOnCart == ''" type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Aggiungi</button>
-                      <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Svuota e Aggiungi</button>
+                    <div class="modal-footer ">
+                      <button type="button" class="btn btn-secondary text-success" data-bs-dismiss="modal">Annulla</button>
+                      <button v-if="restaurant.slug == restaurantOnCart || restaurantOnCart == ''" type="button" class="btn btn-primary text-success" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Aggiungi</button>
+                      <button v-else type="button" class="btn btn-primary text-success" data-bs-dismiss="modal" @click="setChoosenDish(dish)">Svuota e Aggiungi</button>
                     </div>
                   </div>
                 </div>
