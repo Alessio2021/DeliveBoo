@@ -64,10 +64,17 @@ class DishController extends Controller
     {
         $users = User::orderBy('created_at', 'desc')->limit(3)->get();
         $results = [];
+
+        
+
         foreach ($users as $user) {
+            $image = '';
+            if ($user -> image){
+                $image = asset('storage/' . $user -> image);
+            }
             $results[] = [
                 'name' => $user->name,
-                'img' => asset('storage/' . $user->image),
+                'img' => $image, 
                 'slug' => $user->slug
             ];
         }
@@ -103,11 +110,16 @@ class DishController extends Controller
         $restaurant = User::where('slug', $slug)->first();
         $dishes = Dish::where('user_id', $restaurant->id)->get();
 
+        $image = '';
+                if ($restaurant -> image){
+                    $image = asset('storage/' . $restaurant -> image);
+                }
+
         $results = [
             'restaurant' => [
                 'name' => $restaurant->name,
                 'slug' => $restaurant->slug,
-                'image' => asset('storage/' . $restaurant->image),
+                'image' => $image,
                 'address' => $restaurant->address,
             ],
             'dishes' => [],

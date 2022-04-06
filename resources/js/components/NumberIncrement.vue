@@ -47,9 +47,7 @@ export default {
     },
     methods: {
         increment() {
-            if (this.value < 10) {
-                this.value++;
-            }
+            this.value++;
             this.$emit('amount', {value: this.value, dishSlug: this.dishSlug});
         },
         decrement() {

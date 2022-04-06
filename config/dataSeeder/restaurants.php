@@ -57,7 +57,7 @@ return [
     ],
     [
         'nome' => 'Bar Santa Barbara',
-        'img' => '',
+        'img' => 'bar-santa-barbara.jpeg',
         'categoria' => ['colazione'],
     ],
     [

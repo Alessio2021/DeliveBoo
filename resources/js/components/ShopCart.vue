@@ -7,10 +7,10 @@
             
 
             <div class="bg-green text-light d-flex px-1 mb-3">
-                <div class="col-6">
+                <div class="col-5">
                     Piatto
                 </div>
-                <div class="col-3 text-end ">
+                <div class="col-4 text-end ">
                     Quantit&agrave;
                 </div>
                 <div class="col-3 text-end ">
@@ -19,10 +19,10 @@
             </div>
             
             <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
-                <div class="col-6 text-green">
+                <div class="col-5 text-green">
                     {{item.name}}
                 </div>
-                <div class="col-3 text-end text-green">
+                <div class="col-4 text-end text-green">
                     <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
                 </div>
                 <div class="col-3 text-end text-green">

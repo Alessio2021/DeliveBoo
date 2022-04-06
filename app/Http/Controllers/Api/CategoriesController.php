@@ -55,12 +55,16 @@ class CategoriesController extends Controller
 
             $restaurants = [];
             foreach ($firstFilter as $allFilteredRestaurant) {
+                $image = '';
+                if ($allFilteredRestaurant['image']){
+                    $image = asset('storage/' . $allFilteredRestaurant['image']);
+                }
                 if ($allFilteredRestaurant['filterIndex'] == count($requestArray)) {
                     $restaurants[] = [
                         'name' => $allFilteredRestaurant['name'],
                         'slug' => $allFilteredRestaurant['slug'],
                         'email' => $allFilteredRestaurant['email'],
-                        'image' => asset('storage/' . $allFilteredRestaurant['image']),
+                        'image' => $image,
                     ];
                 }
             }
