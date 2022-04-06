@@ -34,6 +34,7 @@ class StatController extends Controller
         // dd($myOrder->toArray());
 
         return view('admin.stats', ['myOrder' => $myOrder->toArray()]);
+    }
     /**
      * Show the form for creating a new resource.
      *
