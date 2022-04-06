@@ -1,5 +1,6 @@
 <template>
-    <div>
+<div>
+    <div class="d-none d-lg-block">
         <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
             <h4 class="text-green"><b>Carrello </b></h4><span class="text-danger">({{numberOfDishes()}} elementi)</span>
             <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
@@ -41,6 +42,57 @@
             Carrello vuoto
         </div>
     </div>
+<div class="d-lg-none d-block">
+          
+  <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+     ({{numberOfDishes()}} elementi ) Visualizza Carrello &euro; {{totalOrder()}}
+  </button>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
+            <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
+            
+
+            <div class="bg-green text-light d-flex px-1 mb-3">
+                <div class="col-6">
+                    Piatto
+                </div>
+                <div class="col-3 text-end ">
+                    Quantit&agrave;
+                </div>
+                <div class="col-3 text-end ">
+                    Prezzo
+                </div>
+            </div>
+            
+
+            <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
+                <div class="col-6 text-green">
+                    {{item.name}}
+                </div>
+                <div class="col-3 text-end text-green">
+                    <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
+                </div>
+                <div class="col-3 text-end text-green">
+                    {{item.price}} &euro;
+                </div>       
+            </div>
+            <div class="mb-4 text-end pe-1 pt-1 border-top">
+                <h5 class="text-green m-0 ">Totale: {{totalOrder()}} &euro;</h5>    
+            </div>
+            <div class="text-center">
+                <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
+            </div>
+            
+        </div>
+        <div v-else>
+            Carrello vuoto
+        </div>
+  </div>
+</div>
+</div>
+</div>
 </template>
 
 <script>

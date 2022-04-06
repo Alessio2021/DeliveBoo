@@ -30,8 +30,8 @@
             <p class="text-green">{{restaurant.address}}</p>
           </div>
       </div>
-      <div class="row mt-5">
-        <div class="col-8">
+      <div class="row mt-5 justify-content-between">
+        <div class="col-lg-7 col-12">
           <div v-for="(dish, index) in dishes" :key="'dish-' + index" class="row box mb-4 gradient rounded shadow-sm p-3">
             <div  class="col-lg-6 ">
                   <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
@@ -95,7 +95,7 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-lg-4 cart-responsive">
           <ShopCart :choosenDish="choosenDish" @restaurantOnCart="setRestaurantOnCart"/>
         </div>
       </div>
@@ -231,5 +231,13 @@ export default {
   .container-img{
     margin-bottom: 10px;
   }
+  .cart-responsive{
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
+
 </style>
