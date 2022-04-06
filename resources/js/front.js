@@ -9,22 +9,20 @@ require('./bootstrap');
 import '../sass/app.scss';
 
 window.Vue = require('vue');
-import App from './views/App';
-import Home from './pages/Home';
-import About from './pages/About';
-import '@fortawesome/fontawesome-free/css/all.css'
-import '@fortawesome/fontawesome-free/js/all.js'
-import Restaurants from './pages/Restaurants';
-import Menu from './pages/Menu';
-
-
-
-
-
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import BootstrapVueIcons from 'bootstrap-vue';
+
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+
+import App from './views/App';
+import Home from './pages/Home';
+import Restaurants from './pages/Restaurants';
+import Menu from './pages/Menu';
+import Payment from './pages/Payment';
+import About from './pages/About';
+
 Vue.use(VueRouter);
 Vue.use(BootstrapVueIcons);
 
@@ -52,6 +50,11 @@ const router = new VueRouter({
             name: 'restaurant',
             params: {restaurant: ''} ,
             component: Menu
+        },
+        {
+            path: '/checkout',
+            name: 'checkout',
+            component: Payment,
         },
     ]
 });

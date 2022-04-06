@@ -4,7 +4,7 @@
     <Header v-if="$route.name == 'home'"/>
     <HeaderMinimal v-else/>
     <router-view></router-view>
-    <Footer/>
+    <Footer v-if="$route.name != 'checkout'"/>
 </div>
 </template>
 
@@ -15,7 +15,6 @@ import HeaderMinimal from '../components/HeaderMinimal.vue';
 import Header from '../components/Header.vue';
 import Main from '../components/Main.vue';
 import Footer from '../components/Footer.vue';
-
 
 export default {
     name: "App",
@@ -30,36 +29,36 @@ export default {
         Main,
         Footer,
     },
-created() {
-    Axios.get(localHost + '/api/orders/generate')
-        .then((results) =>{
-            console.log(results.data.results.token);
-            this.token = results.data.results.token;
-            this.runBrainTree();
-        }).catch( (error) => {console.log(error)});
+    created() {
+        Axios.get(localHost + '/api/orders/generate')
+            .then((results) =>{
+                console.log(results.data.results.token);
+                this.token = results.data.results.token;
+                this.runBrainTree();
+            }).catch( (error) => {console.log(error)});
 
     },
     methods: {
         runBrainTree() {
                 const form = document.getElementById('payment-form');
 
-                braintree.client.create({
-  authorization: this.token,
-}, function (err, clientInstance) {
-  // Creation of any other components...
+                // braintree.client.create({
+                // authorization: this.token,
+                // }, function (err, clientInstance) {
+                // // Creation of any other components...
 
-  braintree.dataCollector.create({
-    client: clientInstance
-  }, function (err, dataCollectorInstance) {
-    if (err) {
-      // Handle error in creation of data collector
-      return;
-    }
-    // At this point, you should access the dataCollectorInstance.deviceData value and provide it
-    // to your server, e.g. by injecting it into your form as a hidden input.
-    var deviceData = dataCollectorInstance.deviceData;
-  });
-});
+                // braintree.dataCollector.create({
+                //     client: clientInstance
+                // }, function (err, dataCollectorInstance) {
+                //     if (err) {
+                //     // Handle error in creation of data collector
+                //     return;
+                //     }
+                //     // At this point, you should access the dataCollectorInstance.deviceData value and provide it
+                //     // to your server, e.g. by injecting it into your form as a hidden input.
+                //     var deviceData = dataCollectorInstance.deviceData;
+                // });
+                // });
 
                 braintree.dropin.create({
                 authorization: this.token,

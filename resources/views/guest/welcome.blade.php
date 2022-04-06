@@ -20,20 +20,16 @@
         <link rel="stylesheet" href="{{ asset('css/front.css') }}"> 
     </head>
     <body class="bg-white">
-        <form class="" id="payment-form" action="{{route('payment')}}" method="post">
-            @csrf
-            @method('POST')
-            <div id="dropin-container"></div>
-            <input type="hidden" id="JSONOrder" name="data" value="">
-            <input type="submit" id="payNow" value="Paga"/>
-            <input type="hidden" id="nonce" name="payment_method_nonce"/>
-        </form>
-
-          {{-- <div id="dropin-wrapper">
-            <div id="checkout-message"></div>
-            <div id="dropin-container"></div>
-            <button id="submit-button">Submit payment</button>
-          </div> --}}
+        <div id="payment-form-checkout" class="d-none">
+            <form id="payment-form" action="{{route('payment')}}" method="post">
+                @csrf
+                @method('POST')
+                <div id="dropin-container"></div>
+                <input type="hidden" id="JSONOrder" name="data" value="">
+                <button class="btn btn-primary text-light">Paga</button>
+                <input type="hidden" id="nonce" name="payment_method_nonce"/>
+            </form>
+        </div>
         
     <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
     @guest

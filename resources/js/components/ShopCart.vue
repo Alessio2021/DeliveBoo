@@ -18,7 +18,6 @@
                 </div>
             </div>
             
-
             <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
                 <div class="col-6 text-green">
                     {{item.name}}
@@ -35,60 +34,82 @@
             </div>
             <div class="text-center">
                 <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#staticBackdropPayment-1">
+                Procedi con l'ordine
+                </button>
             </div>
-            
-        </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdropPayment-1" tabindex="-1" aria-labelledby="backdropPayment-1Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="backdropPayment-1Label">Procedere con l'ordine?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button id="closeHerePlz" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna al Menù</button>
+                            <a :href="$router.resolve({name: 'checkout'}).href" type="button" class="btn btn-primary">Vai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
         <div v-else>
             Carrello vuoto
         </div>
     </div>
-<div class="d-lg-none d-block">     
-    <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-         Visualizza Carrello &euro; {{totalOrder()}} ({{numberOfDishes()}} elementi )
-    </button>
-<div class="collapse" id="collapseExample">
-    <div class="card card-body">
-        <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
-            <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
-            <div class="bg-green text-light d-flex px-1 mb-3">
-                <div class="col-6">
-                    Piatto
-                </div>
-                <div class="col-3 text-end ">
-                    Quantit&agrave;
-                </div>
-                <div class="col-3 text-end ">
-                    Prezzo
-                </div>
-            </div>
-            
+    <div class="d-lg-none d-block">     
+        <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Visualizza Carrello &euro; {{totalOrder()}} ({{numberOfDishes()}} elementi )
+        </button>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
+                    <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
+                    <div class="bg-green text-light d-flex px-1 mb-3">
+                        <div class="col-6">
+                            Piatto
+                        </div>
+                        <div class="col-3 text-end ">
+                            Quantit&agrave;
+                        </div>
+                        <div class="col-3 text-end ">
+                            Prezzo
+                        </div>
+                    </div>
+                    
 
-            <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
-                <div class="col-6 text-green">
-                    {{item.name}}
+                    <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
+                        <div class="col-6 text-green">
+                            {{item.name}}
+                        </div>
+                        <div class="col-3 text-end text-green">
+                            <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
+                        </div>
+                        <div class="col-3 text-end text-green">
+                            {{item.price}} &euro;
+                        </div>       
+                    </div>
+                    <div class="mb-4 text-end pe-1 pt-1 border-top">
+                        <h5 class="text-green m-0 ">Totale: {{totalOrder()}} &euro;</h5>    
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
+                    </div>
                 </div>
-                <div class="col-3 text-end text-green">
-                    <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
+                <div v-else>
+                    Carrello vuoto
                 </div>
-                <div class="col-3 text-end text-green">
-                    {{item.price}} &euro;
-                </div>       
             </div>
-            <div class="mb-4 text-end pe-1 pt-1 border-top">
-                <h5 class="text-green m-0 ">Totale: {{totalOrder()}} &euro;</h5>    
-            </div>
-            <div class="text-center">
-                <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
-            </div>
-            
-            <button @click="ciao()">Paga</button>
         </div>
-        <div v-else>
-            Carrello vuoto
-        </div>
-  </div>
-</div>
-</div>
+    </div>
 </div>
 </template>
 
@@ -136,12 +157,10 @@ export default {
         this.$emit('restaurantOnCart', this.data.restaurant.slug);
     },
     methods: {
-        ciao() {
-            document.getElementById('payNow').click();
-        },
         synchCartOnRequest() {
             document.getElementById('JSONOrder').value = JSON.stringify(this.data);
         },
+        // cart methods
         addOnCart() {
             if ( this.choosenDish.restaurant.slug == this.data.restaurant.slug || this.data.restaurant.slug == '') {
                 this.data.restaurant.slug = this.choosenDish.restaurant.slug;
@@ -208,7 +227,7 @@ export default {
             dish[0].amount = emitted.value;
             localStorage.setItem('key', JSON.stringify(this.data));
             this.synchCartOnRequest();
-        }
+        },
     }
 }
 </script>
