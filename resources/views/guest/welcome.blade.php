@@ -11,6 +11,12 @@
         <script src="https://js.braintreegateway.com/web/3.85.2/js/client.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/data-collector.min.js"></script>
 
+        @if (session('status') == 'Pagamento Effettuato')
+            <script defer>
+                localStorage.removeItem('key');
+            </script>
+        @endif
+
           
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -20,14 +26,21 @@
         <link rel="stylesheet" href="{{ asset('css/front.css') }}"> 
     </head>
     <body class="bg-white">
-        <div id="payment-form-checkout" class="d-none">
-            <form id="payment-form" action="{{route('payment')}}" method="post">
+        <div id="payment-form-checkout" class="d-none w-50 container">
+            <form id="payment-form"  class="row" action="{{route('payment')}}" method="post">
                 @csrf
                 @method('POST')
-                <div id="dropin-container"></div>
+                <div id="dropin-container" class="col-6"></div>
                 <input type="hidden" id="JSONOrder" name="data" value="">
-                <button class="btn btn-primary text-light">Paga</button>
                 <input type="hidden" id="nonce" name="payment_method_nonce"/>
+                <div class="col-6 mt-5">
+                    <label for="email" class="form-label">Inserisci la tua mail</label>
+                    <input class="form-control" type="email" required id="email" name="guest_email"/>
+                    <label for="address" class="form-label">Inserisci l'indirizzo di consegna</label>
+                    <input type="text" required id="address" name="address" class="form-control"/>
+                </div>
+                <input type="hidden" id="card_type" name="card_type">
+                <button class="btn btn-primary text-light">Paga</button>
             </form>
         </div>
         

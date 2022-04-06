@@ -79,6 +79,7 @@ export default {
                     //   it a the hidden field before submitting the complete form to
                     //   a server-side integration
                     document.getElementById('nonce').value = payload.nonce;
+                    document.getElementById("card_type").value = payload.details.cardType;
                     form.submit();
                     });
                 });

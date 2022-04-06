@@ -18,16 +18,15 @@ class PaymentController extends Controller
         if (!empty($_POST["data"]) && !empty($_POST["payment_method_nonce"])) {
             $data = json_decode($_POST["data"], true);
             $nonceFromTheClient = $_POST["payment_method_nonce"];
-            // $address = $_POST["address"];
-            $address = "CIAO";
+            $address = $_POST["address"];
+            $guest_email = $_POST["guest_email"];
+            $cardType = $_POST["card_type"];
             $amount = 0;
 
             $checkDishesOnDataBase = true;
 
             $order = new Order();
             $order->guest_address = $address;
-            // cambiare
-            $order->payment_method = "DioBastardo";
 
             foreach ($data['dishes'] as $dish) {
                 $dishInOrder = Dish::where('user_id', User::where('slug', $data['restaurant']['slug'])->first()->id)->where('slug', $dish['slug'])->first();
@@ -55,7 +54,7 @@ class PaymentController extends Controller
                 ]);
 
                 if ($result->success) {
-
+                    $order->payment_method = $cardType;
                     $order->total_amount = $amount;
                     $order->save();
 
