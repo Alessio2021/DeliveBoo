@@ -1,9 +1,9 @@
 <template>
-    <header>
-        <div class="container-fluid orange relative pt-3">
+    <header class="orange">
+        <div class="container-fluid  pt-3">
             <div class="row ">
                 <nav class="navbar navbar-expand-lg navbar-light ">
-                    <div class="container position-relative">
+                    
                         <a class="navbar-brand" href="/">
                             <img class="logo " :src="logo" alt="">
                         </a>
@@ -12,7 +12,7 @@
                             <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <ul class="navbar-nav bg-red">
+                                <ul class="navbar-nav bg-hamburger rounded p-2">
                                     <li v-for="(item) in menuItems" :key="item.id">
                                         <router-link class="nav-link text-yellow fs-4" :to="{ name: item.routeName }">{{ item.label }}</router-link>
                                     </li>
@@ -20,8 +20,17 @@
                                 </ul>
                         </div>
                         </div>
-                    </div>
+                    
                 </nav>
+            </div>
+            <div class="row d-none d-lg-flex align-items-end">
+                <div class="col-5 offset-2 text-light">
+                    <h1 style="font-size: 80px; font-weight: 600; color: #FFF2BD; margin-bottom: 20px"><span style="font-size: 40px; font-weight: 300">Ordina con</span> <br> DeliveBoo</h1>
+                    
+                </div>
+                <div class="col-5 ">
+                   <img class="w-50" :src="localHost + '/img/img-header-deliveboo.png'" alt="">
+                </div>
             </div>
         </div>
     </header>
@@ -33,6 +42,7 @@ export default {
     name: "Header",
     data() {
         return {
+            localHost: '',
             logo: require('../../img/logo-deliveboo.svg'),
             menuItems: [
                 {
@@ -43,13 +53,16 @@ export default {
                     label: 'Chi Siamo',
                     routeName: 'about',
                 },
-                // {
-                //     label: 'Ristoranti',
-                //     routeName: 'restaurant',
-                // },
+                {
+                    label: 'Ristoranti',
+                    routeName: 'restaurants',
+                },
             ],
             
         }
+    },
+    created() {
+    this.localHost = localHost;
     }
 }
 </script>
@@ -57,11 +70,11 @@ export default {
 <style lang="scss">
 .orange{
     // background-color: #CC561E ;
-    height: 400px;
+    // height: 400px;
     background-image: url('../../img/bg-header.svg');
     // background-position: bottom;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
 }
 .relative{
     position: relative;
@@ -86,35 +99,22 @@ export default {
        width: 100%;
     }
 #absolute-button{
-    // transform: translateX(-50%);
-    position: absolute;
-    left: 30%;
+    position: relative;
 }
-@media screen and (max-width: 1200px) {
-    #absolute-button{
-    left: 35%;
-}
-}
+
 @media screen and (max-width: 992px) {
-    #absolute-button    {
-        top: 60px;
-        left: inherit;
-        right: 35px;
-        & ul{
-            background-color: #CC561E;
-            font-size: 12px;
-            & a{
+    .bg-hamburger{
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 110px;
+    background-color: #AA2B1D ; 
+    font-size: 12px;
+    
+            &a{
                 padding: 5px 10px;
             }
         }
-    }
-    
-}
-
-@media screen and (max-width: 700px) {
-    .orange{
-        height: 200px;
-    }
 }
 @media screen and (max-width: 600px) {
     .logo{
@@ -125,5 +125,13 @@ export default {
     .logo{
        width: 50%;
     }
+}
+@media screen and (max-width: 392px) {
+    .bg-hamburger{
+    right: inherit;
+    left: 0;
+    top: 40px;
+    width: 110px;
+}
 }
 </style>

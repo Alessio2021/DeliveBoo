@@ -1,5 +1,5 @@
 <template>
-<div class="body">
+<div :class="($route.name =='home') ? 'body' : 'bg-main-route'">
     <!-- <component :is="component"/> -->
     <Header v-if="$route.name == 'home'"/>
     <HeaderMinimal v-else/>
@@ -135,6 +135,9 @@ export default {
 @import '~bootstrap';
 
 .body {
-    background-color: rgba($color: $success, $alpha: 0.4);
+    background-color: white;
+}
+.bg-main-route{
+  background-color: rgba($color: $success, $alpha: 0.8);
 }
 </style>

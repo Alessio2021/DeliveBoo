@@ -21,19 +21,19 @@
           <CategoryLinks/>
         </div>
       </div>
-      <div class="row my-5 shadow-sm gradient rounded">        
-          <div class="col-3 p-3">
-              <img v-if="restaurant.image" class="w-75" :src="restaurant.image" :alt="restaurant.name + ' logo'">
+      <div class="row my-5 shadow gradient rounded" >        
+          <div class="col-lg-1 col-md-2 col-3 p-3">
+              <img v-if="restaurant.image" class="w-100" :src="restaurant.image" :alt="restaurant.name + ' logo'">
               <img v-else :src="uri + '/img/placeholder/restaurant-placeholder.svg'" class="card-img-top" :alt="restaurant.name + 'logo'">
           </div>
           <div class="col-9 d-flex flex-column justify-content-center">
-            <h2 class="text-green"><b>{{restaurant.name}}</b></h2>
-            <p class="text-green">{{restaurant.address}}</p>
+            <h2 class="text-green px-3"><b>{{restaurant.name}}</b></h2>
+            <p class="text-green px-3">{{restaurant.address}}</p>
           </div>
       </div>
       <div class="row mt-5 justify-content-between">
         <div class="col-lg-7 col-12">
-          <div v-for="(dish, index) in dishes" :key="'dish-' + index" class="row box mb-4 gradient rounded shadow-sm p-3">
+          <div v-for="(dish, index) in dishes" :key="'dish-' + index" class="row box mb-4 gradient rounded shadow-lg p-3">
             <div  class="col-lg-6 ">
                   <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner container-img ">
@@ -57,15 +57,15 @@
             </div>
             <div class="col-lg-6 position-relative d-flex flex-column justify-content-between">
               <div>
-                <h5 class="mb-2 text-green"><b>{{dish.name}}</b></h5>
+                <h5 class="mb-2 text-green fs-4"><b>{{dish.name}}</b></h5>
                 <p class="fst-italic text-green fs-7">"{{dish.description}}"</p>
 
               </div>
-              <p class=" text-green m-0">{{dish.price}} &euro;</p>
+              <p class="text-danger m-0 fs-4 fw-bold">{{dish.price}} &euro;</p>
             
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary text-success vertical-aling-middle position-button" data-bs-toggle="modal" :data-bs-target="'#add-cart-' + index">
-                <b-icon icon="CartPlus"></b-icon> Aggiungi al carrello
+              <button type="button" class="btn btn-primary text-success vertical-aling-middle position-button  shadow fw-bold" data-bs-toggle="modal" :data-bs-target="'#add-cart-' + index">
+                <b-icon class="mb-1" icon="CartPlus"></b-icon> Aggiungi al carrello
               </button>
 
               <!-- Modal -->
@@ -199,8 +199,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   .gradient{
-    background: linear-gradient(to right, rgba(#FFF2BD, 0.4),rgba(#EF8D32, 0.4));
+    background-color: white;
   }
   .text-green{
     color: #064635;
