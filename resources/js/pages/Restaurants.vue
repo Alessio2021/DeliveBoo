@@ -7,8 +7,15 @@
       </div>
     </div>
     <div v-if="searchResult == true" class="row mt-5">
-      <div class="col-12 fw-bold">
-        <h3 class="mb-3">Categoria: <span class="text-danger text-capitalize">{{$route.params.category}}</span></h3>
+      <div class="col-12 ">
+        <h3 class="mb-3 fw-bold">Categoria selezionata: 
+          <span v-if="activeCategories.length != 0">
+            <span v-for="(category, index) in activeCategories" :key="'category-' + index" class="text-danger text-capitalize"> {{category}} </span>
+          </span>
+          <span v-else class="text-danger text-capitalize">
+            Nessuna
+          </span>
+          </h3>
       </div>
       <router-link :to="{name: 'restaurant', params:{restaurant: restaurant.slug}}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-info text-decoration-none" v-for="(restaurant, index) in restaurants" :key="'restaurant-' + index">
         <div class="card border-0 h-100 shadow">

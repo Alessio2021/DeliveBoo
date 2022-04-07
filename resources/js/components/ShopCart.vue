@@ -102,6 +102,7 @@
                     </div>
                     <div class="text-center">
                         <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
+                        
                     </div>
                 </div>
                 <div v-else>
