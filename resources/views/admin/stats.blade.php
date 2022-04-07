@@ -20,8 +20,7 @@
 </div>
 
 
-<script>
-// <?php echo json_encode($myOrder); ?>; 
+<script> 
  var myOrders = <?php echo json_encode($myOrder); ?>;
  console.log(myOrders);
 
@@ -54,7 +53,9 @@
       data: data,
       options: {}
     };
+    
   </script>
+
   <script>
     const myChart = new Chart(
       document.getElementById('myChart'),
