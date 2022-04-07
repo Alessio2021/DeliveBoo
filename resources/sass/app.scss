@@ -21,39 +21,37 @@
     }
 }
 .admin-header {
-    height: 120px;
+    height: 100px;
     background-image: url('../img/header-low.svg');
     background-repeat: no-repeat;
-    background-size: 100%;
-    
+    background-size: cover;
+}
+.logo-admin{
+    width: 75%;
 }
 .font10 {
-    font-size: 10px ;
+    font-size: 10px;
 }
-@media (min-width: 800px) {
+
+// @media (min-width: 800px) {
+//     .font10 {
+//     font-size: 12px;
+// }
+// }
+@media (min-width: 1045px) {
     .font10 {
-    font-size: 13px;
+    font-size: 12px;
 }
 }
-@media (min-width: 1421px) { 
+@media (min-width: 1200px) {
     .font10 {
-        font-size: 20px;
-    }
+    font-size: 15px;
+}
 }
 .my-position {
     position: absolute !important;
     left: -30px !important;
     top: 35px !important;
-}
-@media (max-width: 767px) {
-    .my-position {
-        position: absolute !important;
-        left: -48px !important;
-        top: 35px !important;
-    }
-}
-.min-try {
-    min-width: 40px;
 }
 @media (max-width: 992px) {
     .sidebar-width{
@@ -63,6 +61,24 @@
     .navbar-width{
         width: calc(100% - 60px);
     }
+}
+@media (max-width: 767px) {
+    .my-position {
+        position: absolute !important;
+        left: -48px !important;
+        top: 35px !important;
+    }
+    .text-success{
+        font-size: 10px;
+    }
+}
+@media (max-width: 520px) {
+    .logo-admin{
+        width: 100%;
+    }
+}
+.min-try {
+    min-width: 40px;
 }
 .logout:hover {
 

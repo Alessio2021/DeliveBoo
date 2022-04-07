@@ -23,7 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'DeliveBoo') }}
@@ -33,15 +33,15 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                <-- Left Side Of Navbar -->
+                <!-- <ul class="navbar-nav mr-auto">
 
-                </ul>
+                </ul> -->
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <!-- <ul class="navbar-nav ml-auto"> -->
                     <!-- Authentication Links -->
-                    @guest
+                    <!-- @guest
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
@@ -77,8 +77,8 @@
                     @endguest
                 </ul>
             </div>
-        </div>
-    </nav> --}}
+        </div> -->
+    <!-- </nav> -->
 
     <div id="app">
         <main class="container-fluid">
@@ -88,11 +88,11 @@
                         @include('layouts.admin.partials.sidebar')
                     </div>
                 @endauth
-                <div class="{{Auth::id()? 'navbar-width col-lg-10' : 'col-12'}} p-0">
-                    <nav class="navbar navbar-expand-md navbar-light admin-header">
-                        <div class="container-fluid">
-                                <a class="navbar-brand d-block w-25  " href="{{ url('/') }}">
-                                    <img class="w-75" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
+                <div class="{{Auth::id()? 'navbar-width col-lg-10' : 'col-12'}} p-0 admin-header">
+                    <nav class="navbar navbar-expand-md navbar-light px-5 justify-content-between flex-nowrap h-100">
+                       
+                                <a class="navbar-brand d-block w-50  " href="{{ url('/') }}">
+                                    <img class="logo-admin" src="{{asset('img/logo-deliveboo.svg')}}" alt="">
                                 </a>
                             {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                 <span class="navbar-toggler-icon"></span>
@@ -116,12 +116,12 @@
                                             </li>
                                         @endif
                                     @else
-                                        <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
+                                        <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md bg-info rounded-pill p-1">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-success" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
                 
-                                            <div class="my-position dropdown-menu dropdown-menu-right bg-secondary my-position" aria-labelledby="navbarDropdown">
+                                            <div class="my-position dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item text-success logout fs-5" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
@@ -137,7 +137,7 @@
                                     @endguest
                                 </ul>
                             </div>
-                        </div>
+                        
                     </nav>
                     {{-- <header class="admin-header d-flex align-items-center ps-5">
                         <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100">

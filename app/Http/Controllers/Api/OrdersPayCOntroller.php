@@ -29,7 +29,8 @@ class OrdersPayController extends Controller
             'amount' => '5.00',
             'paymentMethodNonce' => $request->token,
             'option' => [
-                'submitForSettlment' => true
+                'submitForSettlment' => true,
+                'verifyCard' => true,
             ]
         ]);
 

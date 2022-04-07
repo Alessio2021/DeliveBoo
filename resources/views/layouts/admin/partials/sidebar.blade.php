@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-center p-3 vh-100 bg-success bg-opacity-75">
+<div class="d-flex flex-column align-items-center p-3 vh-100 bg-info ">
     <div class="min-try w-100 border border-danger overflow-hidden">
         <img class="w-100" src="{{asset('storage/' . App\User::where('id', Auth::id())->first()->image)}}" alt="">
     </div>
@@ -11,25 +11,25 @@
     <hr>
     <ul class=" nav nav-pills flex-column mb-auto font10">
         <li class="nav-item">
-        <a href="{{ route('admin.home') }}" class="nav-link {{Route::currentRouteName() == 'admin.home' ? 'active' : 'link-dark'}}" aria-current="page">
+        <a href="{{ route('admin.home') }}" class="nav-link {{Route::currentRouteName() == 'admin.home' ? 'active' : 'link-primary'}}" aria-current="page">
             <i class="bi bi-house-door-fill"></i>
             <span class=" d-none d-lg-inline-block ms-3">Home</span>
         </a>
         </li>
         <li>
-        <a href="{{ route('admin.dishes.index') }}" class="nav-link {{Route::currentRouteName() == 'admin.dishes.index' ? 'active' : 'link-dark'}}">
+        <a href="{{ route('admin.dishes.index') }}" class="nav-link {{Route::currentRouteName() == 'admin.dishes.index' ? 'active' : 'link-primary'}}">
             <i class="fas fa-utensils"></i>
             <span class=" d-none d-lg-inline-block ms-3">Lista Piatti</span>
         </a>
         </li>
         <li>
-        <a href="{{route('admin.orders.index')}}" class="nav-link {{(Route::currentRouteName() == 'admin.orders.index' || Route::currentRouteName() == 'admin.orders.show') ? 'active' : 'link-dark'}}">
+        <a href="{{route('admin.orders.index')}}" class="nav-link {{(Route::currentRouteName() == 'admin.orders.index' || Route::currentRouteName() == 'admin.orders.show') ? 'active' : 'link-primary'}}">
             <i class="fas fa-list-ul"></i>
             <span class=" d-none d-lg-inline-block ms-3">Ordini</span>
         </a>
         </li>
         <li>
-        <a href="{{ route('admin.dishes.create') }}" class="nav-link d-flex align-items-center {{Route::currentRouteName() == 'admin.dishes.create' ? 'active' : 'link-dark'}}">
+        <a href="{{ route('admin.dishes.create') }}" class="nav-link d-flex align-items-center {{Route::currentRouteName() == 'admin.dishes.create' ? 'active' : 'link-primary'}}">
             <i class="fas fa-plus"></i>
             <span class="d-none d-lg-inline-block ms-3" >Aggiungi Piatto</span>
         </a>
