@@ -35,7 +35,7 @@
         </a>
         </li>
         <li>
-        <a href="{{ route('admin.stats') }}" class="nav-link d-flex align-items-center {{Route::currentRouteName() == 'admin.stats' ? 'active' : 'link-dark'}}" class="nav-link">
+        <a href="{{ route('admin.stats') }}" class="nav-link d-flex align-items-center {{Route::currentRouteName() == 'admin.stats' ? 'active' : 'link-primary'}}" class="nav-link">
             <i class="fas fa-chart-bar"></i>
             <span class=" d-none d-lg-inline-block ms-3">Statistiche</span>
         </a>
