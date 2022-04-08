@@ -38,6 +38,13 @@
     background-repeat: no-repeat;
     background-size: 40%
 }
+.logo-email{
+    height: 50px;
+    background-image: url('../img/logo-deliveboo.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20%;
+}
 .min-try {
     min-width: 40px;
 }
@@ -51,6 +58,7 @@
     left: -30px !important;
     top: 35px !important;
 }
+
 @media (min-width: 1045px) {
     .font10 {
     font-size: 12px;

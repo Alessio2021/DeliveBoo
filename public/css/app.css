@@ -26743,6 +26743,14 @@ fieldset:disabled .btn {
   background-size: 40%;
 }
 
+.logo-email {
+  height: 50px;
+  background-image: url(/images/logo-deliveboo.svg?308ba4a51c32b2dde0f99a804eb6b75a);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20%;
+}
+
 .min-try {
   min-width: 40px;
 }

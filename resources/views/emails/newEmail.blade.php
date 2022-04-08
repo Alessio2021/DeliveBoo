@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="container bg-info p-2">
+        <div class="row logo-email">
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="bg-success p-5 bg-mail">
@@ -27,11 +31,7 @@
                 </ul>
                 <h3 class="text-info">Totale: {{$lead->amount}} &euro;</h3>
             </div>
-            <!-- <div class="col-12 col-md-4">
-                <img class="w-50" src="require(img/img-header-deliveboo.png)" alt="">
-            </div> -->
         </div>
     </div>
-    
 </body>
 </html>

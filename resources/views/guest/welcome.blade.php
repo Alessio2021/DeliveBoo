@@ -10,6 +10,7 @@
         <script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/client.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/data-collector.min.js"></script>
+        
 
         @if (session('status') == 'Pagamento Effettuato')
             <script defer>
@@ -44,39 +45,65 @@
             </form>
         </div>
         
-    <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
-    @guest
-        <li class="nav-item bg-info rounded-pill px-sm-3 px-2 shadow">
-            <a class="nav-link text-yellow " href="{{ route('login') }}">{{ __('Login') }}</a>
-        </li>
-        @if (Route::has('register'))
-        <li class="nav-item bg-info rounded-pill px-sm-2 px-1 shadow">
-            <a class="nav-link text-yellow" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </li>
-        @endif
+        <ul class="navbar-nav ml-auto auth-links gap-3 pt-3">
+        @guest
+            <li class="nav-item bg-info rounded-pill px-sm-3 px-2 shadow">
+                <a class="nav-link text-yellow " href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            @if (Route::has('register'))
+                <li class="nav-item bg-info rounded-pill px-sm-2 px-1 shadow">
+                    <a class="nav-link text-yellow" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+            @endif
         @else
-        <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle text-success " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}</a>
-            <div class="my-position dropdown-menu dropdown-menu-right bg-secondary my-position" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item text-success logout fs-5" href="{{ route('admin.home') }}">{{ __('Area Personale') }}</a>
-                <a class="dropdown-item text-success logout fs-5" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-                </form>
-            </div>
-        </li>
+            <li class="nav-item dropdown d-flex flex-column align-items-end justify-content-end-md ">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle text-success " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}</a>
+                <div class="my-position dropdown-menu dropdown-menu-right bg-secondary my-position" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item text-success logout fs-5" href="{{ route('admin.home') }}">{{ __('Area Personale') }}</a>
+                    <a class="dropdown-item text-success logout fs-5" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                    </form>
+                </div>
+            </li>
         @endguest
-    </ul>
-
-    @if (session('status'))
-        <div class="alert m-0 {{(session('status') == 'Pagamento Effettuato') ? 'alert-info' : 'alert-danger'}}">
-            {{ session('status') }}
+        </ul>
+        @if (session('status'))
+        <div class="position-fixed top-0 overlay" id="paymentStatus">
+            <div class="mt-5 d-flex justify-content-center">
+                <div class="modal-overlay rounded shadow-lg overflow-hidden">
+                <button type="button" class="btn-close close-button" aria-label="Close" id="closing"></button>
+                <div class="d-flex align-items-center text-success justify-content-center w-100 fs-3 {{(session('status') == 'Pagamento Effettuato') ? 'bg-info' : 'bg-danger'}}">
+                            {{ session('status') }}
+                </div>
+            </div>
+            </div>
         </div>
-    @endif
-
+        @endif
+        
+        <!-- <div class="position-fixed top-0 overlay" id="paymentStatus">
+            <div class="mt-5 d-flex justify-content-center">
+                <div class="modal-overlay bg-info shadow-lg">
+                    <button type="button" class="btn-close close-button" aria-label="Close" id="closing"></button>
+                    <div class=" d-flex align-items-center justify-content-center w-100">
+                        <p class="text-success fs-3">ciao</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div> -->
+        
     <div id="app" class="content">
                 
     </div>
 </div>
+
+<script defer>
+    if(document.getElementById('closing')){
+        document.getElementById('closing').addEventListener('click',()=>{
+            document.getElementById('paymentStatus').classList.add('d-none');
+        });
+    }
+</script>
 </body>
 </html>
