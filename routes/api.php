@@ -31,3 +31,7 @@ Route::get('/menu', 'Api\DishController@restaurantMenu');
 // pagamenti //
 Route::get('/orders/generate', 'Api\OrdersPayController@generate');
 Route::post('/orders/make', 'Api\OrdersPayController@makePayment');
+
+// ordini //
+Route::get('/mystats', 'Api\StatsControllerApi@myOrderStats');
+
