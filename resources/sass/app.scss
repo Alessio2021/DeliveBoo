@@ -32,12 +32,25 @@
 .font10 {
     font-size: 10px;
 }
-
-// @media (min-width: 800px) {
-//     .font10 {
-//     font-size: 12px;
-// }
-// }
+.bg-mail{
+    background-image: url('../img/img-header-deliveboo.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 40%
+}
+.min-try {
+    min-width: 40px;
+}
+.logout:hover {
+    color: $info !important;
+    background-color: $secondary;
+    text-decoration: underline !important;
+}
+.my-position {
+    position: absolute !important;
+    left: -30px !important;
+    top: 35px !important;
+}
 @media (min-width: 1045px) {
     .font10 {
     font-size: 12px;
@@ -48,11 +61,6 @@
     font-size: 15px;
 }
 }
-.my-position {
-    position: absolute !important;
-    left: -30px !important;
-    top: 35px !important;
-}
 @media (max-width: 992px) {
     .sidebar-width{
         width: 60px;
@@ -62,7 +70,7 @@
         width: calc(100% - 60px);
     }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .my-position {
         position: absolute !important;
         left: -48px !important;
@@ -71,18 +79,14 @@
     .text-success{
         font-size: 10px;
     }
+    
 }
 @media (max-width: 520px) {
     .logo-admin{
         width: 100%;
     }
+    .bg-mail{
+        background-image: none;   
+    }
 }
-.min-try {
-    min-width: 40px;
-}
-.logout:hover {
 
-    color: $info !important;
-    background-color: $secondary;
-    text-decoration: underline !important;
-}

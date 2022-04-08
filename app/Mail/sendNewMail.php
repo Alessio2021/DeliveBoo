@@ -12,15 +12,17 @@ use Illuminate\Support\Facades\Mail;
 class sendNewMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $lead;
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($_lead, $_data)
     {
-        //
+        $this->lead = $_lead;
+        $this->data = $_data;
     }
 
     /**

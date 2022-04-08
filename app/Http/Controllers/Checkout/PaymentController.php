@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 
+use App\Mail\SendNewMail;
+use Illuminate\Support\Facades\Mail;
+
 use App\User;
 use App\Dish;
 use App\Order;
+use App\Lead;
 
 class PaymentController extends Controller
 {
@@ -57,6 +61,28 @@ class PaymentController extends Controller
                     $order->payment_method = $cardType;
                     $order->total_amount = $amount;
                     $order->save();
+
+                    // Email To Guest
+                    $new_lead = new Lead();
+                    $new_lead->fill([
+                        'guest_address'=> $address, 
+                        'email' => User::where('slug', $data['restaurant']['slug'])->first()->email,
+                        'message' => 'Il tuo ordine è stato accettato',
+                        'restaurant_name' => User::where('slug', $data['restaurant']['slug'])->first()->name,
+                        'amount' => $amount
+                    ]);
+                    Mail::to($guest_email)->send(new SendNewMail($new_lead, $data['dishes']));
+
+                    // Email To User
+                    $new_lead = new Lead();
+                    $new_lead->fill([
+                        'guest_address'=> $address, 
+                        'email' => $guest_email,
+                        'message' => 'Hai ricevuto un nuovo ordine',
+                        'restaurant_name' => User::where('slug', $data['restaurant']['slug'])->first()->name,
+                        'amount' => $amount
+                    ]);
+                    Mail::to(User::where('slug', $data['restaurant']['slug'])->first()->email)->send(new SendNewMail($new_lead, $data['dishes']));
 
                     foreach ($data['dishes'] as $dish) {
                         $dishInOrder = Dish::where('user_id', User::where('slug', $data['restaurant']['slug'])->first()->id)->where('slug', $dish['slug'])->first();

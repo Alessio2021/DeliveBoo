@@ -26736,6 +26736,29 @@ fieldset:disabled .btn {
   font-size: 10px;
 }
 
+.bg-mail {
+  background-image: url(/images/img-header-deliveboo.png?04052ccaa0cf2187e2119ba8c2301958);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 40%;
+}
+
+.min-try {
+  min-width: 40px;
+}
+
+.logout:hover {
+  color: #064635 !important;
+  background-color: #CC561E;
+  text-decoration: underline !important;
+}
+
+.my-position {
+  position: absolute !important;
+  left: -30px !important;
+  top: 35px !important;
+}
+
 @media (min-width: 1045px) {
   .font10 {
     font-size: 12px;
@@ -26748,12 +26771,6 @@ fieldset:disabled .btn {
   }
 }
 
-.my-position {
-  position: absolute !important;
-  left: -30px !important;
-  top: 35px !important;
-}
-
 @media (max-width: 992px) {
   .sidebar-width {
     width: 60px;
@@ -26764,7 +26781,7 @@ fieldset:disabled .btn {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .my-position {
     position: absolute !important;
     left: -48px !important;
@@ -26780,15 +26797,9 @@ fieldset:disabled .btn {
   .logo-admin {
     width: 100%;
   }
-}
 
-.min-try {
-  min-width: 40px;
-}
-
-.logout:hover {
-  color: #064635 !important;
-  background-color: #CC561E;
-  text-decoration: underline !important;
+  .bg-mail {
+    background-image: none;
+  }
 }
 
