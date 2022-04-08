@@ -6,10 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Mail\SendNewMail;
+// use App\Mail\SendNewMail;
 use Illuminate\Support\Facades\Mail;
 
-class sendNewMail extends Mailable
+class SendNewMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $lead;

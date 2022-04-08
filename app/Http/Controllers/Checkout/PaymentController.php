@@ -65,7 +65,7 @@ class PaymentController extends Controller
                     // Email To Guest
                     $new_lead = new Lead();
                     $new_lead->fill([
-                        'guest_address'=> $address, 
+                        'guest_address' => $address,
                         'email' => User::where('slug', $data['restaurant']['slug'])->first()->email,
                         'message' => 'Il tuo ordine è stato accettato',
                         'restaurant_name' => User::where('slug', $data['restaurant']['slug'])->first()->name,
@@ -76,7 +76,7 @@ class PaymentController extends Controller
                     // Email To User
                     $new_lead = new Lead();
                     $new_lead->fill([
-                        'guest_address'=> $address, 
+                        'guest_address' => $address,
                         'email' => $guest_email,
                         'message' => 'Hai ricevuto un nuovo ordine',
                         'restaurant_name' => User::where('slug', $data['restaurant']['slug'])->first()->name,
