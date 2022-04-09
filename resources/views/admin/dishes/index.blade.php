@@ -42,7 +42,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                 <div class="modal-body">
-                                    Una volta eliminato, il piatto no sar&aacute; pi&uacute; presente all'interno della piattaforma.
+                                    Una volta eliminato, il piatto non sar&aacute; pi&uacute; presente all'interno della piattaforma.
                                 </div>
                                     <div class="modal-footer">
                                         <form action="{{ route('admin.dishes.destroy', $dish)}}" method="post">

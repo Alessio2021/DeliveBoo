@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -34,4 +34,58 @@
         </div>
     </div>
 </body>
+
+<style>
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .bg-info{
+        background-color: #064635;
+    }
+    .bg-success{
+        background-color: #FFF2BD;
+    }
+    .px-4 {
+        padding: 0 10px;
+    }
+    .p-5 {
+        padding: 15px;
+    }
+    .fw-bold{
+        font-weight: bold;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+    }
+    .bg-mail{
+        background-image: url('http://127.0.0.1:8000/img/img-header-deliveboo.png');
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: 40%
+    }
+    .logo-email{
+        height: 50px;
+        background-image: url('http://127.0.0.1:8000/img/logo-deliveboo.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20%;
+    }
+    .text-primary{
+        color: #EF8D32;
+    } 
+    .text-secondary{
+        color: #CC561E;
+    } 
+    .text-success{
+        color: #FFF2BD;
+    } 
+    .text-danger{
+        color: #AA2B1D;
+    } 
+    .text-info{
+        color: #064635;
+    }
+
+</style>
 </html>
