@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\Dish;
@@ -21,18 +22,19 @@ class StatController extends Controller
      */
     public function index()
     {
-        $myOrder = DB::table('orders')
-        ->join('dish_order', 'orders.id', '=', 'dish_order.order_id')
-        ->join('dishes', 'dishes.id', '=', 'dish_order.dish_id')
-        ->select('orders.*')->where('user_id', Auth::user()->id)->get();
+        // $myOrder = DB::table('orders')
+        // ->join('dish_order', 'orders.id', '=', 'dish_order.order_id')
+        // ->join('dishes', 'dishes.id', '=', 'dish_order.dish_id')
+        // ->select('orders.*')->where('user_id', Auth::user()->id)->get();
 
-        
-        // dd($myOrder);
+        $myOrder = Order::orderBy('created_at')->with('dishes')->whereHas('dishes', function (Builder $query) {
+            $query->where('user_id', Auth::id());
+        })->get();
 
-        return view('admin.stats', ['myOrder' => $myOrder]);
-        
+        // dd($myOrder->toArray());
+
+        return view('admin.stats', ['myOrder' => $myOrder->toArray()]);
     }
-
     /**
      * Show the form for creating a new resource.
      *

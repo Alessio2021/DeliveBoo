@@ -18,9 +18,7 @@ class DishController extends Controller
 {
     public function top4Sales()
     {
-
-        $allDishOrder = DishOrder::all();
-        $allDish = Dish::all();
+        $allDish = Dish::where('visibility', '1')->get();
         $dishPopularityArray = [];
 
         foreach ($allDish as $dish) {
@@ -65,16 +63,16 @@ class DishController extends Controller
         $users = User::orderBy('created_at', 'desc')->limit(3)->get();
         $results = [];
 
-        
+
 
         foreach ($users as $user) {
             $image = '';
-            if ($user -> image){
-                $image = asset('storage/' . $user -> image);
+            if ($user->image) {
+                $image = asset('storage/' . $user->image);
             }
             $results[] = [
                 'name' => $user->name,
-                'img' => $image, 
+                'img' => $image,
                 'slug' => $user->slug
             ];
         }
@@ -108,12 +106,12 @@ class DishController extends Controller
     {
         $slug = $_GET['restaurant'];
         $restaurant = User::where('slug', $slug)->first();
-        $dishes = Dish::where('user_id', $restaurant->id)->get();
+        $dishes = Dish::where('user_id', $restaurant->id)->where('visibility', '1')->get();
 
         $image = '';
-                if ($restaurant -> image){
-                    $image = asset('storage/' . $restaurant -> image);
-                }
+        if ($restaurant->image) {
+            $image = asset('storage/' . $restaurant->image);
+        }
 
         $results = [
             'restaurant' => [

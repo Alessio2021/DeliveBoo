@@ -13,10 +13,11 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $restaurantOrders = Order::orderBy('created_at')->with('dishes')->whereHas('dishes', function (Builder $query) {
+        $restaurantOrders = Order::orderBy('created_at', 'DESC')->with('dishes')->whereHas('dishes', function (Builder $query) {
             $query->where('user_id', Auth::id());
         })->paginate(7);
 
+        // dd($restaurantOrders->toArray()['data']);
         return view('admin.orders.index', ['restaurantOrders' => $restaurantOrders]);
     }
 

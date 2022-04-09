@@ -7,6 +7,8 @@
         <title>{{config('app.name')}}</title>
         <script>const localHost ='{{$appUrl}}'; </script>
         <script src="{{asset('js/front.js')}}" defer></script>
+        
+
         <script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/client.min.js"></script>
         <script src="https://js.braintreegateway.com/web/3.85.2/js/data-collector.min.js"></script>
