@@ -70,6 +70,7 @@
                 </div>
             </div>
        </div>
+       
 
         <div v-else>
             Carrello vuoto
@@ -111,8 +112,28 @@
                         <h5 class="text-green m-0 ">Totale: {{totalOrder()}} &euro;</h5>    
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
-                        
+                        <button class="btn btn-danger mb-2" @click="resetCart()">Svuota carrello</button>
+                        <button type="button" class="btn btn-primary text-light fw-bold d-inline-flex align-items-center py-0" data-bs-toggle="modal" data-bs-target="#staticBackdropPayment-2">
+                            <span class="d-inline-block h-100">Procedi con l'ordine</span>
+                            <span class="fs-2 h-100"><b-icon class="mb-1" icon="ArrowRightShort"></b-icon></span>
+                        </button>
+                    </div>
+                    <div class="modal fade" id="staticBackdropPayment-2" tabindex="-1" aria-labelledby="backdropPayment-1Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="backdropPayment-1Label">Procedere con l'ordine?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="closeHerePlz" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna al Menù</button>
+                                    <a :href="$router.resolve({name: 'checkout'}).href" type="button" class="btn btn-primary">Vai</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div v-else>

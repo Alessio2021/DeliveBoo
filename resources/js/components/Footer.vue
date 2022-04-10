@@ -8,11 +8,9 @@
                     </a>
                 </div>
                 <div class="col-4 text-center">
-                    <ul class="navbar-nav d-flex flex-row flex-wrap">
-                        <li v-for="(category, index) in categories" :key="index" class="col-4 text-start" >
-                            <router-link class=" my-2 text-capitalize text-success text-decoration-none" :to="{name: 'restaurants', params: {categories: [category.name]}}" >
-                                {{category.name}}
-                            </router-link>
+                    <ul class="navbar-nav">
+                        <li v-for="(item) in menuItems" :key="item.id">
+                            <router-link class="my-2 text-capitalize text-success text-decoration-none fs-3" :to="{ name: item.routeName }">{{ item.label }}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -31,17 +29,22 @@ export default {
     data() {
         return {
             logo: require('../../img/logo-deliveboo.svg'),  
-            categories: [],          
+            menuItems: [
+                {
+                    label: 'Home',
+                    routeName: 'home',
+                },
+                {
+                    label: 'Ristoranti',
+                    routeName: 'restaurants',
+                },
+                {
+                    label: 'Chi Siamo',
+                    routeName: 'about',
+                },   
+            ]      
         }
     },
-    created() {
-    
-    Axios.get(localHost + '/api/categories').then(
-    (results) =>{
-        this.categories = results.data.results;
-    });
-    this.activeCategories = this.setActiveCategories;
-  },
 }
 </script>
 
