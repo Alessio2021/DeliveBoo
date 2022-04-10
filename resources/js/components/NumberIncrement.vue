@@ -4,7 +4,7 @@
             <b-icon icon="dash-circle-fill"></b-icon>
         </span>
         
-        <span>{{value}}</span>
+        <span>{{getValue()}}</span>
         
         <span class="input" :class="value==10 ? 'disabled' : ''"  @click="increment()">
             <b-icon icon="plus-circle-fill"></b-icon>
@@ -30,7 +30,11 @@ export default {
         dishSlug: {
             type: String,
             default: '',
-        }
+        },
+        minValue: {
+            type: Number,
+            default: 1,
+        },
     },
     watch: {
         startValue() {
@@ -46,12 +50,19 @@ export default {
         this.value = this.startValue;
     },
     methods: {
+        getValue() {
+            let value = this.value;
+            if(value == 0) {
+               value = 1;
+            }
+            return value;
+        },
         increment() {
             this.value++;
             this.$emit('amount', {value: this.value, dishSlug: this.dishSlug});
         },
         decrement() {
-            if (this.value > 1) {
+            if (this.value > this.minValue) {
                 this.value--;
             }
             this.$emit('amount', {value: this.value, dishSlug: this.dishSlug});

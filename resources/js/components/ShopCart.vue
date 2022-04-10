@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="d-none d-lg-block">
-        <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
+        <div v-if="data.dishes.length != 0" class="container bg-white border rounded shadow p-2">
                 <div class=" d-flex px-1">
                     <h4 class="text-green col-6 m-0 d-flex align-items-center"><b>Carrello </b></h4>
                     <div class="col-6 text-end m-0">
@@ -28,12 +28,12 @@
                 </div>
             </div>
             
-            <div v-for="(item, index) in data.dishes" :key="index" class="row mb-2 px-1">
+            <div v-for="(item, index) in data.dishes" :key="'cart-bg-' + index" class="row mb-2 px-1">
                 <div class="col-5 text-green">
                     {{item.name}}
                 </div>
                 <div class="col-4 text-end text-green">
-                    <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
+                    <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount" :minValue="0"/>
                 </div>
                 <div class="col-3 text-end text-green">
                     {{item.price}} &euro;
@@ -71,10 +71,22 @@
             </div>
        </div>
 
-        <div v-else>
-            Carrello vuoto
+        <div v-else class="bg-white py-5 shadow-lg">
+            <div class="text-center text-uppercase text-danger fw-bold fs-4">
+                Carrello vuoto
+            </div>
+            <div class="text-center">
+                <h1 class="cart-icon-sm text-info">
+                    <b-icon class="mb-1" icon="Cart"></b-icon>
+                </h1>
+            </div>
+            <div class="text-center fst-italic">
+                aggiungi piatti al tuo ordine dal men&ugrave;
+            </div>
         </div>
+
     </div>
+
     <div class="d-lg-none d-block">     
         <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Carrello {{totalOrder()}} &euro; ({{numberOfDishes()}} elementi )
@@ -101,7 +113,7 @@
                             {{item.name}}
                         </div>
                         <div class="col-3 text-end text-green">
-                            <NumberIncrement :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
+                            <NumberIncrement :minValue="0" :dishSlug="item.slug" :startValue="item.amount" @amount="setDishAmount"/>
                         </div>
                         <div class="col-3 text-end text-green">
                             {{item.price}} &euro;
@@ -153,7 +165,7 @@ export default {
                     name: '',
                 },
                 dishes: [],
-            }
+            },
         }
     },
     components: {
@@ -234,7 +246,7 @@ export default {
         totalOrder() {
             let totalValue = 0;
             this.data.dishes.forEach((dish) => {totalValue += dish.amount*dish.price});
-            return totalValue;
+            return totalValue.toFixed(2);
         },
 
         resetCart() {
@@ -249,10 +261,24 @@ export default {
         },
 
         setDishAmount(emitted) {
-            const dish = this.data.dishes.filter(dish => dish.slug == emitted.dishSlug);
-            dish[0].amount = emitted.value;
-            localStorage.setItem('key', JSON.stringify(this.data));
-            this.synchCartOnRequest();
+            if (emitted.value != 0) {
+                const dish = this.data.dishes.filter(dish => dish.slug == emitted.dishSlug);
+                dish[0].amount = emitted.value;
+                localStorage.setItem('key', JSON.stringify(this.data));
+                this.synchCartOnRequest();
+            } else {
+                let badIndex;
+                this.data.dishes.forEach((dish,index) => {
+                    if(dish.slug == emitted.dishSlug) {
+                        badIndex = index;
+                    }
+                });
+                this.data.dishes.splice(badIndex, 1);
+                localStorage.setItem('key', JSON.stringify(this.data));
+            }
+            if(this.data.dishes.length == 0) {
+                this.resetCart();
+            }
         },
     }
 }

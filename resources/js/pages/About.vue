@@ -25,7 +25,7 @@
         <div class="col-md-4  col-12 p-3 mb-5 border-0">
             <div class="card shadow">
                 <div class="d-flex justify-content-center p-3">
-                    <img class ="w-100" src="../../img/valerio-macciocchi.jpg" alt=""> 
+                    <img class ="w-100" src="../../img/filadelfio-granata-al-quadrato.jpg" alt=""> 
                 </div>
                 <div class="p-4 text-green">
                     <h2 class="mb-4">Filadelfio Granata</h2>

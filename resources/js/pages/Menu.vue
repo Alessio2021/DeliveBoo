@@ -37,11 +37,19 @@
             <div  class="col-lg-6 ">
                   <div :id="'carousel-top4-' + index" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner container-img ">
-                        <div v-for="(image, index) in dish.image" :key="'image-' + index" class="  carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
-                          <div class="higlights-image-container">
-                          <img  :src="image" class="d-block w-100 obj-fit " :alt="dish.name + ' photo'">
+                        
+                        <div v-if="dish.image.length != 0">
+                          <div v-for="(image, index) in dish.image" :key="'image-' + index" class="  carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
+                            <div class="higlights-image-container">
+                              <img  :src="image" class="d-block w-100 obj-fit " :alt="dish.name + ' photo'">
+                            </div>
                           </div>
                         </div>
+                        
+                        <div v-else>
+                          <img :src="uri + '/img/placeholder/dish-placeholder.svg'" alt="">
+                        </div>
+
                         <button class="carousel-control-prev d-none d-none" type="button" :data-bs-target="'#carousel-top4-' + index" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
@@ -77,6 +85,35 @@
                       <button type="button" class="btn-close text-info" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                      <div class=" w-100 d-flex justify-content-center align-items-center mb-3">
+                                                
+                         <div :id="'carousel-modal-' + index" class="carousel slide" data-bs-ride="carousel">
+                          <div class="carousel-inner container-img ">
+                            
+                            <div v-if="dish.image.length != 0">
+                              <div v-for="(image, index) in dish.image" :key="'image-' + index" class="  carousel-item" :class="(index == 0) ? 'active' : ''" data-bs-interval="5000">
+                                <div class="higlights-image-container">
+                                  <img  :src="image" class="d-block w-100 obj-fit " :alt="dish.name + ' photo'">
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div v-else>
+                              <img :src="uri + '/img/placeholder/dish-placeholder.svg'" alt="">
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" :data-bs-target="'#carousel-modal-' + index" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next " type="button" :data-bs-target="'#carousel-modal-' + index" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+
                       <h5 v-if="!(restaurant.slug == restaurantOnCart || restaurantOnCart == '')" class="text-secondary mb-3">Svuotare il cestino e procedere con il nuovo ordine?</h5>
                       <h5 class="text-info">Seleziona la quantità</h5>
                       <div class="text-green fs-4">
