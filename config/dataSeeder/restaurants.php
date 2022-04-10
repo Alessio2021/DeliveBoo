@@ -120,4 +120,8 @@ return [
         'img' => 'vegan-kitchen.png',
         'categoria' => ['vegano', 'vegetariano'],
     ],
+    [
+        'nome' => "Pizzeria da Mario",
+        'categoria' => ['italiano', 'fast food'],
+    ],
 ];

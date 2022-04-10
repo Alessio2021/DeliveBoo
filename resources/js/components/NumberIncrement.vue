@@ -1,12 +1,12 @@
 <template>
     <div class="d-inline">
-        <span :class="value==1 ? 'disabled' : ''" @click="decrement()">
+        <span class="input" :class="value==1 ? 'disabled' : ''" @click="decrement()">
             <b-icon icon="dash-circle-fill"></b-icon>
         </span>
         
         <span>{{value}}</span>
         
-        <span :class="value==10 ? 'disabled' : ''"  @click="increment()">
+        <span class="input" :class="value==10 ? 'disabled' : ''"  @click="increment()">
             <b-icon icon="plus-circle-fill"></b-icon>
         </span>
     </div>
@@ -60,6 +60,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.input {
+    cursor: pointer;
+    &:hover {
+        filter: opacity(0.5);
+    }
+}
 
 </style>

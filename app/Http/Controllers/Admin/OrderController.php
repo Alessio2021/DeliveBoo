@@ -14,7 +14,7 @@ class OrderController extends Controller
     public function index()
     {
         $restaurantOrders = Order::orderBy('created_at', 'DESC')->with('dishes')->whereHas('dishes', function (Builder $query) {
-            $query->where('user_id', Auth::id());
+            $query->where('user_id', Auth::id())->withTrashed();
         })->paginate(7);
 
         // dd($restaurantOrders->toArray()['data']);
@@ -24,7 +24,7 @@ class OrderController extends Controller
     public function show($id)
     {
         $restaurantOrder = Order::where('id', $id)->with('dishes')->whereHas('dishes', function (Builder $query) {
-            $query->where('user_id', Auth::id());
+            $query->where('user_id', Auth::id())->withTrashed();
         })->first();
 
         if (!empty($restaurantOrder->id)) {

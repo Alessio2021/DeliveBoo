@@ -56,7 +56,7 @@ class CategoriesController extends Controller
             $restaurants = [];
             foreach ($firstFilter as $allFilteredRestaurant) {
                 $image = '';
-                if ($allFilteredRestaurant['image']){
+                if ($allFilteredRestaurant['image']) {
                     $image = asset('storage/' . $allFilteredRestaurant['image']);
                 }
                 if ($allFilteredRestaurant['filterIndex'] == count($requestArray)) {
@@ -96,11 +96,15 @@ class CategoriesController extends Controller
             $restaurants = User::orderBy('name')->get();
             $results = [];
             foreach ($restaurants as $restaurant) {
+                $image = '';
+                if ($restaurant->image) {
+                    $image = asset('storage/' . $restaurant->image);
+                }
                 $results[] = [
                     'name' => $restaurant->name,
                     'slug' => $restaurant->slug,
                     'email' => $restaurant->email,
-                    'image' => asset('storage/' . $restaurant->image),
+                    'image' => $image,
                 ];
             }
             return response()->json(

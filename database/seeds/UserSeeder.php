@@ -16,14 +16,16 @@ class UserSeeder extends Seeder
     {
         $restaurants = config("dataSeeder.restaurants");
         $faker->addProvider(new \Faker\Provider\it_IT\Company($faker));
-        
+
         foreach ($restaurants as $restaurant) {
             $newUser = new User();
             $newUser->name = $restaurant['nome'];
-            $newUser->image = "Our_faker_img/Restaurants/" . $restaurant['img'];
-            $newUser->email = strtolower(str_replace([" ", "'" ], "", $restaurant['nome']))."@gmail.com";
+            if (!empty($restaurant['img'])) {
+                $newUser->image = "Our_faker_img/Restaurants/" . $restaurant['img'];
+            }
+            $newUser->email = strtolower(str_replace([" ", "'"], "", $restaurant['nome'])) . "@gmail.com";
             $newUser->password = Hash::make('12345678');
-            $newUser->PIVA = str_replace("IT","", $faker->vat());
+            $newUser->PIVA = str_replace("IT", "", $faker->vat());
             $newUser->address = $faker->address;
             $newUser->slug = User::slugGenerator($newUser->name);
             $newUser->save();

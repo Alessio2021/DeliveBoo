@@ -10,7 +10,7 @@
       <div class=" text-info d-block text-decoration-none col-12">
           <div class="row ">
             <div class="col-1 d-flex justify-content-center align-items-center">
-              <h2 class="fs-4 text-light">Numero</h2>
+              <h2 class="fs-4 text-light">Nr.</h2>
             </div>
             <div class="col-6">
               <h2 class="fs-4 text-light">Dettagli</h2>

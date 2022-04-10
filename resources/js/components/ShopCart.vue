@@ -2,7 +2,17 @@
 <div>
     <div class="d-none d-lg-block">
         <div v-if="data.restaurant.slug" class="container bg-white border rounded shadow p-2">
-            <h4 class="text-green"><b>Carrello </b></h4><span class="text-danger">({{numberOfDishes()}} elementi)</span>
+                <div class=" d-flex px-1">
+                    <h4 class="text-green col-6 m-0 d-flex align-items-center"><b>Carrello </b></h4>
+                    <div class="col-6 text-end m-0">
+                        <button class="btn btn-danger fw-bold" @click="resetCart()">
+                            <b-icon class="mb-1" icon="TrashFill"></b-icon>
+                            svuota
+                        </button>
+                    </div>
+                </div>
+
+            <span class="text-danger">({{numberOfDishes()}} elementi)</span>
             <h5 class="mt-2 ">Ristorante <router-link :to="{name: 'restaurant', params:{restaurant: data.restaurant.slug}}">{{data.restaurant.name}}</router-link></h5>
             
 
@@ -33,10 +43,10 @@
                 <h5 class="text-green m-0 ">Totale: {{totalOrder()}} &euro;</h5>    
             </div>
             <div class="text-center">
-                <button class="btn btn-danger" @click="resetCart()">Svuota carrello</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#staticBackdropPayment-1">
-                Procedi con l'ordine
+                <button type="button" class="btn btn-primary text-light fw-bold d-inline-flex align-items-center py-0" data-bs-toggle="modal" data-bs-target="#staticBackdropPayment-1">
+                    <span class="d-inline-block h-100">Procedi con l'ordine</span>
+                    <span class="fs-2 h-100"><b-icon class="mb-1" icon="ArrowRightShort"></b-icon></span>
                 </button>
             </div>
 
@@ -67,7 +77,7 @@
     </div>
     <div class="d-lg-none d-block">     
         <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Visualizza Carrello &euro; {{totalOrder()}} ({{numberOfDishes()}} elementi )
+            Carrello {{totalOrder()}} &euro; ({{numberOfDishes()}} elementi )
         </button>
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
@@ -106,7 +116,17 @@
                     </div>
                 </div>
                 <div v-else>
-                    Carrello vuoto
+                    <div class="text-center">
+                        Carrello vuoto
+                    </div>
+                    <div class="text-center">
+                        <h1 class="cart-icon-sm text-info">
+                            <b-icon class="mb-1" icon="Cart"></b-icon>
+                        </h1>
+                    </div>
+                    <div class="text-center fst-italic">
+                        aggiungi piatti al tuo ordine dal men&ugrave;
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,6 +136,7 @@
 
 <script>
 import NumberIncrement from './NumberIncrement.vue';
+import { BIcon, BIconCart, BIconArrowRightShort, BIconTrashFill } from 'bootstrap-vue';
 
 export default {
     name: 'ShopCart',
@@ -137,6 +158,10 @@ export default {
     },
     components: {
         NumberIncrement,
+        BIcon,
+        BIconCart,
+        BIconArrowRightShort,
+        BIconTrashFill,
     },
     watch: {
         choosenDish() {
@@ -239,5 +264,11 @@ export default {
   }
   .bg-green{
       background-color: #064635;
+  }
+
+  .cart-icon-sm {
+      font-size: 40px;
+      display: inline-block;
+      margin: 10px 0;
   }
 </style>

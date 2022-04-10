@@ -16,7 +16,6 @@
                                     <li v-for="(item) in menuItems" :key="item.id">
                                         <router-link class="nav-link text-yellow fs-4" :to="{ name: item.routeName }">{{ item.label }}</router-link>
                                     </li>
-                                    <li><i class="pt-3 fs-4 fa-solid fa-cart-shopping text-yellow"></i></li>
                                 </ul>
                         </div>
                         </div>
@@ -40,12 +39,12 @@ export default {
                     routeName: 'home',
                 },
                 {
-                    label: 'Chi Siamo',
-                    routeName: 'about',
-                },
-                {
                     label: 'Ristoranti',
                     routeName: 'restaurants',
+                },
+                {
+                    label: 'Chi Siamo',
+                    routeName: 'about',
                 },
             ],
             
